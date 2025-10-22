@@ -1,0 +1,77 @@
+# Visual Studio user-specific files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio build cache
+*.aps
+*.ncb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# ReSharper + Rider
+_ReSharper*/
+*.DotSettings.user
+
+# Visual Studio Code workspace files
+.vscode/
+
+# Backup & generated files
+*.bak
+*.tmp
+*.temp
+*.swp
+
+# ASP.NET publish folder
+wwwroot/lib/
+publish/
+out/
+dist/
+
+# Packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.dll
+*.pdb
+
+# SQLite or local DBs
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Environment & configuration
+.env
+.env.*
+
+# Node-related (if you integrate frontend assets)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# OS crap
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# JetBrains IDEs
+.idea/
