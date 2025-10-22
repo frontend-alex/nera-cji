@@ -1,3 +1,4 @@
+/* Main Site Styles */
 html {
   font-size: 14px;
 }
@@ -20,3 +21,16 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+
+/* Import organized CSS files */
+@import url('components/buttons.css');
+@import url('components/cards.css');
+
