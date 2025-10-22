@@ -140,6 +140,7 @@ echo Hot reload is enabled - changes will be automatically applied
 echo Press Ctrl+C to stop the application
 echo.
 cd nera-cji
+set DOTNET_USE_POLLING_FILE_WATCHER=1
 dotnet watch run --configuration Release
 cd ..
 goto :end

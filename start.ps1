@@ -219,6 +219,8 @@ function Invoke-Watch {
         Write-ColorOutput "Press Ctrl+C to stop the application" $WarningColor
         Write-Host ""
         
+        # Enable file system polling for better Windows compatibility
+        $env:DOTNET_USE_POLLING_FILE_WATCHER = "1"
         dotnet watch run --configuration Release
     }
     catch {
