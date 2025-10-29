@@ -1,5 +1,11 @@
-// Main Site JavaScript
-// Place your site-specific JavaScript here
+import { FooterLinks } from "./constants/data.js";
+import { footerLinkTemplate } from "./templates/templates.js";
 
-// Import utility functions
-// The common.js utilities are already loaded via the layout
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', () => {
+    const footerLinks = document.getElementById('footer-links');
+    
+    if (footerLinks && FooterLinks) {
+        footerLinks.innerHTML = FooterLinks.map((link, key) => footerLinkTemplate(link, key)).join('');
+    }
+});

@@ -221,7 +221,8 @@ function Invoke-Watch {
         
         # Enable file system polling for better Windows compatibility
         $env:DOTNET_USE_POLLING_FILE_WATCHER = "1"
-        dotnet watch run --configuration Release
+        # Use Development configuration for better hot reload support
+        dotnet watch run --configuration Development
     }
     catch {
         Write-ColorOutput " Watch error: $($_.Exception.Message)" $ErrorColor

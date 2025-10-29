@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NERA</title>
+    <link rel="icon" type="image/jpeg" href="~/images/icons/title-image.jpg" />
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/buttons.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/cards.css" asp-append-version="true" />
+
+</head>
+
+<body>
+    <div class="flex flex-col min-h-screen justify-between">
+        <nav class="sticky top-0 z-50 bg-white border-b-2 border-neutral-200 shadow-xs px-5 lg:px-0">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-20 relative ">
+                    <a href="/"><img src="~/images/svgs/logo.svg" alt="NERA Logo" class="size-18" height="10" /></a>
+                    <ul class="flex items-center gap-3 hidden lg:flex nav-links">
+                        <li><a href="/Home">Home</a></li>
+                        <li><a href="/Events">Events</a></li>
+                        <li><a href="/Reports">Reports</a></li>
+                        <li><a href="/Account/Profile">Profile</a></li>
+                    </ul>
+                </div>
+                <ul class="flex items-center gap-1 nav-links">
+                    <li class="flex items-center gap-3">
+                        <img src="~/images/icons/world.png" alt="Profile" class="size-5" height="10" />
+                        <span>Global</span>
+                    </li>
+                    <span class="h-13 w-[2px] bg-black"></span>
+                    <li><a href="#">En</a></li>
+                    <span class="h-13 w-[2px] bg-black"></span>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post" class="inline">
+                            <button type="submit" class="btn-link">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="bg-var(--color-background-light-white) w-full mt-auto">
+            <div class="max-w-7xl mx-auto py-5 px-5">
+                <div class="flex justify-between items-center">
+                    <p class="text-xs font-semibold">
+                        © 2025 CGI Inc.
+                    </p>
+                    <p class="text-sm text-stone-500">Authenticated Dashboard</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/utils/common.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+

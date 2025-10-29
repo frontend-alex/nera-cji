@@ -141,7 +141,8 @@ echo Press Ctrl+C to stop the application
 echo.
 cd nera-cji
 set DOTNET_USE_POLLING_FILE_WATCHER=1
-dotnet watch run --configuration Release
+rem Use Development configuration for better hot reload support
+dotnet watch run --configuration Development
 cd ..
 goto :end
 
