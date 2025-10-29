@@ -1,10 +1,13 @@
-/* Color Palette Variables */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 :root {
   /* Primary Colors from Image */
   --heading-color: #200A58;
   --color-gradient-start-red: #E02B40;    /* Vibrant red on the left */
   --color-gradient-end-purple: #5236ab;   /* Deep purple on the right */
-  --color-text-white: #FFFFFF;             /* White for main text and button background */
+  --color-background-purple:#ece9f6;
+  --color-text-white: #FFFFFF;  
+  --color-background-light-white:#f2f2f2;           /* White for main text and button background */
   
   /* Gradient Variables */
   --gradient-horizontal: linear-gradient(to right, var(--color-gradient-start-red), var(--color-gradient-end-purple));
@@ -15,6 +18,10 @@
 /* Main Site Styles */
 html {
   font-size: 14px;
+}
+
+.font-source-code-pro {
+  font-family: 'Source Code Pro', Arial, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -33,4 +40,69 @@ html {
 /* Import organized CSS files */
 @import url('components/buttons.css');
 @import url('components/cards.css');
+a{
+  cursor: pointer;
+}
+nav{
+  font-family: 'Source Code Pro', Arial, sans-serif;
+}
 
+nav .nav-links li {
+  position: relative;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 0 16px;
+  height: 100%;
+}
+
+nav .nav-links li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -25px; 
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--heading-color);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+nav .nav-links li:hover::after {
+  opacity: 1;
+}
+
+.arrow-button{
+  transition: 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.arrow-button:hover {
+  color: var(--color-gradient-end-purple);
+}
+
+.btn-fill-primary{
+  background: var(--color-gradient-end-purple);
+  padding: 10px 20px;
+  color: white;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-fill-secondary{
+  background: var(--color-background-light-white);
+  padding: 10px 20px;
+  color: var(--color-gradient-end-purple);
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}

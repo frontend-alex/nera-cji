@@ -1,63 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NERA</title>
     <link rel="icon" type="image/jpeg" href="~/images/icons/title-image.jpg" />
-    
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/components/buttons.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/components/cards.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/pages/home.css" asp-append-version="true" />
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/svgs/logo.svg" alt="NERA Logo" height="40" class="d-inline-block align-text-top" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Events</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Reports" asp-action="Index">Reports</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
+    <div class="flex flex-col min-h-screen justify-between">
+        <nav class="sticky top-0 z-50 bg-white border-b-2 border-neutral-200 shadow-xs px-5 lg:px-0">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <div class="flex items-center gap-20 relative ">
+                    <img src="~/images/svgs/logo.svg" alt="NERA Logo" class="size-18" height="10" />
+                    <ul class="flex items-center gap-3 hidden lg:flex nav-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Login</a></li>
                     </ul>
                 </div>
+                <ul class="flex items-center gap-1 nav-links">
+                    <li><a href="#">Contact</a></li>
+                    <span class="h-13 w-[2px] bg-black"></span>
+                    <li class="flex items-center gap-3">
+                        <img src="~/images/icons/world.png" alt="Profile" class="size-5" height="10" />
+                        <span>Global</span>
+                    </li>
+                    <span class="h-13 w-[2px] bg-black"></span>
+                    <li><a href="#">En</a></li>
+                </ul>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <section>
+            <div class="h-[35dvh] flex flex-col gap-3 items-center justify-center"
+                style="background: var(--gradient-horizontal);">
+                <h1 class="text-white text-4xl font-light">How can we help?</h1>
+                <a href="#"> <button class="btn-fill-secondary w-max">Contact</button></a>
+            </div>
+            <footer class="bg-var(--color-background-light-white) w-full">
+                <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-5 lg:gap-0">
+                    <div class="bg-white flex flex-col gap-2 py-2 px-5">
+                        <img src="~/images/svgs/logo.svg" alt="NERA Logo" class="size-20" height="10" />
+                        <h1 class="text-lg font-semibold">Insights you can act on</h1>
+                        <p class="text-stone-400 max-w-[250px] text-sm">Founded in 1976, CGI is among the largest IT and
+                            business consulting services firms in the world.
+                            We are insights-driven and outcomes-focused to help accelerate returns on your investments.
+                        </p>
+                        <button class="flex items-center gap-2 arrow-button py-3">
+                            <span>Learn more about CGI</span>
+                            <img src="~/images/svgs/black-arrow.svg" alt="Arrow" class="size-4" height="10" />
+                        </button>
+                        <p class="text-xs font-semibold">
+                            © 2025 CGI Inc.
+                        </p>
+                    </div>
+                    <div id="footer-links"
+                        class="flex flex-col gap-3 lg:flex-row w-full justify-between px-5 lg:p-10 lg:w-[800px]">
+                    </div>
+                    <div
+                        class="bg-(--color-background-purple) flex flex-col justify-between gap-3 py-2 pt-5 px-5 lg:w-[300px]">
+                        <div class="flex flex-col gap-3">
+                            <h1 class="text-lg font-semibold">Discover more about CGI</h1>
+                            <p class="mt-3 text-sm font-semibold">Keeping you informed</p>
+                            <button class="btn-fill-primary w-max">Subscribe</button>
+                        </div>
+
+                        <div class="flex flex-col gap-3">
+                            <h1 class="text-lg font-semibold">Follow us</h1>
+                            <div class="flex items-center gap-3">
+                                <a href="#"><img src="~/images/icons/facebook.svg" alt="Facebook" class="size-5"
+                                        height="10" /></a>
+                                <a href="#"><img src="~/images/icons/twitter.svg" alt="Twitter" class="size-5"
+                                        height="10" /></a>
+                                <a href="#"><img src="~/images/icons/linkedin.svg" alt="LinkedIn" class="size-5"
+                                        height="10" /></a>
+                                <a href="#"><img src="~/images/icons/instagram.svg" alt="Instagram" class="size-5"
+                                        height="10" /></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+    </div>
+    </footer>
+    </section>
+
     </div>
 
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="module" src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/utils/common.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
