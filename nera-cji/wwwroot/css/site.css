@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("components/buttons.css");
+@import url("components/cards.css");
+@import url("components/components.css");
 
 :root {
   /* Primary Colors from Image */
@@ -48,8 +51,8 @@ html {
 }
 
 /* Import organized CSS files */
-@import url("components/buttons.css");
-@import url("components/cards.css");
+
+
 a {
   cursor: pointer;
 }
@@ -85,41 +88,3 @@ nav .nav-links li:hover::after {
   opacity: 1;
 }
 
-.arrow-button {
-  transition: 0;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.arrow-button:hover {
-  color: var(--color-gradient-end-purple);
-}
-
-.btn-fill-primary {
-  background: var(--color-gradient-end-purple);
-  padding: 10px 20px;
-  color: white;
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.btn-fill-secondary {
-  background: var(--color-background-light-white);
-  padding: 10px 20px;
-  color: var(--color-gradient-end-purple);
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.cgi-logo {
-  background: linear-gradient(white, white) -20px 20px,
-    linear-gradient(360deg, #5236ab 0, #e41937 100%);
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
-}
