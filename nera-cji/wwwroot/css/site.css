@@ -1,18 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 :root {
   /* Primary Colors from Image */
-  --heading-color: #200A58;
-  --color-gradient-start-red: #E02B40;    /* Vibrant red on the left */
-  --color-gradient-end-purple: #5236ab;   /* Deep purple on the right */
-  --color-background-purple:#ece9f6;
-  --color-text-white: #FFFFFF;  
-  --color-background-light-white:#f2f2f2;           /* White for main text and button background */
-  
+  --heading-color: #200a58;
+  --color-gradient-start-red: #e02b40; /* Vibrant red on the left */
+  --color-gradient-end-purple: #5236ab; /* Deep purple on the right */
+  --color-background-purple: #ece9f6;
+  --color-text-white: #ffffff;
+  --color-background-light-white: #f2f2f2; /* White for main text and button background */
+
   /* Gradient Variables */
-  --gradient-horizontal: linear-gradient(to right, var(--color-gradient-start-red), var(--color-gradient-end-purple));
-  --gradient-vertical: linear-gradient(to bottom, var(--color-gradient-start-red), var(--color-gradient-end-purple));
-  --gradient-diagonal: linear-gradient(135deg, var(--color-gradient-start-red), var(--color-gradient-end-purple));
+  --gradient-horizontal: linear-gradient(
+    to right,
+    var(--color-gradient-start-red),
+    var(--color-gradient-end-purple)
+  );
+  --gradient-vertical: linear-gradient(
+    to bottom,
+    var(--color-gradient-start-red),
+    var(--color-gradient-end-purple)
+  );
+  --gradient-diagonal: linear-gradient(
+    135deg,
+    var(--color-gradient-start-red),
+    var(--color-gradient-end-purple)
+  );
 }
 
 /* Main Site Styles */
@@ -21,7 +33,7 @@ html {
 }
 
 .font-source-code-pro {
-  font-family: 'Source Code Pro', Arial, sans-serif;
+  font-family: "Source Code Pro", Arial, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -30,21 +42,19 @@ html {
   }
 }
 
-
 html {
   position: relative;
   min-height: 100%;
 }
 
-
 /* Import organized CSS files */
-@import url('components/buttons.css');
-@import url('components/cards.css');
-a{
+@import url("components/buttons.css");
+@import url("components/cards.css");
+a {
   cursor: pointer;
 }
-nav{
-  font-family: 'Source Code Pro', Arial, sans-serif;
+nav {
+  font-family: "Source Code Pro", Arial, sans-serif;
 }
 
 nav .nav-links li {
@@ -57,11 +67,11 @@ nav .nav-links li {
 }
 
 nav .nav-links li::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -25px; 
+  bottom: -25px;
   display: block;
   width: 100%;
   height: 3px;
@@ -71,12 +81,11 @@ nav .nav-links li::after {
   pointer-events: none;
 }
 
-
 nav .nav-links li:hover::after {
   opacity: 1;
 }
 
-.arrow-button{
+.arrow-button {
   transition: 0;
   cursor: pointer;
   font-size: 14px;
@@ -87,7 +96,7 @@ nav .nav-links li:hover::after {
   color: var(--color-gradient-end-purple);
 }
 
-.btn-fill-primary{
+.btn-fill-primary {
   background: var(--color-gradient-end-purple);
   padding: 10px 20px;
   color: white;
@@ -97,7 +106,7 @@ nav .nav-links li:hover::after {
   cursor: pointer;
 }
 
-.btn-fill-secondary{
+.btn-fill-secondary {
   background: var(--color-background-light-white);
   padding: 10px 20px;
   color: var(--color-gradient-end-purple);
@@ -105,4 +114,12 @@ nav .nav-links li:hover::after {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.cgi-logo {
+  background: linear-gradient(white, white) -20px 20px,
+    linear-gradient(360deg, #5236ab 0, #e41937 100%);
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
 }
