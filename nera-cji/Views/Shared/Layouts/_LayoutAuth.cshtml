@@ -16,33 +16,7 @@
 
 <body>
     <div class="flex flex-col min-h-screen justify-between">
-        <nav class="sticky top-0 z-50 bg-white border-b-2 border-neutral-200 shadow-xs px-5 lg:px-0">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-                <div class="flex items-center gap-20 relative ">
-                    <a href="/"><img src="~/images/svgs/logo.svg" alt="NERA Logo" class="size-18" height="10" /></a>
-                    <ul class="flex items-center gap-3 hidden lg:flex nav-links">
-                        <li><a href="/Home">Home</a></li>
-                        <li><a href="/Events">Events</a></li>
-                        <li><a href="/Reports">Reports</a></li>
-                        <li><a href="/Account/Profile">Profile</a></li>
-                    </ul>
-                </div>
-                <ul class="flex items-center gap-1 nav-links">
-                    <li class="flex items-center gap-3">
-                        <img src="~/images/icons/world.png" alt="Profile" class="size-5" height="10" />
-                        <span>Global</span>
-                    </li>
-                    <span class="h-13 w-[2px] bg-black"></span>
-                    <li><a href="#">En</a></li>
-                    <span class="h-13 w-[2px] bg-black"></span>
-                    <li>
-                        <form asp-controller="Account" asp-action="Logout" method="post" class="inline">
-                            <button type="submit" class="btn-link">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <partial name="_Navbar" />
         <div class="container">
             <main role="main" class="pb-3">
                 @RenderBody()
