@@ -54,7 +54,7 @@ function Invoke-Build {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
+        Set-Location "Web"
         dotnet build --configuration Release --verbosity normal
         
         if ($LASTEXITCODE -eq 0) {
@@ -78,7 +78,7 @@ function Invoke-Run {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
+        Set-Location "Web"
         Write-ColorOutput "Application will be available at:" $InfoColor
         Write-ColorOutput "http://localhost:5296" $InfoColor
         Write-Host ""
@@ -101,16 +101,16 @@ function Invoke-Clean {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
+        Set-Location "Web"
         
         if (Test-Path "bin") {
             Remove-Item -Recurse -Force "bin"
-            Write-ColorColorOutput "Removed bin directory" $SuccessColor
+            Write-ColorOutput "Removed bin directory" $SuccessColor
         }
         
         if (Test-Path "obj") {
             Remove-Item -Recurse -Force "obj"
-            Write-ColorColorOutput "Removed obj directory" $SuccessColor
+            Write-ColorOutput "Removed obj directory" $SuccessColor
         }
         
         dotnet nuget locals all --clear
@@ -132,8 +132,8 @@ function Invoke-Test {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
-        dotnet test --configuration Release --verbosity normal
+        # Run tests project directly
+        dotnet test "Tests/Tests.csproj" --configuration Release --verbosity normal
         
         if ($LASTEXITCODE -eq 0) {
             Write-ColorOutput "All tests passed!" $SuccessColor
@@ -147,7 +147,7 @@ function Invoke-Test {
         exit 1
     }
     finally {
-        Set-Location ".."
+        
     }
 }
 
@@ -156,7 +156,7 @@ function Invoke-Publish {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
+        Set-Location "Web"
         
         $publishDir = "..\publish"
         if (Test-Path $publishDir) {
@@ -187,8 +187,8 @@ function Invoke-Restore {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
-        dotnet restore --verbosity normal
+        # Restore all projects via solution
+        dotnet restore "nera-cji.sln" --verbosity normal
         
         if ($LASTEXITCODE -eq 0) {
             Write-ColorOutput " Packages restored successfully!" $SuccessColor
@@ -202,7 +202,7 @@ function Invoke-Restore {
         exit 1
     }
     finally {
-        Set-Location ".."
+        
     }
 }
 
@@ -211,7 +211,7 @@ function Invoke-Watch {
     Write-Host ""
     
     try {
-        Set-Location "nera-cji"
+        Set-Location "Web"
         Write-ColorOutput "Application will be available at:" $InfoColor
         Write-ColorOutput " http://localhost:5296" $InfoColor
         Write-Host ""
