@@ -211,7 +211,6 @@ function Invoke-Watch {
     Write-Host ""
     
     try {
-        Set-Location "app/Web"
         Write-ColorOutput "Application will be available at:" $InfoColor
         Write-ColorOutput " http://localhost:5296" $InfoColor
         Write-Host ""
@@ -222,14 +221,14 @@ function Invoke-Watch {
         # Enable file system polling for better Windows compatibility
         $env:DOTNET_USE_POLLING_FILE_WATCHER = "1"
         # Use Development configuration for better hot reload support
-        dotnet watch run --configuration Development
+        dotnet watch --project "app/Web/Web.csproj" run --configuration Development
     }
     catch {
         Write-ColorOutput " Watch error: $($_.Exception.Message)" $ErrorColor
         exit 1
     }
     finally {
-        Set-Location "../.."
+        
     }
 }
 
