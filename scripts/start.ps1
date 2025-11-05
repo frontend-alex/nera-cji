@@ -54,7 +54,7 @@ function Invoke-Build {
     Write-Host ""
     
     try {
-        Set-Location "Web"
+        Set-Location "app/Web"
         dotnet build --configuration Release --verbosity normal
         
         if ($LASTEXITCODE -eq 0) {
@@ -69,7 +69,7 @@ function Invoke-Build {
         exit 1
     }
     finally {
-        Set-Location ".."
+        Set-Location "../.."
     }
 }
 
@@ -78,7 +78,7 @@ function Invoke-Run {
     Write-Host ""
     
     try {
-        Set-Location "Web"
+        Set-Location "app/Web"
         Write-ColorOutput "Application will be available at:" $InfoColor
         Write-ColorOutput "http://localhost:5296" $InfoColor
         Write-Host ""
@@ -92,7 +92,7 @@ function Invoke-Run {
         exit 1
     }
     finally {
-        Set-Location ".."
+        Set-Location "../.."
     }
 }
 
@@ -101,7 +101,7 @@ function Invoke-Clean {
     Write-Host ""
     
     try {
-        Set-Location "Web"
+        Set-Location "app/Web"
         
         if (Test-Path "bin") {
             Remove-Item -Recurse -Force "bin"
@@ -123,7 +123,7 @@ function Invoke-Clean {
         exit 1
     }
     finally {
-        Set-Location ".."
+        Set-Location "../.."
     }
 }
 
@@ -156,9 +156,9 @@ function Invoke-Publish {
     Write-Host ""
     
     try {
-        Set-Location "Web"
+        Set-Location "app/Web"
         
-        $publishDir = "..\publish"
+        $publishDir = "..\..\publish"
         if (Test-Path $publishDir) {
             Remove-Item -Recurse -Force $publishDir
         }
@@ -178,7 +178,7 @@ function Invoke-Publish {
         exit 1
     }
     finally {
-        Set-Location ".."
+        Set-Location "../.."
     }
 }
 
@@ -211,7 +211,7 @@ function Invoke-Watch {
     Write-Host ""
     
     try {
-        Set-Location "Web"
+        Set-Location "app/Web"
         Write-ColorOutput "Application will be available at:" $InfoColor
         Write-ColorOutput " http://localhost:5296" $InfoColor
         Write-Host ""
@@ -229,7 +229,7 @@ function Invoke-Watch {
         exit 1
     }
     finally {
-        Set-Location ".."
+        Set-Location "../.."
     }
 }
 
