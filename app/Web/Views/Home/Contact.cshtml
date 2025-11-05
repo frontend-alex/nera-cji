@@ -1,8 +1,39 @@
+@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.Rendering
 @model ContactFormViewModel
 
 @{
     ViewData["Title"] = "NERA | Contact";
     Layout = "~/Views/Shared/Layouts/_LayoutAuth.cshtml";
+
+    var topicOptions = Html.GetEnumSelectList<ContactTopic>().ToList();
+    topicOptions.Insert(0, new SelectListItem
+    {
+        Text = "Please select",
+        Value = string.Empty,
+        Selected = !Model.Topic.HasValue
+    });
+
+    var countryOptions = CultureInfo
+        .GetCultures(CultureTypes.SpecificCultures)
+        .Select(culture => new RegionInfo(culture.Name))
+        .Select(region => region.EnglishName)
+        .Distinct()
+        .OrderBy(name => name)
+        .Select(name => new SelectListItem
+        {
+            Text = name,
+            Value = name,
+            Selected = string.Equals(Model.Country, name, StringComparison.OrdinalIgnoreCase)
+        })
+        .ToList();
+
+    countryOptions.Insert(0, new SelectListItem
+    {
+        Text = "Please select",
+        Value = string.Empty,
+        Selected = string.IsNullOrWhiteSpace(Model.Country)
+    });
 }
 
 @section Styles
@@ -11,70 +42,131 @@
 }
 
 <div class="contact-page">
-    <h1>Contact Us</h1>
-    <p class="intro-text">Get in contact with CGI event admins</p>
-
-    <div class="contact-info">
-        <p><strong>Email:</strong> <a href="mailto: CgiExample@gmail.com">CgiExample@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+123456789">+123456789</a></p>
-        <p><strong>Office hours:</strong> Monday - Friday, 9:00 AM - 5 PM</p>
-    </div>
-
-    @if (ViewBag.Message != null)
-    {
-        <div class="alert-success-banner">
-            <p>@ViewBag.Message</p>
+    <section class="contact-intro">
+        <div class="contact-intro__content">
+            <h1>Contact us</h1>
+            <h2>How can we help?</h2>
+            <p>
+                To submit a question or request, please fill out the form. We will respond as soon as possible with the
+                right CGI representative.
+            </p>
         </div>
-    }
+        <div class="contact-intro__visual" role="presentation">
+            <div class="contact-intro__image"></div>
+            <span class="contact-intro__accent" aria-hidden="true"></span>
+        </div>
+    </section>
 
-    <h2>Send us a message</h2>
+    <section class="contact-main">
+        <div class="contact-form-section">
+            <h3>Get in touch</h3>
+            <p class="contact-form-section__intro">
+                Complete the fields below so we can tailor our response to your inquiry.
+            </p>
 
-    <form asp-action="Contact" method="post" class="contact-form">
-        @Html.AntiForgeryToken()
+            @if (ViewBag.Message != null)
+            {
+                <div class="contact-success" role="status">
+                    <span class="contact-success__icon" aria-hidden="true"></span>
+                    <p>@ViewBag.Message</p>
+                </div>
+            }
 
-        <div asp-validation-summary="ModelOnly" class="validation-summary" role="alert"></div>
+            <form asp-action="Contact" method="post" class="contact-form">
+                @Html.AntiForgeryToken()
 
-        <div class="form-row">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" />
-            <span asp-validation-for="Name" class="field-validation"></span>
+                <div asp-validation-summary="ModelOnly" class="validation-summary" role="alert"></div>
+
+                <div class="contact-form__grid">
+                    <div class="form-row form-row--full">
+                        <label asp-for="Topic">Inquiry type<span class="required">*</span></label>
+                        <select asp-for="Topic" class="form-control--large" asp-items="topicOptions"></select>
+                        <span asp-validation-for="Topic" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <label asp-for="FirstName">Your first name<span class="required">*</span></label>
+                        <input asp-for="FirstName" class="form-control--large" />
+                        <span asp-validation-for="FirstName" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <label asp-for="LastName">Your last name<span class="required">*</span></label>
+                        <input asp-for="LastName" class="form-control--large" />
+                        <span asp-validation-for="LastName" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row form-row--full">
+                        <label asp-for="Email">Your email<span class="required">*</span></label>
+                        <input asp-for="Email" class="form-control--large" />
+                        <span asp-validation-for="Email" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row form-row--full">
+                        <label asp-for="Organization">Company<span class="required">*</span></label>
+                        <input asp-for="Organization" class="form-control--large" />
+                        <span asp-validation-for="Organization" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row form-row--full">
+                        <label asp-for="JobTitle">Job title<span class="required">*</span></label>
+                        <input asp-for="JobTitle" class="form-control--large" />
+                        <span asp-validation-for="JobTitle" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row form-row--full">
+                        <label asp-for="Country">Country<span class="required">*</span></label>
+                        <select asp-for="Country" class="form-control--large" asp-items="countryOptions"></select>
+                        <span asp-validation-for="Country" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row form-row--full">
+                        <label asp-for="Phone">Phone</label>
+                        <input asp-for="Phone" class="form-control--large" />
+                        <span asp-validation-for="Phone" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row form-row--full">
+                        <label asp-for="Message">Message<span class="required">*</span></label>
+                        <textarea asp-for="Message" rows="5" class="form-control--large"></textarea>
+                        <span asp-validation-for="Message" class="field-validation"></span>
+                    </div>
+
+                    <div class="form-row checkbox-row form-row--full">
+                        <input asp-for="ConsentToContact" />
+                        <label asp-for="ConsentToContact">
+                            CGI will use the contact information you provide us to respond to your inquiry. By clicking the Submit button
+                            below, you agree to receive correspondence from CGI. For information on our commitment to protecting your
+                            privacy, please read our <a href="#">Privacy Policy.</a><span class="required">*</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="contact-form__actions">
+                    <button type="submit" class="btn-fill-primary contact-submit">Submit</button>
+                    <p class="contact-form__note">*mandatory field</p>
+                </div>
+            </form>
         </div>
 
-        <div class="form-row">
-            <label asp-for="Email"></label>
-            <input asp-for="Email" />
-            <span asp-validation-for="Email" class="field-validation"></span>
-        </div>
-
-        <div class="form-row">
-            <label asp-for="Phone"></label>
-            <input asp-for="Phone" />
-            <span asp-validation-for="Phone" class="field-validation"></span>
-        </div>
-
-        <div class="form-row">
-            <label asp-for="Organization"></label>
-            <input asp-for="Organization" />
-            <span asp-validation-for="Organization" class="field-validation"></span>
-        </div>
-
-        <div class="form-row">
-            <label asp-for="Topic"></label>
-            <select asp-for="Topic" asp-items="Html.GetEnumSelectList<ContactTopic>()"></select>
-            <span asp-validation-for="Topic" class="field-validation"></span>
-        </div>
-
-        <div class="form-row">
-            <label asp-for="Message"></label>
-            <textarea asp-for="Message" rows="5"></textarea>
-            <span asp-validation-for="Message" class="field-validation"></span>
-        </div>
-
-        <div class="form-row checkbox-row">
-            <input asp-for="ConsentToContact" />
-            <label asp-for="ConsentToContact"></label>
-        </div>
-
-        <button type="submit">Send</button>
-    </form>
+        <aside class="contact-sidebar">
+            <h3>Other ways to contact us</h3>
+            <ul class="contact-sidebar__links">
+                <li>
+                    <h4>Find a location</h4>
+                    <a href="#">Find your local CGI office</a>
+                </li>
+                <li>
+                    <h4>Careers at CGI</h4>
+                    <a href="#">Search jobs and submit your resume</a>
+                    <a href="#">Careers FAQ</a>
+                </li>
+                <li>
+                    <h4>Stay up to date</h4>
+                    <a href="#">Subscribe to CGI news</a>
+                    <a href="#">Find us on social media</a>
+                </li>
+            </ul>
+        </aside>
+    </section>
 </div>

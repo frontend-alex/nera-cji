@@ -21,30 +21,49 @@ public enum ContactTopic {
 
 public class ContactFormViewModel {
     [Required]
-    [StringLength(100)]
-    public string Name { get; set; } = string.Empty;
+    [Display(Name = "Inquiry type")]
+    public ContactTopic? Topic { get; set; }
 
     [Required]
     [EmailAddress]
+    [Display(Name = "Your email")]
     public string Email { get; set; } = string.Empty;
 
     [Phone]
-    [Display(Name = "Phone number")]
+    [Display(Name = "Phone")]
     [StringLength(30)]
     public string? Phone { get; set; }
 
-    [StringLength(120)]
-    public string? Organization { get; set; }
+    [Required]
+    [StringLength(60)]
+    [Display(Name = "Your first name")]
+    public string FirstName { get; set; } = string.Empty;
 
-    [Display(Name = "How can we help?")]
-    public ContactTopic Topic { get; set; } = ContactTopic.General;
+    [Required]
+    [StringLength(60)]
+    [Display(Name = "Your last name")]
+    public string LastName { get; set; } = string.Empty;
+
+    [Required]
+    [StringLength(120)]
+    [Display(Name = "Company")]
+    public string Organization { get; set; } = string.Empty;
+
+    [Required]
+    [StringLength(120)]
+    [Display(Name = "Job title")]
+    public string JobTitle { get; set; } = string.Empty;
+
+    [Required]
+    [StringLength(120)]
+    [Display(Name = "Country")]
+    public string Country { get; set; } = string.Empty;
 
     [Required]
     [StringLength(2000, MinimumLength = 10)]
+    [Display(Name = "Message")]
     public string Message { get; set; } = string.Empty;
 
     [Display(Name = "I agree to be contacted about CGI services")]
     public bool ConsentToContact { get; set; }
 }
-
-

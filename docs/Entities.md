@@ -34,7 +34,6 @@
 - `FullName`, `Email`, `Password`, `ConfirmPassword`, `ReturnUrl`
 
 ### `ContactFormViewModel` and `ContactTopic`
-- `Name`, `Email`, `Phone`, `Organization`, `Topic`, `Message`, `ConsentToContact`
+- `FirstName`, `LastName`, `Email`, `Phone`, `Organization` (Company), `JobTitle`, `Country`, `Topic`, `Message`, `ConsentToContact`
 - `Topic` uses `ContactTopic` enum to categorize messages
-
 
