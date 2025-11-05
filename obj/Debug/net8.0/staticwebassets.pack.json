@@ -1,0 +1,105 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/css/components/buttons.css",
+      "PackagePath": "staticwebassets/css/components/buttons.css"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/css/components/cards.css",
+      "PackagePath": "staticwebassets/css/components/cards.css"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/css/components/components.css",
+      "PackagePath": "staticwebassets/css/components/components.css"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/css/pages/auth.css",
+      "PackagePath": "staticwebassets/css/pages/auth.css"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/css/pages/contact.css",
+      "PackagePath": "staticwebassets/css/pages/contact.css"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/images/icons/title-image.jpg",
+      "PackagePath": "staticwebassets/images/icons/title-image.jpg"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/images/icons/world.png",
+      "PackagePath": "staticwebassets/images/icons/world.png"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/images/svgs/black-arrow.svg",
+      "PackagePath": "staticwebassets/images/svgs/black-arrow.svg"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/images/svgs/logo.svg",
+      "PackagePath": "staticwebassets/images/svgs/logo.svg"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/images/svgs/white-arrow.svg",
+      "PackagePath": "staticwebassets/images/svgs/white-arrow.svg"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/js/constants/data.js",
+      "PackagePath": "staticwebassets/js/constants/data.js"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/js/templates/templates.js",
+      "PackagePath": "staticwebassets/js/templates/templates.js"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/js/utils/common.js",
+      "PackagePath": "staticwebassets/js/utils/common.js"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/Users/rickpeters/Downloads/nera-cji-main 2/nera-cji/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.nera-cji.props",
+      "PackagePath": "build\\nera-cji.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.nera-cji.props",
+      "PackagePath": "buildMultiTargeting\\nera-cji.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.nera-cji.props",
+      "PackagePath": "buildTransitive\\nera-cji.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.nera-cji.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.nera-cji.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

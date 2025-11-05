@@ -1,0 +1,44 @@
+<nav class="sticky top-0 z-50 bg-white border-b-2 border-neutral-200 shadow-xs px-5 lg:px-0">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-20 relative ">
+            <img src="~/images/svgs/logo.svg" alt="NERA Logo" class="size-18" height="10" />
+            <ul class="flex items-center gap-3 hidden lg:flex nav-links">
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                @if (User?.Identity?.IsAuthenticated == true)
+                {
+                    <li>
+                        <form asp-controller="Auth" asp-action="Logout" method="post" class="inline-logout-form">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="logout-button">Logout</button>
+                        </form>
+                    </li>
+                }
+                else
+                {
+                    <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
+                    <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+                }
+            </ul>
+        </div>
+        <ul class="flex items-center gap-3 nav-links">
+            <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+            @if (User?.Identity?.IsAuthenticated == true)
+            {
+                <li>Hello, @User.Identity?.Name</li>
+                <li>
+                    <form asp-controller="Auth" asp-action="Logout" method="post" class="inline-logout-form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="logout-button">Logout</button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
+                <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+            }
+        </ul>
+    </div>
+</nav>

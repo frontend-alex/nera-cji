@@ -1,0 +1,80 @@
+@model ContactFormViewModel
+
+@{
+    ViewData["Title"] = "NERA | Contact";
+    Layout = "~/Views/Shared/Layouts/_LayoutAuth.cshtml";
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/css/pages/contact.css" asp-append-version="true" />
+}
+
+<div class="contact-page">
+    <h1>Contact Us</h1>
+    <p class="intro-text">Get in contact with CGI event admins</p>
+
+    <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto: CgiExample@gmail.com">CgiExample@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+123456789">+123456789</a></p>
+        <p><strong>Office hours:</strong> Monday - Friday, 9:00 AM - 5 PM</p>
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert-success-banner">
+            <p>@ViewBag.Message</p>
+        </div>
+    }
+
+    <h2>Send us a message</h2>
+
+    <form asp-action="Contact" method="post" class="contact-form">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="validation-summary" role="alert"></div>
+
+        <div class="form-row">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+            <span asp-validation-for="Name" class="field-validation"></span>
+        </div>
+
+        <div class="form-row">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" class="field-validation"></span>
+        </div>
+
+        <div class="form-row">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" />
+            <span asp-validation-for="Phone" class="field-validation"></span>
+        </div>
+
+        <div class="form-row">
+            <label asp-for="Organization"></label>
+            <input asp-for="Organization" />
+            <span asp-validation-for="Organization" class="field-validation"></span>
+        </div>
+
+        <div class="form-row">
+            <label asp-for="Topic"></label>
+            <select asp-for="Topic" asp-items="Html.GetEnumSelectList<ContactTopic>()"></select>
+            <span asp-validation-for="Topic" class="field-validation"></span>
+        </div>
+
+        <div class="form-row">
+            <label asp-for="Message"></label>
+            <textarea asp-for="Message" rows="5"></textarea>
+            <span asp-validation-for="Message" class="field-validation"></span>
+        </div>
+
+        <div class="form-row checkbox-row">
+            <input asp-for="ConsentToContact" />
+            <label asp-for="ConsentToContact"></label>
+        </div>
+
+        <button type="submit">Send</button>
+    </form>
+</div>
