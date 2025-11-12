@@ -23,31 +23,32 @@ export const FooterLinks = [
         links: [
             {
                 label: 'About us',
-                url: '/about'
+                url: 'https://www.cgi.com/en/about-us'
             },
             {
                 label: 'Alliances',
-                url: '/alliances'
+                url: 'https://www.cgi.com/en/alliances'
             },
             {
                 label: 'Country sites',
-                url: '/country-sites'
+                url: '#',
+                class: 'openModal'
             },
             {
                 label: 'ESG',
-                url: '/esg'
+                url: 'https://www.cgi.com/en/esg'
+            },
+            {
+                label: 'Investors',
+                url: 'https://www.cgi.com/en/investors'
             },
             {
                 label: 'Locations',
-                url: '/locations'
-            },
-            {
-                label: 'Mergers',
-                url: '/mergers'
+                url: 'https://www.cgi.com/en/about-us/locations'
             },
             {
                 label: 'Newsroom',
-                url: '/newsroom'
+                url: 'https://www.cgi.com/en/newsroom'
             }
         ]
     },
@@ -56,31 +57,31 @@ export const FooterLinks = [
         links: [
             {
                 label: 'Articles',
-                url: '/articles'
+                url: 'https://www.cgi.com/en/mediacenter/articles'
             },
             {
                 label: 'Blogs',
-                url: '/blogs'
+                url: 'https://www.cgi.com/en/blogs'
             },
             {
                 label: 'Case studies',
-                url: '/case-studies'
+                url: 'https://www.cgi.com/en/case-studies'
             },
             {
                 label: 'Events',
-                url: '/events'
+                url: 'https://www.cgi.com/en/mediacenter/events'
             },
             {
                 label: 'Podcasts',
-                url: '/podcasts'
+                url: 'https://www.cgi.com/en/podcasts'
             },
             {
                 label: 'Viewpoints',
-                url: '/viewpoints'
+                url: 'https://www.cgi.com/en/mediacenter/viewpoints'
             },
             {
                 label: 'See more',
-                url: '/resource-center'
+                url: 'https://www.cgi.com/en/mediacenter'
             }
         ]
     },
@@ -89,23 +90,25 @@ export const FooterLinks = [
         links: [
             {
                 label: 'Accessibility',
-                url: '/accessibility'
+                url: 'https://www.cgi.com/en/accessibility'
             },
             {
                 label: 'Privacy',
-                url: '/privacy'
+                url: 'https://www.cgi.com/en/privacy'
             },
             {
                 label: 'Terms of use',
-                url: '/terms'
+                url: '/RapidWeb/en/legal.aspx'
             },
             {
                 label: 'Careers FAQ',
-                url: '/careers-faq'
+                url: 'https://www.cgi.com/en/careers/faq'
             },
             {
                 label: 'Cookie Management Center',
-                url: '/cookie-management'
+                url: '#',
+                class: 'cookie-consent',
+                dataCc: 'show-preferencesModal'
             }
         ]
     }
