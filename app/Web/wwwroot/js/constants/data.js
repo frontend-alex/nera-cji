@@ -110,3 +110,57 @@ export const FooterLinks = [
         ]
     }
 ]
+
+
+
+export const ContactInfo = [
+    {
+        label: 'How can we help you?',
+        icon: '/images/svgs/headphones.svg',
+        links: [
+            {
+                label: 'Contact HelpDesk',
+                url: '/contact/helpdesk',
+                icon: '/images/svgs/mail.svg'
+            },
+            {
+                label: '1-888-430-9906',
+                url: 'tel:+18884309906',
+                icon: '/images/svgs/phone.svg'
+            }
+        ]
+    },
+    {
+        label: 'New Clients',
+        icon: '/images/svgs/add-person.svg',
+        links: [
+            {
+                label: 'Contact Sales',
+                url: '/contact/sales',
+                icon: '/images/svgs/mail.svg'
+            }
+        ]
+    },
+    {
+        label: 'Existing clients',
+        icon: '/images/svgs/bars-person.svg',
+        links: [
+            {
+                label: 'Contact Business Services',
+                url: '/contact/business-services',
+                icon: '/images/svgs/mail.svg'
+            }
+        ]
+    },
+    {
+        label: 'Feedback',
+        icon: '/images/svgs/feedback.svg',
+        links: [
+            {
+                label: 'Email us',
+                url: '/contact/feedback',
+                icon: '/images/svgs/mail.svg'
+            }
+        ]
+    }
+]

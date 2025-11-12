@@ -17,3 +17,23 @@ export const footerLinkTemplate = (link, key) => {
         </div>
     `
 }
+
+
+export const contactInfoTemplate = (info, key) => {
+    return `
+        <div class="flex flex-col gap-2" key="${key}">
+            <div class="flex items-center gap-3 mb-1">
+                <img src="${info.icon}" alt="${info.label}" class="size-7" height="10" />
+                <h2 class="text-2xl font-semibold">${info.label}</h2>
+            </div>
+            <div>
+                ${info.links.map((link, key) => `
+                    <div class="flex items-center gap-3 mb-3" key="${key}">
+                        <img src="${link.icon}" alt="${link.label}" class="size-7" height="10" />
+                        <a href="${link.url}" class="text-2xl underline text-[var(--color-gradient-end-purple)] w-full group-hover:text-[var(--color-gradient-end-purple)]">${link.label}</a>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `
+}
