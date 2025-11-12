@@ -127,7 +127,9 @@ echo Press Ctrl+C to stop the application
 echo.
 set DOTNET_USE_POLLING_FILE_WATCHER=1
 rem Use Development configuration for better hot reload support
+pushd ..
 dotnet watch --project app\Web run --configuration Development
+popd
 goto :end
 
 :end

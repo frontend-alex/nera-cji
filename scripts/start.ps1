@@ -221,6 +221,8 @@ function Invoke-Watch {
         # Enable file system polling for better Windows compatibility
         $env:DOTNET_USE_POLLING_FILE_WATCHER = "1"
         # Use Development configuration for better hot reload support
+        $repoRoot = Split-Path -Parent $PSScriptRoot
+        Push-Location $repoRoot
         dotnet watch --project "app/Web/Web.csproj" run --configuration Development
     }
     catch {
@@ -228,7 +230,7 @@ function Invoke-Watch {
         exit 1
     }
     finally {
-        
+        Pop-Location
     }
 }
 

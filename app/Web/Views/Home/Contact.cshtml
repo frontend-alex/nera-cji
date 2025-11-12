@@ -2,14 +2,20 @@
 
 @{
     ViewData["Title"] = "NERA | Contact";
+    ViewData["HideFooterCTA"] = true;
     Layout = "~/Views/Shared/Layouts/_LayoutAuth.cshtml";
 }
+    <div class="max-w-7xl flex flex-row gap-3 mx-auto px-5 lg:px-0">
+        <div class="flex items-center justify-start w-full">
+            <h1 class="text-4xl font-medium text-[var(--heading-color)]">Contact Us</h1>
+        </div>
+        <div class="relative w-full pt-5">
+            <img src="~/images/login-banner.png" alt="Contact" class="h-full object-cover" />
+            <div class="cgi-logo absolute bottom-0 left-0"></div>
+        </div>
+    </div>
 
-@section Styles
-{
-    <link rel="stylesheet" href="~/css/pages/contact.css" asp-append-version="true" />
-}
-
+@* 
 <div class="contact-page">
     <h1>Contact Us</h1>
     <p class="intro-text">Get in contact with CGI event admins</p>
@@ -78,3 +84,4 @@
         <button type="submit">Send</button>
     </form>
 </div>
+*@

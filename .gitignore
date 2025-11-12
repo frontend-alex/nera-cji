@@ -76,3 +76,5 @@ desktop.ini
 
 # JetBrains IDEs
 .idea/
+
+/app/Web/Data

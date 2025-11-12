@@ -1,0 +1,12 @@
+@model string
+
+@{
+    var imagePath = Model ?? "/images/login-banner.png";
+}
+
+<div class="image-with-overlay">
+    <img src="@imagePath" alt="Banner" class="image-with-overlay__image" />
+    <div class="gradient-overlay"></div>
+    <div class="cgi-logo"></div>
+</div>
+

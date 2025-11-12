@@ -19,12 +19,11 @@
 
 <body>
     <div class="flex flex-col min-h-screen justify-between">
+        
         <partial name="~/Views/Shared/Components/_Navbar.cshtml" />
-        <div class="container">
-            <main role="main" class="pb-3">
+            <main role="main">
                 @RenderBody()
             </main>
-        </div>
 
         <partial name="~/Views/Shared/Components/_Footer.cshtml" />
 

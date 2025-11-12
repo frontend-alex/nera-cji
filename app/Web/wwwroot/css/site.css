@@ -1,9 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
 @import url("components/buttons.css");
 @import url("components/cards.css");
 @import url("components/components.css");
-@import url("pages/auth.css");
-@import url("pages/contact.css");
 
 :root {
   /* Primary Colors from Image */
@@ -12,7 +11,7 @@
   --color-gradient-end-purple: #5236ab; /* Deep purple on the right */
   --color-background-purple: #ece9f6;
   --color-text-white: #ffffff;
-  --color-background-light-white: #f2f2f2; /* White for main text and button background */
+  --color-background-light-white: #efefef; /* White for main text and button background */
 
   /* Gradient Variables */
   --gradient-horizontal: linear-gradient(
@@ -33,10 +32,6 @@
 }
 
 /* Main Site Styles */
-html {
-  font-size: 14px;
-}
-
 .font-source-code-pro {
   font-family: "Source Code Pro", Arial, sans-serif;
 }
@@ -50,6 +45,8 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  font-size: 14px;
+
 }
 
 /* Import organized CSS files */
@@ -87,4 +84,13 @@ nav .nav-links li::after {
 
 nav .nav-links li:hover::after {
   opacity: 1;
+}
+
+
+.input{
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+  padding: 10px 25px;
+  outline: none;
+  border-radius: 40px;
 }
