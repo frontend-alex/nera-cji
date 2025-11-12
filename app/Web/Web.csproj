@@ -8,12 +8,6 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
-  {
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=mssqlstud.fhict.local;Database=dbi551730_neracgi;User Id=dbi551730_neracgi;Password=neracgi;TrustServerCertificate=True;"
-  }
-}
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.0" />
   </ItemGroup>
