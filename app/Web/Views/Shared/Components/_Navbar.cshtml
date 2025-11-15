@@ -6,7 +6,14 @@
                 <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-controller="Home" asp-action="Privacy">About</a></li>
                 <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
+                @if (User?.Identity?.IsAuthenticated == true)
+                {
+                    <li><a href="/app/v1/dashboard">Dashboard</a></li>
+                }
+                else
+                {
+                    <li><a asp-controller="Auth" asp-action="Login">Login</a></li>
+                }
             </ul>
         </div>
         <ul class="flex items-center gap-1 nav-links">

@@ -27,7 +27,7 @@ public class AuthController : Controller {
     [HttpGet]
     public IActionResult Login(string? returnUrl = null) {
         if (User?.Identity?.IsAuthenticated == true) {
-            return RedirectToAction("Index", "Home");
+            return Redirect("/app/v1/dashboard");
         }
 
         return View(new LoginViewModel {
@@ -63,7 +63,7 @@ public class AuthController : Controller {
     [HttpGet]
     public IActionResult Register(string? returnUrl = null) {
         if (User?.Identity?.IsAuthenticated == true) {
-            return RedirectToAction("Index", "Home");
+            return Redirect("/app/v1/dashboard");
         }
 
         return View(new RegisterViewModel {
@@ -133,7 +133,7 @@ public class AuthController : Controller {
             return Redirect(returnUrl);
         }
 
-        return RedirectToAction("Index", "Home");
+        return Redirect("/app/v1/dashboard");
     }
 }
 

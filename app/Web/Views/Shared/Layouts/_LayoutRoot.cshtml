@@ -11,31 +11,20 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/components/buttons.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/components/cards.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/components/sidebar.css" asp-append-version="true" />
 
     @await RenderSectionAsync("Styles", required: false)
 
 </head>
 
 <body>
-    <div class="flex flex-col min-h-screen justify-between">
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
+    <partial name="~/Views/Shared/Components/_Sidebar.cshtml" />
+    
+    <main role="main" class="main-content">
+        @RenderBody()   
+    </main>
 
-        <footer class="bg-var(--color-background-light-white) w-full mt-auto">
-            <div class="max-w-7xl mx-auto py-5 px-5">
-                <div class="flex justify-between items-center">
-                    <p class="text-xs font-semibold">
-                        © 2025 CGI Inc.
-                    </p>
-                    <p class="text-sm text-stone-500">Authenticated Dashboard</p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
+    <script src="~/js/sidebar.js" asp-append-version="true"></script>
     <script type="module" src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/utils/common.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
@@ -44,5 +33,3 @@
 </body>
 
 </html>
-
-

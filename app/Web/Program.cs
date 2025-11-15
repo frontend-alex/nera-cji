@@ -22,6 +22,7 @@ namespace nera_cji
                     options.LoginPath = "/Auth/Login";
                     options.LogoutPath = "/Auth/Logout";
                     options.AccessDeniedPath = "/Error";
+                    options.ReturnUrlParameter = "returnUrl";
                 });
             
             if (builder.Environment.IsDevelopment())
@@ -48,6 +49,12 @@ namespace nera_cji
             app.UseAuthentication();
             app.UseAuthorization();
 
+            // App routes (require authentication)
+            app.MapControllerRoute(
+                name: "app",
+                pattern: "app/v1/{controller=Dashboard}/{action=Index}/{id?}");
+
+            // Public routes
             app.MapControllerRoute(
                 name: "contact",
                 pattern: "contact",
