@@ -1,6 +1,176 @@
 @{
     ViewData["Title"] = "Events";
-    Layout = "~/Views/Shared/Layouts/_LayoutRoot.cshtml"; 
+    Layout = "~/Views/Shared/Layouts/_LayoutAuth.cshtml";
+
+    //mock data, replace later
+    var events = new[]
+    {
+        new { Id = 1, Title = "Event 1", Date = "december 1", Time = "10:00", Location = "Room 1", Format = "In person", Spots = "Spots TBD", Description = "Example event", Host = "Host A", Tags = new[] { "Tag" } },
+        new { Id = 2, Title = "Event 2", Date = "december 1", Time = "12:00", Location = "Room 1", Format = "virtual", Spots = "Spots TBD", Description = "Example event", Host = "Host B", Tags = new[] { "Tag" } },
+        new { Id = 3, Title = "Event 3", Date = "december 1", Time = "15:00", Location = "Room 1", Format = "virtual", Spots = "Spots TBD", Description = "Example event", Host = "Host C", Tags = new[] { "Tag" } }
+    };
 }
 
+<<<<<<< Updated upstream:Views/Events/Index.cshtml
 <h1>Events</h1>
+=======
+<section class="bg-gradient-to-r from-[#e02b40]/10 to-[#5236ab]/10 border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-5 lg:px-0 py-12 flex flex-col gap-5">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="max-w-3xl space-y-3">
+                <p class="text-xs uppercase font-semibold tracking-[0.3em] text-[#5236ab]">Employees at CGI</p>
+                <h1 class="text-4xl lg:text-5xl font-bold text-[#200a58] leading-tight">CGI events for the NERA team</h1>
+                <p class="text-gray-600 text-base">Pick a session to learn, connect, or test ideas. Everything below is mock data for now - perfect for design and onboarding demos.</p>
+            </div>
+            <div class="flex gap-3">
+                <button class="btn-fill-primary shadow-md">See what is new</button>
+                <button class="btn-fill-secondary border border-[#5236ab]/30">Suggest an event</button>
+            </div>
+        </div>
+        <div class="flex gap-2 flex-wrap text-sm text-gray-600">
+            <span class="px-3 py-1 rounded-full bg-white/60 border border-[var(--color-background-light-white)]">Click any card to open details</span>
+            <span class="px-3 py-1 rounded-full bg-white/60 border border-[var(--color-background-light-white)]">Signup is a placeholder</span>
+        </div>
+    </div>
+</section>
+
+<section class="max-w-7xl mx-auto px-5 lg:px-0 py-10">
+    <div class="flex items-center justify-between mb-6">
+        <div>
+            <p class="text-xs font-semibold tracking-[0.2em] text-[#5236ab] uppercase">Upcoming</p>
+            <h2 class="text-2xl font-bold text-[#200a58]">Events lineup</h2>
+        </div>
+        <div class="rounded-full bg-white border border-neutral-200 px-4 py-2 text-sm text-gray-600 shadow-sm">Mock schedule - refreshed weekly</div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        @foreach (var evt in events)
+        {
+            <div class="bg-white border border-neutral-200 rounded-xl shadow-sm cursor-pointer p-6 space-y-3"
+                 data-event-card
+                 data-title="@evt.Title"
+                 data-date="@evt.Date"
+                 data-time="@evt.Time"
+                 data-location="@evt.Location"
+                 data-description="@evt.Description"
+                 data-spots="@evt.Spots"
+                 data-format="@evt.Format"
+                 data-host="@evt.Host"
+                 data-tags="@string.Join(", ", evt.Tags)">
+                <div class="text-sm text-gray-500 flex items-center gap-3">
+                    <span class="inline-flex items-center justify-center size-9 rounded-full bg-[#5236ab]/10 text-[#5236ab] font-semibold">@evt.Id.ToString("D2")</span>
+                    <div class="flex flex-col leading-tight">
+                        <span class="font-semibold text-gray-900">@evt.Date</span>
+                        <span>@evt.Time</span>
+                    </div>
+                    <span class="ml-auto px-3 py-1 rounded-full text-xs font-semibold bg-[var(--color-background-purple)] text-[#200a58] border border-[#5236ab]/20">
+                        @evt.Format
+                    </span>
+                </div>
+                <h3 class="text-xl font-semibold text-[#200a58] leading-snug">@evt.Title</h3>
+                <p class="text-gray-600 text-sm min-h-[56px]">@evt.Description</p>
+                <div class="flex flex-wrap gap-2">
+                    @foreach (var tag in evt.Tags)
+                    {
+                        <span class="text-xs font-medium px-3 py-1 rounded-full bg-[#5236ab]/10 text-[#5236ab]">@tag</span>
+                    }
+                </div>
+                <div class="flex items-center justify-between text-sm font-semibold text-[#5236ab] mt-1">
+                    <span>@evt.Spots</span>
+                    <span class="flex items-center gap-1 text-sm">View details <span aria-hidden="true">-></span></span>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<div id="event-modal" class="fixed inset-0 bg-black/60 text-left hidden items-center justify-center p-4 z-50">
+    <div class="relative bg-white w-full max-w-3xl rounded-2xl shadow-2xl overflow-hidden">
+        <button type="button" data-close class="absolute right-4 top-4 size-10 rounded-full bg-white/80 border border-neutral-200 text-xl font-semibold" aria-label="Close">X</button>
+
+        <div class="bg-gradient-to-r from-[#e02b40]/12 to-[#5236ab]/12 px-8 py-6 space-y-2">
+            <span id="event-modal-format" class="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#5236ab] border border-[#5236ab]/20"></span>
+            <h3 id="event-modal-title" class="text-3xl font-bold text-[#200a58] leading-tight"></h3>
+            <p id="event-modal-date" class="text-gray-700 text-sm"></p>
+        </div>
+
+        <div class="px-8 py-6 space-y-3 text-sm">
+            <p><strong>Location:</strong> <span id="event-modal-location"></span></p>
+            <p><strong>Time:</strong> <span id="event-modal-time"></span></p>
+            <p><strong>Hosted by:</strong> <span id="event-modal-host"></span></p>
+            <p><strong>Tags:</strong> <span id="event-modal-tags"></span></p>
+            <p><strong>What to expect:</strong> <span id="event-modal-description"></span></p>
+            <p><strong>Seats:</strong> <span id="event-modal-spots"></span></p>
+            <div class="flex items-center gap-3">
+                <button id="event-modal-signup" type="button" class="btn-fill-primary shadow-md">Sign up</button>
+                <button type="button" data-close class="btn-fill-secondary border border-[#5236ab]/30">Close</button>
+            </div>
+            <div id="event-modal-toast" class="text-sm text-[#5236ab] bg-[#5236ab]/10 border border-[#5236ab]/20 rounded-xl px-4 py-3 hidden">
+                Signups will open soon for CGI employees.
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById('event-modal');
+            var toast = document.getElementById('event-modal-toast');
+            var cards = document.querySelectorAll('[data-event-card]');
+
+            function fill(card) {
+                document.getElementById('event-modal-title').innerText = card.dataset.title;
+                document.getElementById('event-modal-date').innerText = card.dataset.date + " - " + card.dataset.time;
+                document.getElementById('event-modal-time').innerText = card.dataset.time;
+                document.getElementById('event-modal-location').innerText = card.dataset.location;
+                document.getElementById('event-modal-description').innerText = card.dataset.description;
+                document.getElementById('event-modal-spots').innerText = card.dataset.spots;
+                document.getElementById('event-modal-format').innerText = card.dataset.format;
+                document.getElementById('event-modal-host').innerText = card.dataset.host;
+                document.getElementById('event-modal-tags').innerText = card.dataset.tags;
+            }
+
+            function openModal() {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
+
+            function closeModal() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                toast.classList.add('hidden');
+            }
+
+            cards.forEach(function (card) {
+                card.addEventListener('click', function () {
+                    fill(card);
+                    openModal();
+                });
+            });
+
+            modal.addEventListener('click', function (event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            modal.querySelectorAll('[data-close]').forEach(function (button) {
+                button.addEventListener('click', closeModal);
+            });
+
+            document.getElementById('event-modal-signup').addEventListener('click', function () {
+                toast.classList.remove('hidden');
+                toast.innerText = "Signups will open soon for CGI employees.";
+                setTimeout(function () { toast.classList.add('hidden'); }, 2500);
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+}
+>>>>>>> Stashed changes:app/Web/Views/Events/Index.cshtml
