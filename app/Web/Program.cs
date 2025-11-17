@@ -1,7 +1,9 @@
 namespace nera_cji
 {
+    using App.Core;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using nera_cji.Models;
 
     public class Program
@@ -9,6 +11,11 @@ namespace nera_cji
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+// Register DbContext with dependency injection
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
             var mvcBuilder = builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<nera_cji.Interfaces.Services.IUserService, nera_cji.Services.FileUserStore>();
