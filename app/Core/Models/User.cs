@@ -8,14 +8,17 @@ public class User {
 
     public string FullName { get; set; } = string.Empty;
 
-    public string Email { get; set; } = string.Empty;
+    public string email { get; set; } = string.Empty;
+    public string is_active { get; set; } = string.Empty;
+    public string department_id { get; set; } = string.Empty;
+    public bool is_admin { get; set; } = false;
 
     [JsonIgnore]
-    public string NormalizedEmail => Email.ToUpperInvariant();
+    public string NormalizedEmail => email.ToUpperInvariant();
 
-    public string PasswordHash { get; set; } = string.Empty;
+    public string password_hash { get; set; } = string.Empty;
 
-    public DateTime CreatedAtUtc { get; set; } = DateTime.UtcNow;
+    public DateTime created_at { get; set; } = DateTime.UtcNow;
 }
 
 

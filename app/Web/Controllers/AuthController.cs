@@ -48,14 +48,14 @@ public class AuthController : Controller {
             return View(model);
         }
 
-        var passwordResult = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
+        var passwordResult = _passwordHasher.VerifyHashedPassword(user, user.password_hash, model.Password);
         if (passwordResult == PasswordVerificationResult.Failed) {
             ModelState.AddModelError(string.Empty, "Invalid email or password.");
             return View(model);
         }
 
         await SignInUserAsync(user, model.RememberMe);
-        _logger.LogInformation("User {Email} logged in.", user.Email);
+        _logger.LogInformation("User {Email} logged in.", user.email);
 
         return RedirectToLocal(model.ReturnUrl);
     }
@@ -85,13 +85,13 @@ public class AuthController : Controller {
 
         var user = new User {
             FullName = model.FullName.Trim(),
-            Email = model.Email.Trim()
+            email = model.Email.Trim()
         };
 
-        user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
+        user.password_hash = _passwordHasher.HashPassword(user, model.Password);
 
         await _userService.AddAsync(user);
-        _logger.LogInformation("User {Email} registered.", user.Email);
+        _logger.LogInformation("User {Email} registered.", user.email);
 
         await SignInUserAsync(user, isPersistent: true);
 
@@ -114,7 +114,7 @@ public class AuthController : Controller {
         {
                 new(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new(ClaimTypes.Name, user.FullName),
-                new(ClaimTypes.Email, user.Email)
+                new(ClaimTypes.Email, user.email)
             };
 
         var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
