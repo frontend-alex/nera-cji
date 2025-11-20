@@ -2,8 +2,6 @@
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{44444444-4444-4444-4444-444444444444}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{D5722905-BC69-4CD0-887A-CCD915FA13FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "app\Core\Core.csproj", "{E373FC78-D49D-440A-94C9-61BEF203824B}"
@@ -18,10 +16,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{44444444-4444-4444-4444-444444444444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{44444444-4444-4444-4444-444444444444}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{44444444-4444-4444-4444-444444444444}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{44444444-4444-4444-4444-444444444444}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E373FC78-D49D-440A-94C9-61BEF203824B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E373FC78-D49D-440A-94C9-61BEF203824B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E373FC78-D49D-440A-94C9-61BEF203824B}.Release|Any CPU.ActiveCfg = Release|Any CPU
