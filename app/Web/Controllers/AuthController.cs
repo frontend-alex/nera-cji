@@ -1,33 +1,23 @@
 namespace nera_cji.Controllers;
 
-using nera_cji.Models;
-using nera_cji.ViewModels;
-using nera_cji.Interfaces.Services;
-
-using System.Security.Claims;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Mvc;
+using nera_cji.ViewModels;
 
 public class AuthController : Controller {
-    private readonly IUserService _userService;
-    private readonly IPasswordHasher<User> _passwordHasher;
+    private const string ScreenHintPropertyKey = "auth0:screen_hint";
     private readonly ILogger<AuthController> _logger;
 
-    public AuthController(
-        IUserService userService,
-        IPasswordHasher<User> passwordHasher,
-        ILogger<AuthController> logger) {
-        _userService = userService;
-        _passwordHasher = passwordHasher;
+    public AuthController(ILogger<AuthController> logger) {
         _logger = logger;
     }
 
     [HttpGet]
     public IActionResult Login(string? returnUrl = null) {
         if (User?.Identity?.IsAuthenticated == true) {
-            return Redirect("/app/v1/dashboard");
+            return Redirect(DefaultAppRoute);
         }
 
         return View(new LoginViewModel {
@@ -37,33 +27,21 @@ public class AuthController : Controller {
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(LoginViewModel model) {
-        if (!ModelState.IsValid) {
-            return View(model);
+    public IActionResult Login(LoginViewModel model) {
+        if (User?.Identity?.IsAuthenticated == true) {
+            return RedirectToLocal(model.ReturnUrl);
         }
 
-        var user = await _userService.FindByEmailAsync(model.Email);
-        if (user == null) {
-            ModelState.AddModelError(string.Empty, "Invalid email or password.");
-            return View(model);
-        }
+        var authProperties = BuildAuthenticationProperties(model.ReturnUrl);
+        _logger.LogInformation("Redirecting user to Auth0 for login.");
 
-        var passwordResult = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
-        if (passwordResult == PasswordVerificationResult.Failed) {
-            ModelState.AddModelError(string.Empty, "Invalid email or password.");
-            return View(model);
-        }
-
-        await SignInUserAsync(user, model.RememberMe);
-        _logger.LogInformation("User {Email} logged in.", user.Email);
-
-        return RedirectToLocal(model.ReturnUrl);
+        return Challenge(authProperties, OpenIdConnectDefaults.AuthenticationScheme);
     }
 
     [HttpGet]
     public IActionResult Register(string? returnUrl = null) {
         if (User?.Identity?.IsAuthenticated == true) {
-            return Redirect("/app/v1/dashboard");
+            return Redirect(DefaultAppRoute);
         }
 
         return View(new RegisterViewModel {
@@ -73,68 +51,56 @@ public class AuthController : Controller {
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(RegisterViewModel model) {
-        if (!ModelState.IsValid) {
-            return View(model);
+    public IActionResult Register(RegisterViewModel model) {
+        if (User?.Identity?.IsAuthenticated == true) {
+            return RedirectToLocal(model.ReturnUrl);
         }
 
-        if (await _userService.EmailExistsAsync(model.Email)) {
-            ModelState.AddModelError(nameof(model.Email), "An account with that email already exists.");
-            return View(model);
-        }
+        var authProperties = BuildAuthenticationProperties(model.ReturnUrl);
+        authProperties.Items[ScreenHintPropertyKey] = "signup";
+        _logger.LogInformation("Redirecting user to Auth0 for signup.");
 
-        var user = new User {
-            FullName = model.FullName.Trim(),
-            Email = model.Email.Trim()
-        };
-
-        user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
-
-        await _userService.AddAsync(user);
-        _logger.LogInformation("User {Email} registered.", user.Email);
-
-        await SignInUserAsync(user, isPersistent: true);
-
-        return RedirectToLocal(model.ReturnUrl);
+        return Challenge(authProperties, OpenIdConnectDefaults.AuthenticationScheme);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Logout() {
-        if (User?.Identity?.IsAuthenticated == true) {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            _logger.LogInformation("User {Name} logged out.", User.Identity?.Name);
+    public IActionResult Logout(string? returnUrl = null) {
+        if (User?.Identity?.IsAuthenticated != true) {
+            return RedirectToAction("Index", "Home");
         }
 
-        return RedirectToAction("Index", "Home");
-    }
-
-    private async Task SignInUserAsync(User user, bool isPersistent) {
-        var claims = new List<Claim>
-        {
-                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new(ClaimTypes.Name, user.FullName),
-                new(ClaimTypes.Email, user.Email)
-            };
-
-        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var redirectUri = ResolveReturnUrl(returnUrl);
         var authProperties = new AuthenticationProperties {
-            IsPersistent = isPersistent
+            RedirectUri = redirectUri
         };
 
-        await HttpContext.SignInAsync(
+        _logger.LogInformation("Signing out user {Name}.", User.Identity?.Name ?? "Unknown");
+
+        return SignOut(
+            authProperties,
             CookieAuthenticationDefaults.AuthenticationScheme,
-            new ClaimsPrincipal(claimsIdentity),
-            authProperties);
+            OpenIdConnectDefaults.AuthenticationScheme);
+    }
+
+    private AuthenticationProperties BuildAuthenticationProperties(string? returnUrl) {
+        return new AuthenticationProperties {
+            RedirectUri = ResolveReturnUrl(returnUrl)
+        };
+    }
+
+    private string ResolveReturnUrl(string? returnUrl) {
+        if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl)) {
+            return returnUrl;
+        }
+
+        return DefaultAppRoute;
     }
 
     private IActionResult RedirectToLocal(string? returnUrl) {
-        if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl)) {
-            return Redirect(returnUrl);
-        }
-
-        return Redirect("/app/v1/dashboard");
+        return Redirect(ResolveReturnUrl(returnUrl));
     }
-}
 
+    private const string DefaultAppRoute = "/app/v1/dashboard";
+}
 

@@ -7,46 +7,35 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
     <div class="flex items-center justify-center">
-        <div class="flex flex-col gap-10 p-5">
-            <h1 class="text-4xl font-medium max-w-[420px] text-center">
+        <div class="flex flex-col gap-10 p-5 max-w-[520px]">
+            <h1 class="text-4xl font-medium text-center">
                 Welcome <span class="underline">back</span> to Nera Event Management System.
             </h1>
-            <form asp-action="Login" method="post" class="flex flex-col gap-8">
+            <p class="text-center text-stone-500">
+                Sign in securely with Auth0 to access the Nera dashboard and manage your events.
+            </p>
+            <form asp-action="Login" method="post" class="flex flex-col gap-6">
                 @Html.AntiForgeryToken()
                 <input type="hidden" asp-for="ReturnUrl" />
-                
-                <div asp-validation-summary="ModelOnly" class="validation-summary" role="alert"></div>
-                
-                <div class="flex flex-col relative">
-                    <label asp-for="Email" class="absolute -top-3 left-5 bg-white px-2">Email</label>
-                    <input asp-for="Email" type="email" class="input" placeholder="example@example.com" autocomplete="email" />
-                    <span asp-validation-for="Email" class="text-red-500 text-xs mt-1"></span>
-                </div>
-                <div class="flex flex-col relative">
-                    <label asp-for="Password" class="absolute -top-3 left-5 bg-white px-2">Password</label>
-                    <input asp-for="Password" type="password" class="input" placeholder="••••••••" autocomplete="current-password" />
-                    <span asp-validation-for="Password" class="text-red-500 text-xs mt-1"></span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <input asp-for="RememberMe" type="checkbox" />
-                    <label asp-for="RememberMe">Remember me</label>
-                </div>
-                <button type="submit" class="btn-fill-primary">Log in</button>
-                <div class="flex flex-col gap-5">
-                    <span class="text-center text-stone-400">
-                        Don't have an account?
-                        <a asp-action="Register" class="ml-2 underline font-medium text-black"
-                            asp-route-returnUrl="@(Model.ReturnUrl ?? string.Empty)">Sign up
-                        </a>
-                    </span>
-                    <div class="flex items-center justify-between">
-                        <span class="w-full border-b border-stone-400"></span>
-                        <p class="text-stone-400 text-xs w-full text-center">Or continue with</p>
-                        <span class="w-full border-b border-stone-400"></span>
-                    </div>
-                    <button class="btn-fill-secondary">Continue with Google</button>
-                </div>
+
+                <button type="submit" class="btn-fill-primary">
+                    Continue with Auth0
+                </button>
+                <span class="text-center text-stone-400">
+                    Don't have an account yet?
+                    <a asp-action="Register"
+                       class="ml-2 underline font-medium text-black"
+                       asp-route-returnUrl="@(Model.ReturnUrl ?? string.Empty)">
+                        Create one
+                    </a>
+                </span>
             </form>
+
+            <div class="flex items-center justify-between">
+                <span class="w-full border-b border-stone-400"></span>
+                <p class="text-stone-400 text-xs w-full text-center">Secure Auth0 login</p>
+                <span class="w-full border-b border-stone-400"></span>
+            </div>
         </div>
     </div>
     <div class="relative flex items-center justify-center w-full min-h-screen bg-cover bg-center hidden lg:flex"
