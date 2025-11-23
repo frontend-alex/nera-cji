@@ -1,0 +1,3009 @@
+{
+  "Version": 1,
+  "Hash": "p/SvJyFADOn5hozSO8bwrxWWVL4hnEWjDTv1fIabmx4=",
+  "Source": "Web",
+  "BasePath": "_content/Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Web/wwwroot",
+      "Source": "Web",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/buttons.css",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "css/components/buttons#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "p4xltj9v7t",
+      "Integrity": "+VN9pMTz8tFfKDJwzBLgsBvkCw3elhqwGdiDMJzv6u0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/components/buttons.css"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/cards.css",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "css/components/cards#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1fw8li15kz",
+      "Integrity": "HWOmid7aUt869/WHUJ8ZPJE7IqMzdKs/GtJy8E/bXe4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/components/cards.css"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/components.css",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "css/components/components#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "atl3vq17vs",
+      "Integrity": "LojTeUl1sPEOxXxuBqeuhmhyomFnrmYcmlrDBwQsXqA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/components/components.css"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/sidebar.css",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "css/components/sidebar#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kiimmk9q78",
+      "Integrity": "PL25YctE14hYOiLDrqqg3TykPKqjdT6auJ4ioduvSaU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/components/sidebar.css"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/site.css",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "css/site#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4rzv5zx9rv",
+      "Integrity": "wKcjjBjp6Rk+lVUJBg6Wm0fH4CBiLoq+26l6G2n2gzo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/icons/title-image.jpg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/icons/title-image#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "im4czft3rz",
+      "Integrity": "li5wBU8gr8/UmbSrmTxf4wQSquwv+RT8mNFAE5eA64U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/icons/title-image.jpg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/icons/world.png",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/icons/world#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "t8y8xf59bz",
+      "Integrity": "XUyGR/frCJIPRxoKoq+VQdRz63xE13P6DHIHOCtZWl0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/icons/world.png"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/login-banner.png",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/login-banner#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5nfg19k91u",
+      "Integrity": "z2cEfbsJWtiNKi9WDm5bpO5ZBK8LFFUesYuh4YV6EwU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/login-banner.png"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/add-person.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/add-person#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mjo93lsqeh",
+      "Integrity": "foQSLAdX73mQ36BVwvbHWcX+A2Vnpa+tbbARQIsL3kA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/add-person.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/bars-person.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/bars-person#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "k7q59jnvvp",
+      "Integrity": "EOdDfJ3PiSS2l1DtntqmrGXiUTsOLUcKzl3FJZwamO8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/bars-person.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/black-arrow.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/black-arrow#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "uw4ijgq4xm",
+      "Integrity": "XrwXIZMHxjNvr0eM1IAlemdvLuxR8bG6Gl+krapt3ZQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/black-arrow.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/feedback.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/feedback#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cq5i6vj862",
+      "Integrity": "hL+eNjvJiug7yY+cjOnHQwdQRiwE5LLErk2v3orkc/c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/feedback.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/headphones.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/headphones#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "5mrlthtx3t",
+      "Integrity": "808CvUxcMCjNZMPS+b9wwoJj2coqYeIX/DmhMIe+cJQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/headphones.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/logo.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/logo#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ta6g4v1066",
+      "Integrity": "GwxnGL36umDYjzSEUY7FjDq9kSSxlsi63mh4P0nIQQg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/logo.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/mail.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/mail#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fepeok37w3",
+      "Integrity": "F1AjC5W3DU5PrX5DIg7KEERnfsfiSUaj47+/bf7aAvg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/mail.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/phone.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/phone#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vuy8cswczt",
+      "Integrity": "d97n+f/RTndJGvg//Esr7ABNTQSH5YuZeP90D09E1iU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/phone.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/white-arrow.svg",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "images/svgs/white-arrow#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "k87yf7c72r",
+      "Integrity": "3DvG7Qn0+pqeKf0hnHFK2Af1Zm8/swN9cbSNR8D5Fi0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/svgs/white-arrow.svg"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/constants/data.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/constants/data#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ugm9n93ybi",
+      "Integrity": "/sQ49crv5MornANrAt5C786MYMbxTpEJxgoyWFDYtFQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/constants/data.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/constants/sidebar-data.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/constants/sidebar-data#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "uutdmjm7ct",
+      "Integrity": "Zvp2iWkKrehDLvRcPn1SkkDf5ibssJeul2TmUgxoUs4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/constants/sidebar-data.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar-example.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/sidebar-example#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mkrkqklvqd",
+      "Integrity": "lgJyn6pGVYIwjf5wepl3+7QQNZ7AACLAawLy4cJsWqg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/sidebar-example.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar-init.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/sidebar-init#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "a5nl6cqwdl",
+      "Integrity": "bn4Zu+8/HapFicQUHHoGNJVSQ8i4Ebp6pUxr7XuesUo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/sidebar-init.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/sidebar#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u5ce1qh6en",
+      "Integrity": "Eg5YtZKPdaJzYGoO5Fq4Rhq0lrI5Fs+1qny1eGMu5s8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/sidebar.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/site.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/site#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "tva81fq1ev",
+      "Integrity": "GQbfdx/+npVIGRJHVOQEPVNKc0UG/bNzoQnQWefJWe8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/site.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/templates/templates.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/templates/templates#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "t9fakg2q0j",
+      "Integrity": "0d/OvalvkTtosT0eYDALtddO/Mq3S2RsiiDiHe4OciM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/templates/templates.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/utils/common.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "js/utils/common#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "kv6z129gyt",
+      "Integrity": "kIZZndRwX+h+vQ9QIbxVvs+1wqQ+m6tW3N2fXDrLd4c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/utils/common.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "47otxtyo56",
+      "Integrity": "wJQaJ0XynBE2fq6CexXXhxKu7fstVmQc7V2MHNTo+WQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4v8eqarkd7",
+      "Integrity": "YJa7W8EiQdQpkk93iGEjjnLSUWRpRJbSfzfURh1kxz4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE#[.{fingerprint}]?.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l3n5xuwxn8",
+      "Integrity": "z8IfXovWVa6ZfuyRYTi3B7HSkLgycsAqlcn4IbjIcxA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation/LICENSE.md",
+      "SourceId": "Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/",
+      "BasePath": "_content/Web",
+      "RelativePath": "lib/jquery-validation/LICENSE#[.{fingerprint}]?.md",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xzw0cte36n",
+      "Integrity": "85iHjKszi4aWOL2sGurna/OsEbK4nabgtovBpkVzNEA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/lib/jquery-validation/LICENSE.md"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "css/components/buttons.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/buttons.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+VN9pMTz8tFfKDJwzBLgsBvkCw3elhqwGdiDMJzv6u0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+VN9pMTz8tFfKDJwzBLgsBvkCw3elhqwGdiDMJzv6u0="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/buttons.p4xltj9v7t.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/buttons.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "428"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+VN9pMTz8tFfKDJwzBLgsBvkCw3elhqwGdiDMJzv6u0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "p4xltj9v7t"
+        },
+        {
+          "Name": "label",
+          "Value": "css/components/buttons.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+VN9pMTz8tFfKDJwzBLgsBvkCw3elhqwGdiDMJzv6u0="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/cards.1fw8li15kz.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/cards.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "538"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HWOmid7aUt869/WHUJ8ZPJE7IqMzdKs/GtJy8E/bXe4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1fw8li15kz"
+        },
+        {
+          "Name": "label",
+          "Value": "css/components/cards.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-HWOmid7aUt869/WHUJ8ZPJE7IqMzdKs/GtJy8E/bXe4="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/cards.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/cards.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "538"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HWOmid7aUt869/WHUJ8ZPJE7IqMzdKs/GtJy8E/bXe4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HWOmid7aUt869/WHUJ8ZPJE7IqMzdKs/GtJy8E/bXe4="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/components.atl3vq17vs.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/components.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "918"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LojTeUl1sPEOxXxuBqeuhmhyomFnrmYcmlrDBwQsXqA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "atl3vq17vs"
+        },
+        {
+          "Name": "label",
+          "Value": "css/components/components.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LojTeUl1sPEOxXxuBqeuhmhyomFnrmYcmlrDBwQsXqA="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/components.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/components.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "918"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LojTeUl1sPEOxXxuBqeuhmhyomFnrmYcmlrDBwQsXqA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LojTeUl1sPEOxXxuBqeuhmhyomFnrmYcmlrDBwQsXqA="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/sidebar.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/sidebar.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10297"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PL25YctE14hYOiLDrqqg3TykPKqjdT6auJ4ioduvSaU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PL25YctE14hYOiLDrqqg3TykPKqjdT6auJ4ioduvSaU="
+        }
+      ]
+    },
+    {
+      "Route": "css/components/sidebar.kiimmk9q78.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/components/sidebar.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10297"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PL25YctE14hYOiLDrqqg3TykPKqjdT6auJ4ioduvSaU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kiimmk9q78"
+        },
+        {
+          "Name": "label",
+          "Value": "css/components/sidebar.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PL25YctE14hYOiLDrqqg3TykPKqjdT6auJ4ioduvSaU="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.4rzv5zx9rv.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2362"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wKcjjBjp6Rk+lVUJBg6Wm0fH4CBiLoq+26l6G2n2gzo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4rzv5zx9rv"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wKcjjBjp6Rk+lVUJBg6Wm0fH4CBiLoq+26l6G2n2gzo="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2362"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wKcjjBjp6Rk+lVUJBg6Wm0fH4CBiLoq+26l6G2n2gzo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wKcjjBjp6Rk+lVUJBg6Wm0fH4CBiLoq+26l6G2n2gzo="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons/title-image.im4czft3rz.jpg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/icons/title-image.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2369"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"li5wBU8gr8/UmbSrmTxf4wQSquwv+RT8mNFAE5eA64U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "im4czft3rz"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icons/title-image.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-li5wBU8gr8/UmbSrmTxf4wQSquwv+RT8mNFAE5eA64U="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons/title-image.jpg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/icons/title-image.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2369"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"li5wBU8gr8/UmbSrmTxf4wQSquwv+RT8mNFAE5eA64U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-li5wBU8gr8/UmbSrmTxf4wQSquwv+RT8mNFAE5eA64U="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons/world.png",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/icons/world.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14142"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XUyGR/frCJIPRxoKoq+VQdRz63xE13P6DHIHOCtZWl0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XUyGR/frCJIPRxoKoq+VQdRz63xE13P6DHIHOCtZWl0="
+        }
+      ]
+    },
+    {
+      "Route": "images/icons/world.t8y8xf59bz.png",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/icons/world.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "14142"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XUyGR/frCJIPRxoKoq+VQdRz63xE13P6DHIHOCtZWl0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t8y8xf59bz"
+        },
+        {
+          "Name": "label",
+          "Value": "images/icons/world.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XUyGR/frCJIPRxoKoq+VQdRz63xE13P6DHIHOCtZWl0="
+        }
+      ]
+    },
+    {
+      "Route": "images/login-banner.5nfg19k91u.png",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/login-banner.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "44857"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z2cEfbsJWtiNKi9WDm5bpO5ZBK8LFFUesYuh4YV6EwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5nfg19k91u"
+        },
+        {
+          "Name": "label",
+          "Value": "images/login-banner.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-z2cEfbsJWtiNKi9WDm5bpO5ZBK8LFFUesYuh4YV6EwU="
+        }
+      ]
+    },
+    {
+      "Route": "images/login-banner.png",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/login-banner.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "44857"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z2cEfbsJWtiNKi9WDm5bpO5ZBK8LFFUesYuh4YV6EwU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z2cEfbsJWtiNKi9WDm5bpO5ZBK8LFFUesYuh4YV6EwU="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/add-person.mjo93lsqeh.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/add-person.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1183"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"foQSLAdX73mQ36BVwvbHWcX+A2Vnpa+tbbARQIsL3kA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mjo93lsqeh"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/add-person.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-foQSLAdX73mQ36BVwvbHWcX+A2Vnpa+tbbARQIsL3kA="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/add-person.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/add-person.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1183"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"foQSLAdX73mQ36BVwvbHWcX+A2Vnpa+tbbARQIsL3kA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-foQSLAdX73mQ36BVwvbHWcX+A2Vnpa+tbbARQIsL3kA="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/bars-person.k7q59jnvvp.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/bars-person.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1543"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EOdDfJ3PiSS2l1DtntqmrGXiUTsOLUcKzl3FJZwamO8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k7q59jnvvp"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/bars-person.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EOdDfJ3PiSS2l1DtntqmrGXiUTsOLUcKzl3FJZwamO8="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/bars-person.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/bars-person.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1543"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EOdDfJ3PiSS2l1DtntqmrGXiUTsOLUcKzl3FJZwamO8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EOdDfJ3PiSS2l1DtntqmrGXiUTsOLUcKzl3FJZwamO8="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/black-arrow.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/black-arrow.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "577"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XrwXIZMHxjNvr0eM1IAlemdvLuxR8bG6Gl+krapt3ZQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XrwXIZMHxjNvr0eM1IAlemdvLuxR8bG6Gl+krapt3ZQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/black-arrow.uw4ijgq4xm.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/black-arrow.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "577"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XrwXIZMHxjNvr0eM1IAlemdvLuxR8bG6Gl+krapt3ZQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uw4ijgq4xm"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/black-arrow.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XrwXIZMHxjNvr0eM1IAlemdvLuxR8bG6Gl+krapt3ZQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/feedback.cq5i6vj862.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/feedback.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "791"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hL+eNjvJiug7yY+cjOnHQwdQRiwE5LLErk2v3orkc/c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cq5i6vj862"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/feedback.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hL+eNjvJiug7yY+cjOnHQwdQRiwE5LLErk2v3orkc/c="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/feedback.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/feedback.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "791"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hL+eNjvJiug7yY+cjOnHQwdQRiwE5LLErk2v3orkc/c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hL+eNjvJiug7yY+cjOnHQwdQRiwE5LLErk2v3orkc/c="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/headphones.5mrlthtx3t.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/headphones.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "858"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"808CvUxcMCjNZMPS+b9wwoJj2coqYeIX/DmhMIe+cJQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "5mrlthtx3t"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/headphones.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-808CvUxcMCjNZMPS+b9wwoJj2coqYeIX/DmhMIe+cJQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/headphones.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/headphones.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "858"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"808CvUxcMCjNZMPS+b9wwoJj2coqYeIX/DmhMIe+cJQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-808CvUxcMCjNZMPS+b9wwoJj2coqYeIX/DmhMIe+cJQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/logo.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/logo.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1267"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GwxnGL36umDYjzSEUY7FjDq9kSSxlsi63mh4P0nIQQg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GwxnGL36umDYjzSEUY7FjDq9kSSxlsi63mh4P0nIQQg="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/logo.ta6g4v1066.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/logo.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1267"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GwxnGL36umDYjzSEUY7FjDq9kSSxlsi63mh4P0nIQQg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ta6g4v1066"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/logo.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GwxnGL36umDYjzSEUY7FjDq9kSSxlsi63mh4P0nIQQg="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/mail.fepeok37w3.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/mail.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "766"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F1AjC5W3DU5PrX5DIg7KEERnfsfiSUaj47+/bf7aAvg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fepeok37w3"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/mail.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-F1AjC5W3DU5PrX5DIg7KEERnfsfiSUaj47+/bf7aAvg="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/mail.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/mail.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "766"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F1AjC5W3DU5PrX5DIg7KEERnfsfiSUaj47+/bf7aAvg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-F1AjC5W3DU5PrX5DIg7KEERnfsfiSUaj47+/bf7aAvg="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/phone.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/phone.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "725"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d97n+f/RTndJGvg//Esr7ABNTQSH5YuZeP90D09E1iU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-d97n+f/RTndJGvg//Esr7ABNTQSH5YuZeP90D09E1iU="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/phone.vuy8cswczt.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/phone.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "725"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"d97n+f/RTndJGvg//Esr7ABNTQSH5YuZeP90D09E1iU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vuy8cswczt"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/phone.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-d97n+f/RTndJGvg//Esr7ABNTQSH5YuZeP90D09E1iU="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/white-arrow.k87yf7c72r.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/white-arrow.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "577"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3DvG7Qn0+pqeKf0hnHFK2Af1Zm8/swN9cbSNR8D5Fi0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "k87yf7c72r"
+        },
+        {
+          "Name": "label",
+          "Value": "images/svgs/white-arrow.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3DvG7Qn0+pqeKf0hnHFK2Af1Zm8/swN9cbSNR8D5Fi0="
+        }
+      ]
+    },
+    {
+      "Route": "images/svgs/white-arrow.svg",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/images/svgs/white-arrow.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "577"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3DvG7Qn0+pqeKf0hnHFK2Af1Zm8/swN9cbSNR8D5Fi0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3DvG7Qn0+pqeKf0hnHFK2Af1Zm8/swN9cbSNR8D5Fi0="
+        }
+      ]
+    },
+    {
+      "Route": "js/constants/data.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/constants/data.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4203"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/sQ49crv5MornANrAt5C786MYMbxTpEJxgoyWFDYtFQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/sQ49crv5MornANrAt5C786MYMbxTpEJxgoyWFDYtFQ="
+        }
+      ]
+    },
+    {
+      "Route": "js/constants/data.ugm9n93ybi.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/constants/data.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4203"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/sQ49crv5MornANrAt5C786MYMbxTpEJxgoyWFDYtFQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ugm9n93ybi"
+        },
+        {
+          "Name": "label",
+          "Value": "js/constants/data.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/sQ49crv5MornANrAt5C786MYMbxTpEJxgoyWFDYtFQ="
+        }
+      ]
+    },
+    {
+      "Route": "js/constants/sidebar-data.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/constants/sidebar-data.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3892"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zvp2iWkKrehDLvRcPn1SkkDf5ibssJeul2TmUgxoUs4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zvp2iWkKrehDLvRcPn1SkkDf5ibssJeul2TmUgxoUs4="
+        }
+      ]
+    },
+    {
+      "Route": "js/constants/sidebar-data.uutdmjm7ct.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/constants/sidebar-data.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3892"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Zvp2iWkKrehDLvRcPn1SkkDf5ibssJeul2TmUgxoUs4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uutdmjm7ct"
+        },
+        {
+          "Name": "label",
+          "Value": "js/constants/sidebar-data.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Zvp2iWkKrehDLvRcPn1SkkDf5ibssJeul2TmUgxoUs4="
+        }
+      ]
+    },
+    {
+      "Route": "js/sidebar-example.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar-example.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3248"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lgJyn6pGVYIwjf5wepl3+7QQNZ7AACLAawLy4cJsWqg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lgJyn6pGVYIwjf5wepl3+7QQNZ7AACLAawLy4cJsWqg="
+        }
+      ]
+    },
+    {
+      "Route": "js/sidebar-example.mkrkqklvqd.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar-example.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3248"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lgJyn6pGVYIwjf5wepl3+7QQNZ7AACLAawLy4cJsWqg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mkrkqklvqd"
+        },
+        {
+          "Name": "label",
+          "Value": "js/sidebar-example.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lgJyn6pGVYIwjf5wepl3+7QQNZ7AACLAawLy4cJsWqg="
+        }
+      ]
+    },
+    {
+      "Route": "js/sidebar-init.a5nl6cqwdl.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar-init.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1087"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bn4Zu+8/HapFicQUHHoGNJVSQ8i4Ebp6pUxr7XuesUo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "a5nl6cqwdl"
+        },
+        {
+          "Name": "label",
+          "Value": "js/sidebar-init.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-bn4Zu+8/HapFicQUHHoGNJVSQ8i4Ebp6pUxr7XuesUo="
+        }
+      ]
+    },
+    {
+      "Route": "js/sidebar-init.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar-init.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1087"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"bn4Zu+8/HapFicQUHHoGNJVSQ8i4Ebp6pUxr7XuesUo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-bn4Zu+8/HapFicQUHHoGNJVSQ8i4Ebp6pUxr7XuesUo="
+        }
+      ]
+    },
+    {
+      "Route": "js/sidebar.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20677"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Eg5YtZKPdaJzYGoO5Fq4Rhq0lrI5Fs+1qny1eGMu5s8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Eg5YtZKPdaJzYGoO5Fq4Rhq0lrI5Fs+1qny1eGMu5s8="
+        }
+      ]
+    },
+    {
+      "Route": "js/sidebar.u5ce1qh6en.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/sidebar.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "20677"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Eg5YtZKPdaJzYGoO5Fq4Rhq0lrI5Fs+1qny1eGMu5s8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u5ce1qh6en"
+        },
+        {
+          "Name": "label",
+          "Value": "js/sidebar.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Eg5YtZKPdaJzYGoO5Fq4Rhq0lrI5Fs+1qny1eGMu5s8="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1449"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GQbfdx/+npVIGRJHVOQEPVNKc0UG/bNzoQnQWefJWe8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GQbfdx/+npVIGRJHVOQEPVNKc0UG/bNzoQnQWefJWe8="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.tva81fq1ev.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1449"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GQbfdx/+npVIGRJHVOQEPVNKc0UG/bNzoQnQWefJWe8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "tva81fq1ev"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GQbfdx/+npVIGRJHVOQEPVNKc0UG/bNzoQnQWefJWe8="
+        }
+      ]
+    },
+    {
+      "Route": "js/templates/templates.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/templates/templates.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0d/OvalvkTtosT0eYDALtddO/Mq3S2RsiiDiHe4OciM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-0d/OvalvkTtosT0eYDALtddO/Mq3S2RsiiDiHe4OciM="
+        }
+      ]
+    },
+    {
+      "Route": "js/templates/templates.t9fakg2q0j.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/templates/templates.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"0d/OvalvkTtosT0eYDALtddO/Mq3S2RsiiDiHe4OciM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "t9fakg2q0j"
+        },
+        {
+          "Name": "label",
+          "Value": "js/templates/templates.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-0d/OvalvkTtosT0eYDALtddO/Mq3S2RsiiDiHe4OciM="
+        }
+      ]
+    },
+    {
+      "Route": "js/utils/common.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/utils/common.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kIZZndRwX+h+vQ9QIbxVvs+1wqQ+m6tW3N2fXDrLd4c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kIZZndRwX+h+vQ9QIbxVvs+1wqQ+m6tW3N2fXDrLd4c="
+        }
+      ]
+    },
+    {
+      "Route": "js/utils/common.kv6z129gyt.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/js/utils/common.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kIZZndRwX+h+vQ9QIbxVvs+1wqQ+m6tW3N2fXDrLd4c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kv6z129gyt"
+        },
+        {
+          "Name": "label",
+          "Value": "js/utils/common.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kIZZndRwX+h+vQ9QIbxVvs+1wqQ+m6tW3N2fXDrLd4c="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.47otxtyo56.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19385"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wJQaJ0XynBE2fq6CexXXhxKu7fstVmQc7V2MHNTo+WQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "47otxtyo56"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-wJQaJ0XynBE2fq6CexXXhxKu7fstVmQc7V2MHNTo+WQ="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19385"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"wJQaJ0XynBE2fq6CexXXhxKu7fstVmQc7V2MHNTo+WQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-wJQaJ0XynBE2fq6CexXXhxKu7fstVmQc7V2MHNTo+WQ="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.4v8eqarkd7.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5824"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YJa7W8EiQdQpkk93iGEjjnLSUWRpRJbSfzfURh1kxz4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4v8eqarkd7"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YJa7W8EiQdQpkk93iGEjjnLSUWRpRJbSfzfURh1kxz4="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5824"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YJa7W8EiQdQpkk93iGEjjnLSUWRpRJbSfzfURh1kxz4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YJa7W8EiQdQpkk93iGEjjnLSUWRpRJbSfzfURh1kxz4="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation-unobtrusive/LICENSE.l3n5xuwxn8.txt",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1116"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z8IfXovWVa6ZfuyRYTi3B7HSkLgycsAqlcn4IbjIcxA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l3n5xuwxn8"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation-unobtrusive/LICENSE.txt"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-z8IfXovWVa6ZfuyRYTi3B7HSkLgycsAqlcn4IbjIcxA="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1116"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"z8IfXovWVa6ZfuyRYTi3B7HSkLgycsAqlcn4IbjIcxA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-z8IfXovWVa6ZfuyRYTi3B7HSkLgycsAqlcn4IbjIcxA="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/LICENSE.md",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation/LICENSE.md",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1095"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/markdown"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"85iHjKszi4aWOL2sGurna/OsEbK4nabgtovBpkVzNEA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-85iHjKszi4aWOL2sGurna/OsEbK4nabgtovBpkVzNEA="
+        }
+      ]
+    },
+    {
+      "Route": "lib/jquery-validation/LICENSE.xzw0cte36n.md",
+      "AssetFile": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/wwwroot/lib/jquery-validation/LICENSE.md",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1095"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/markdown"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"85iHjKszi4aWOL2sGurna/OsEbK4nabgtovBpkVzNEA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 20 Nov 2025 08:39:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xzw0cte36n"
+        },
+        {
+          "Name": "label",
+          "Value": "lib/jquery-validation/LICENSE.md"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-85iHjKszi4aWOL2sGurna/OsEbK4nabgtovBpkVzNEA="
+        }
+      ]
+    }
+  ]
+}

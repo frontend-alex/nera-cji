@@ -21,6 +21,12 @@ namespace nera_cji.Controllers
             return View();
         }
 
+        [HttpGet("create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpGet("details/{id}")]
         public IActionResult Details(int id)
         {
@@ -28,5 +34,4 @@ namespace nera_cji.Controllers
         }
     }
 }
-
 
