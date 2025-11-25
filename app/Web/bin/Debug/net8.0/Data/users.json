@@ -1,0 +1,12 @@
+[
+  {
+    "Id": "ee9934ed-6ae7-463d-91ca-bc9a871b522e",
+    "FullName": "Rick Peters",
+    "email": "rickpotter29@icloud.com",
+    "is_active": "",
+    "department_id": "",
+    "is_admin": false,
+    "password_hash": "AQAAAAIAAYagAAAAEM/Cx6mVkPHi7xucIA3NR6/AKBRmLvCnjyg9rQ768ZYecv0YTjM/P/q4YeWITDjVig==",
+    "created_at": "2025-11-20T10:45:59.102712Z"
+  }
+]
