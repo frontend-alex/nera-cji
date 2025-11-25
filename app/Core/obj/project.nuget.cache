@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4GSwBYmKM6M=",
+  "dgSpecHash": "pY0bcyXGAwQ=",
   "success": true,
-  "projectFilePath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj",
+  "projectFilePath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj",
   "expectedPackageFiles": [
     "/Users/rickpeters/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/rickpeters/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",

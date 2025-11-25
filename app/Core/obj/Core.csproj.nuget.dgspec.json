@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj": {}
+    "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj": {}
   },
   "projects": {
-    "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj": {
+    "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj",
+        "projectUniqueName": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj",
+        "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj",
         "packagesPath": "/Users/rickpeters/.nuget/packages/",
-        "outputPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/obj/",
+        "outputPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rickpeters/.nuget/NuGet/NuGet.Config"

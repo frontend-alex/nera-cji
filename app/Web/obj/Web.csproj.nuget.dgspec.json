@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/Web.csproj": {}
+    "/Users/rickpeters/Desktop/nera-cji-repo/app/Web/Web.csproj": {}
   },
   "projects": {
-    "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj": {
+    "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj",
+        "projectUniqueName": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj",
+        "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj",
         "packagesPath": "/Users/rickpeters/.nuget/packages/",
-        "outputPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/obj/",
+        "outputPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rickpeters/.nuget/NuGet/NuGet.Config"
@@ -90,14 +90,14 @@
         }
       }
     },
-    "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj": {
+    "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj",
+        "projectUniqueName": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj",
+        "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj",
         "packagesPath": "/Users/rickpeters/.nuget/packages/",
-        "outputPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/obj/",
+        "outputPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rickpeters/.nuget/NuGet/NuGet.Config"
@@ -113,8 +113,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj": {
-                "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj"
+              "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj": {
+                "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj"
               }
             }
           }
@@ -167,14 +167,14 @@
         }
       }
     },
-    "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/Web.csproj": {
+    "/Users/rickpeters/Desktop/nera-cji-repo/app/Web/Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/Web.csproj",
+        "projectUniqueName": "/Users/rickpeters/Desktop/nera-cji-repo/app/Web/Web.csproj",
         "projectName": "Web",
-        "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/Web.csproj",
+        "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Web/Web.csproj",
         "packagesPath": "/Users/rickpeters/.nuget/packages/",
-        "outputPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Web/obj/",
+        "outputPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Web/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rickpeters/.nuget/NuGet/NuGet.Config"
@@ -190,11 +190,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj": {
-                "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj"
+              "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj": {
+                "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj"
               },
-              "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj"
+              "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj"
               }
             }
           }

@@ -2684,11 +2684,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj",
+      "projectUniqueName": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/Infrastructure.csproj",
+      "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/Infrastructure.csproj",
       "packagesPath": "/Users/rickpeters/.nuget/packages/",
-      "outputPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Infrastructure/obj/",
+      "outputPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/rickpeters/.nuget/NuGet/NuGet.Config"
@@ -2704,8 +2704,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj": {
-              "projectPath": "/Users/rickpeters/Desktop/neraCGI/nera-cji/app/Core/Core.csproj"
+            "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj": {
+              "projectPath": "/Users/rickpeters/Desktop/nera-cji-repo/app/Core/Core.csproj"
             }
           }
         }
