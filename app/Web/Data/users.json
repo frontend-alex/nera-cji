@@ -8,5 +8,15 @@
     "is_admin": false,
     "password_hash": "AQAAAAIAAYagAAAAEM/Cx6mVkPHi7xucIA3NR6/AKBRmLvCnjyg9rQ768ZYecv0YTjM/P/q4YeWITDjVig==",
     "created_at": "2025-11-20T10:45:59.102712Z"
+  },
+  {
+    "Id": "3cd83709-4ad4-4809-afcb-945a54324a12",
+    "FullName": "Aleksander Ivanov",
+    "email": "alexmmech@gmail.com",
+    "is_active": "",
+    "department_id": "",
+    "is_admin": false,
+    "password_hash": "AQAAAAIAAYagAAAAEAaCI/MUKBzTT40lUOpnpGv83Tz9ABXiph7QL/TeuKNkfUijWxL0oPl1Hxh4GM9NkQ==",
+    "created_at": "2025-11-25T08:17:37.7966488Z"
   }
 ]

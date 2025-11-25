@@ -1,14 +1,14 @@
 namespace nera_cji.Services;
 
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using nera_cji.Models;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
 using nera_cji.Interfaces.Services;
-using nera_cji.Models;
 
 public class FileUserStore : IUserService {
     private readonly string _filePath;

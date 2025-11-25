@@ -1,13 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using nera_cji.Models;
 
-namespace App.Core
-{
-    public class ApplicationDbContext : DbContext
-    {
+namespace App.Core {
+    public class ApplicationDbContext : DbContext {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
+            : base(options) {
         }
 
         public DbSet<User> users { get; set; }
