@@ -13,14 +13,15 @@ namespace nera_cji
             var builder = WebApplication.CreateBuilder(args);
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Register DbContext with dependency injection
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(connectionString));
 
             var mvcBuilder = builder.Services.AddControllersWithViews();
-            builder.Services.AddSingleton<nera_cji.Interfaces.Services.IUserService, nera_cji.Services.FileUserStore>();
+
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddScoped(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
+            builder.Services.AddScoped<nera_cji.Interfaces.Services.IAuth0Service, nera_cji.Services.Auth0Service>();
+            builder.Services.AddSingleton<nera_cji.Interfaces.Services.IEventService, nera_cji.Services.InMemoryEventService>();
 
             builder.Services
                 .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -56,12 +57,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // App routes (require authentication)
             app.MapControllerRoute(
                 name: "app",
                 pattern: "app/v1/{controller=Dashboard}/{action=Index}/{id?}");
 
-            // Public routes
             app.MapControllerRoute(
                 name: "contact",
                 pattern: "contact",

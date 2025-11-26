@@ -1,194 +1,193 @@
+@model CreateEventViewModel
+@inject nera_cji.Interfaces.Services.IEventService _eventService
 @{
-    ViewData["Title"] = "Events | Admin";
+    ViewData["Title"] = "Create Event";
     Layout = "~/Views/Shared/Layouts/_LayoutRoot.cshtml";
+    
+    var events = await _eventService.GetAllAsync();
+    var publishedCount = events.Count(e => e.Status == "Published" || e.Status == "posted");
+    var draftCount = events.Count(e => e.Status == "Draft" || e.Status == "draft");
+    var capacityTotal = events.Sum(e => e.MaxParticipants ?? 0);
 }
 
-<div class="p-6 space-y-6" id="admin-events">
-    <div class="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-        <div class="flex items-start justify-between gap-4">
-            <div>
-                <p class="text-sm text-gray-500">admin events page</p>
-                <h1 class="text-2xl font-bold text-gray-900">manage Events</h1>
-            </div>
-        </div>
+<div class="p-8 bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-light text-gray-900 mb-2">Create Event</h1>
+        <p class="text-gray-600">Add a new event to the system</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-            <p class="text-sm text-gray-500">posted</p>
-            <div class="flex items-end justify-between">
-                <span class="text-2xl font-bold text-gray-900" id="admin-stat-published">0</span>
-                <span class="text-xs rounded-full bg-emerald-100 text-emerald-700 px-2 py-1">Live</span>
-            </div>
-        </div>
-        <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-            <p class="text-sm text-gray-500">drafts</p>
-            <div class="flex items-end justify-between">
-                <span class="text-2xl font-bold text-gray-900" id="admin-stat-drafts">0</span>
-                <span class="text-xs rounded-full bg-amber-100 text-amber-700 px-2 py-1">Review</span>
-            </div>
-        </div>
-        <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm">
-            <p class="text-sm text-gray-500">capacity</p>
-            <div class="flex items-end justify-between">
-                <span class="text-2xl font-bold text-gray-900" id="admin-stat-capacity">0</span>
-                <span class="text-xs rounded-full bg-gray-100 text-gray-700 px-2 py-1">Seats</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="grid lg:grid-cols-2 gap-6">
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white border border-gray-200 p-6">
             <div class="flex items-start justify-between">
                 <div>
-                    <h2 class="text-xl font-semibold text-gray-900">create event</h2>
+                    <p class="text-sm text-gray-500 uppercase tracking-wide mb-2">Published Events</p>
+                    <p class="text-4xl font-light text-gray-900">@publishedCount</p>
+                </div>
+                <div class="h-12 w-12 bg-green-50 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
             </div>
+        </div>
 
-            <form id="admin-create-form" class="mt-4 space-y-4">
+        <div class="bg-white border border-gray-200 p-6">
+            <div class="flex items-start justify-between">
                 <div>
-                    <label class="text-sm font-semibold text-gray-800">Title</label>
-                    <input name="title" required class="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:border-[#5236ab] focus:ring-[#5236ab]" placeholder="Test Event" />
+                    <p class="text-sm text-gray-500 uppercase tracking-wide mb-2">Draft Events</p>
+                    <p class="text-4xl font-light text-gray-900">@draftCount</p>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="text-sm font-semibold text-gray-800">Date</label>
-                        <input name="date" type="date" required class="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:border-[#5236ab] focus:ring-[#5236ab]" />
-                    </div>
-                    <div>
-                        <label class="text-sm font-semibold text-gray-800">Time</label>
-                        <input name="time" type="time" required class="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:border-[#5236ab] focus:ring-[#5236ab]" />
-                    </div>
+                <div class="h-12 w-12 bg-yellow-50 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
                 </div>
-                <div class="grid sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="text-sm font-semibold text-gray-800">Location</label>
-                        <input name="location" required class="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:border-[#5236ab] focus:ring-[#5236ab]" placeholder="Test Room" />
-                    </div>
-                </div>
+            </div>
+        </div>
+
+        <div class="bg-white border border-gray-200 p-6">
+            <div class="flex items-start justify-between">
                 <div>
-                    <label class="text-sm font-semibold text-gray-800">Description</label>
-                    <textarea name="description" rows="3" class="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2 text-sm focus:border-[#5236ab] focus:ring-[#5236ab]" placeholder="Quick test description"></textarea>
+                    <p class="text-sm text-gray-500 uppercase tracking-wide mb-2">Total Capacity</p>
+                    <p class="text-4xl font-light text-gray-900">@capacityTotal</p>
                 </div>
-                <div class="flex items-center gap-3">
-                    <button type="submit" class="px-4 py-2 rounded-full bg-[#5236ab] text-white text-sm font-semibold">Add to list</button>
+                <div class="h-12 w-12 bg-blue-50 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-6 items-start">
+        <!-- Create Event Form -->
+        <div class="bg-white border border-gray-200 p-6">
+            <h2 class="text-xl font-light text-gray-900 mb-6">Event Details</h2>
+            
+            <form asp-action="Create" method="post" class="space-y-6">
+                @Html.AntiForgeryToken()
+                <div asp-validation-summary="All" class="text-red-600 text-sm p-3 bg-red-50 border border-red-200"></div>
+                
+                <!-- Title -->
+                <div>
+                    <label asp-for="Title" class="block text-sm font-medium text-gray-700 mb-2">Event Title *</label>
+                    <input asp-for="Title" 
+                           class="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                           placeholder="e.g., Annual Tech Conference 2025" />
+                    <span asp-validation-for="Title" class="text-red-600 text-xs mt-1 block"></span>
+                </div>
+
+                <!-- Date and Time -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label asp-for="Date" class="block text-sm font-medium text-gray-700 mb-2">Event Date *</label>
+                        <input asp-for="Date" 
+                               type="date" 
+                               class="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               style="color-scheme: light;" />
+                        <span asp-validation-for="Date" class="text-red-600 text-xs mt-1 block"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Time" class="block text-sm font-medium text-gray-700 mb-2">Start Time *</label>
+                        <input asp-for="Time" 
+                               type="time" 
+                               class="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               style="color-scheme: light;" />
+                        <span asp-validation-for="Time" class="text-red-600 text-xs mt-1 block"></span>
+                    </div>
+                </div>
+
+                <!-- Location and Capacity -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label asp-for="Location" class="block text-sm font-medium text-gray-700 mb-2">Location *</label>
+                        <input asp-for="Location" 
+                               class="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="e.g., Conference Room A" />
+                        <span asp-validation-for="Location" class="text-red-600 text-xs mt-1 block"></span>
+                    </div>
+                    <div>
+                        <label asp-for="MaxParticipants" class="block text-sm font-medium text-gray-700 mb-2">Max Participants</label>
+                        <input asp-for="MaxParticipants" 
+                               type="number" 
+                               min="1" 
+                               class="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="e.g., 50" />
+                        <p class="text-xs text-gray-500 mt-1">Leave empty for unlimited</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label asp-for="Description" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                    <textarea asp-for="Description" 
+                              rows="4" 
+                              class="w-full border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none" 
+                              placeholder="Provide details about the event..."></textarea>
+                    <p class="text-xs text-gray-500 mt-1">Optional - Add event details, agenda, or special instructions</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
+                    <button type="submit" class="px-6 py-3 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
+                        Create Event
+                    </button>
+                    <a href="/app/v1/events" class="px-6 py-3 border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors">
+                        Cancel
+                    </a>
                 </div>
             </form>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-            <div class="flex items-start justify-between">
-                <div>
-                    <h2 class="text-xl font-semibold text-gray-900">created events</h2>
-                </div>
+        <!-- Event List -->
+        <div class="bg-white border border-gray-200 p-6">
+            <h2 class="text-xl font-light text-gray-900 mb-6">All Events</h2>
+            
+            <div class="space-y-3 overflow-y-auto" style="max-height: 560px;">
+                @if (events.Any())
+                {
+                    @foreach (var evt in events)
+                    {
+                        <div class="border border-gray-200 p-4">
+                            <div class="flex items-start justify-between gap-2 mb-2">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="px-2 py-0.5 text-xs font-medium uppercase tracking-wide @((evt.Status == "Published" || evt.Status == "posted") ? "bg-green-50 text-green-700 border border-green-200" : "bg-yellow-50 text-yellow-700 border border-yellow-200")">
+                                            @(evt.Status ?? "Draft")
+                                        </span>
+                                    </div>
+                                    <h3 class="text-base font-medium text-gray-900">@evt.Title</h3>
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        @evt.StartTime.ToString("MMM dd, yyyy") · @evt.StartTime.ToString("HH:mm") · @evt.Location
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                                <span class="text-xs text-gray-500">Capacity: @(evt.MaxParticipants ?? 0)</span>
+                                <form asp-action="Delete" asp-route-id="@evt.Id" method="post" class="inline" onsubmit="return confirm('Delete this event?');">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="px-3 py-1 text-xs font-medium border border-red-200 text-red-700 hover:bg-red-50 transition-colors">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="text-center py-12">
+                        <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <p class="text-gray-500 text-sm">No events created yet</p>
+                    </div>
+                }
             </div>
-            <div id="admin-event-list" class="mt-4 space-y-3"></div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    <script>
-        (() => {
-            const adminEvents = [
-                { id: 1, title: "Example 1", date: "2025-12-01", time: "12:00", location: "Room A", capacity: 20, status: "posted", attendees: 6 },
-                { id: 2, title: "Example 2", date: "2025-12-01", time: "12:00", location: "Room B", capacity: 40, status: "draft", attendees: 0 },
-                { id: 3, title: "Example 3", date: "2025-12-01", time: "12:00", location: "Room C", capacity: 25, status: "draft", attendees: 3 }
-            ];
-
-            let nextId = 4;
-
-            const stats = {
-                published: document.getElementById("admin-stat-published"),
-                drafts: document.getElementById("admin-stat-drafts"),
-                capacity: document.getElementById("admin-stat-capacity")
-            };
-            const listEl = document.getElementById("admin-event-list");
-            const form = document.getElementById("admin-create-form");
-            const statusEl = document.getElementById("admin-form-status");
-
-            const renderStats = () => {
-                const publishedCount = adminEvents.filter(evt => evt.status === "Published").length;
-                const draftCount = adminEvents.filter(evt => evt.status === "Draft").length;
-                const capacityTotal = adminEvents.reduce((sum, evt) => sum + Number(evt.capacity || 0), 0);
-
-                stats.published.textContent = publishedCount;
-                stats.drafts.textContent = draftCount;
-                stats.capacity.textContent = capacityTotal;
-            };
-
-            const renderList = () => {
-                listEl.innerHTML = adminEvents.map(evt => `
-                    <article class="rounded-xl border border-gray-200 p-4 flex flex-col gap-3">
-                        <div class="flex items-start justify-between gap-2">
-                            <div>
-                                <p class="text-xs text-gray-500 uppercase tracking-wide">${evt.status}</p>
-                                <h3 class="text-lg font-semibold text-gray-900">${evt.title}</h3>
-                                <p class="text-sm text-gray-600">${evt.date} · ${evt.time} · ${evt.location}</p>
-                            </div>
-                            <span class="px-2 py-1 rounded-full text-xs font-semibold ${evt.status === "Published" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}">
-                                ${evt.status === "Published" ? "Live" : "Draft"}
-                            </span>
-                        </div>
-                        <div class="text-xs text-gray-500">Capacity ${evt.capacity} · ${evt.attendees} sign-ups</div>
-                        <div class="flex flex-wrap gap-2">
-                            <button data-action="toggle" data-id="${evt.id}" class="px-3 py-1.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-800 hover:border-[#5236ab]">
-                                ${evt.status === "Published" ? "Unpublish" : "Publish"}
-                            </button>
-                            <button data-action="duplicate" data-id="${evt.id}" class="px-3 py-1.5 rounded-full text-sm font-semibold border border-gray-200 text-gray-800 hover:border-[#5236ab]">Duplicate</button>
-                            <button data-action="remove" data-id="${evt.id}" class="px-3 py-1.5 rounded-full text-sm font-semibold border border-red-200 text-red-700 hover:border-red-400">Remove</button>
-                        </div>
-                    </article>
-                `).join("");
-            };
-
-            listEl?.addEventListener("click", (event) => {
-                const button = event.target.closest("button[data-action]");
-                if (!button) return;
-                const id = Number(button.dataset.id);
-                const action = button.dataset.action;
-                const index = adminEvents.findIndex(evt => evt.id === id);
-                if (index === -1) return;
-
-                if (action === "toggle") {
-                    adminEvents[index].status = adminEvents[index].status === "Published" ? "Draft" : "Published";
-                }
-
-                if (action === "duplicate") {
-                    const clone = { ...adminEvents[index], id: nextId++, status: "Draft", title: `${adminEvents[index].title} Copy` };
-                    adminEvents.splice(index + 1, 0, clone);
-                }
-
-                if (action === "remove") {
-                    adminEvents.splice(index, 1);
-                }
-
-                renderList();
-                renderStats();
-            });
-
-            form?.addEventListener("submit", (event) => {
-                event.preventDefault();
-                const formData = new FormData(form);
-                const newEvent = {
-                    id: nextId++,
-                    title: formData.get("title") || "Example",
-                    date: formData.get("date") || "2024-11-01",
-                    time: formData.get("time") || "09:00",
-                    location: formData.get("location") || "Room",
-                    capacity: Number(formData.get("capacity") || 0),
-                    status: formData.get("publish") ? "Published" : "Draft",
-                    attendees: 0
-                };
-                adminEvents.unshift(newEvent);
-                renderList();
-                renderStats();
-                form.reset();
-                statusEl.textContent = "Added to list.";
-            });
-
-            renderList();
-            renderStats();
-        })();
-    </script>
-}

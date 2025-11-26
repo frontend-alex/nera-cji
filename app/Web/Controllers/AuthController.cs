@@ -4,24 +4,26 @@ using nera_cji.Models;
 using nera_cji.ViewModels;
 using nera_cji.Interfaces.Services;
 
+using System;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
+using App.Core;
+using Microsoft.EntityFrameworkCore;
 
 public class AuthController : Controller {
-    private readonly IUserService _userService;
-    private readonly IPasswordHasher<User> _passwordHasher;
+    private readonly IAuth0Service _auth0Service;
     private readonly ILogger<AuthController> _logger;
+    private readonly ApplicationDbContext _dbContext;
 
     public AuthController(
-        IUserService userService,
-        IPasswordHasher<User> passwordHasher,
-        ILogger<AuthController> logger) {
-        _userService = userService;
-        _passwordHasher = passwordHasher;
+        IAuth0Service auth0Service,
+        ILogger<AuthController> logger,
+        ApplicationDbContext dbContext) {
+        _auth0Service = auth0Service;
         _logger = logger;
+        _dbContext = dbContext;
     }
 
     [HttpGet]
@@ -42,20 +44,20 @@ public class AuthController : Controller {
             return View(model);
         }
 
-        var user = await _userService.FindByEmailAsync(model.Email);
-        if (user == null) {
-            ModelState.AddModelError(string.Empty, "Invalid email or password.");
+        var auth0Result = await _auth0Service.LoginAsync(model.Email, model.Password);
+        if (!auth0Result.Success) {
+            ModelState.AddModelError(string.Empty, auth0Result.ErrorMessage ?? "Invalid email or password.");
             return View(model);
         }
 
-        var passwordResult = _passwordHasher.VerifyHashedPassword(user, user.password_hash, model.Password);
-        if (passwordResult == PasswordVerificationResult.Failed) {
-            ModelState.AddModelError(string.Empty, "Invalid email or password.");
-            return View(model);
-        }
+        // Check if user exists in DB, if not create/update
+        var user = await EnsureUserInDatabaseAsync(
+            auth0Result.Email ?? model.Email,
+            auth0Result.FullName ?? model.Email
+        );
 
         await SignInUserAsync(user, model.RememberMe);
-        _logger.LogInformation("User {Email} logged in.", user.email);
+        _logger.LogInformation("User {Email} logged in via Auth0.", user.email);
 
         return RedirectToLocal(model.ReturnUrl);
     }
@@ -78,22 +80,23 @@ public class AuthController : Controller {
             return View(model);
         }
 
-        if (await _userService.EmailExistsAsync(model.Email)) {
+        // Check if user exists in DB
+        var existingUser = await _dbContext.users.FirstOrDefaultAsync(u => u.email == model.Email);
+        if (existingUser != null) {
             ModelState.AddModelError(nameof(model.Email), "An account with that email already exists.");
             return View(model);
         }
 
-        var user = new User {
-            FullName = model.FullName.Trim(),
-            email = model.Email.Trim()
-        };
+        var auth0Result = await _auth0Service.SignupAsync(model.Email, model.Password, model.FullName);
+        if (!auth0Result.Success) {
+            ModelState.AddModelError(string.Empty, auth0Result.ErrorMessage ?? "Registration failed. Please try again.");
+            return View(model);
+        }
 
-        user.password_hash = _passwordHasher.HashPassword(user, model.Password);
-
-        await _userService.AddAsync(user);
-        _logger.LogInformation("User {Email} registered.", user.email);
+        var user = await EnsureUserInDatabaseAsync(model.Email, model.FullName);
 
         await SignInUserAsync(user, isPersistent: true);
+        _logger.LogInformation("User {Email} registered via Auth0.", user.email);
 
         return RedirectToLocal(model.ReturnUrl);
     }
@@ -134,6 +137,45 @@ public class AuthController : Controller {
         }
 
         return Redirect("/app/v1/dashboard");
+    }
+
+    private async Task<User> EnsureUserInDatabaseAsync(string email, string fullName) {
+        try {
+            var dbUser = await _dbContext.users.FirstOrDefaultAsync(u => u.email == email);
+            
+            if (dbUser != null) {
+                if (dbUser.FullName != fullName) {
+                    dbUser.FullName = fullName;
+                    await _dbContext.SaveChangesAsync();
+                    _logger.LogInformation("Updated user {Email} in database", email);
+                }
+                return dbUser;
+            }
+            
+            _logger.LogInformation("Attempting to create user {Email} in database", email);
+            
+            var newUser = new User {
+                email = email,
+                FullName = fullName,
+                password_hash = string.Empty,
+                is_active = "1",
+                created_at = DateTime.UtcNow,
+                is_admin = false
+            };
+
+            await _dbContext.users.AddAsync(newUser);
+            await _dbContext.SaveChangesAsync();
+            
+            _logger.LogInformation("Successfully created user {Email} in database", email);
+            return newUser;
+
+        } catch (Exception ex) {
+            _logger.LogError(ex, "Error ensuring user {Email} in database.", email);
+            // Fallback: try to fetch again in case of race condition
+             var dbUser = await _dbContext.users.FirstOrDefaultAsync(u => u.email == email);
+             if (dbUser != null) return dbUser;
+             throw;
+        }
     }
 }
 

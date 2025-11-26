@@ -18,5 +18,15 @@
     "is_admin": false,
     "password_hash": "AQAAAAIAAYagAAAAEAaCI/MUKBzTT40lUOpnpGv83Tz9ABXiph7QL/TeuKNkfUijWxL0oPl1Hxh4GM9NkQ==",
     "created_at": "2025-11-25T08:17:37.7966488Z"
+  },
+  {
+    "Id": "660550b9-f796-4292-a398-fdbfb38f2f6a",
+    "FullName": "Stefan Kosev",
+    "email": "skosev25@gmail.com",
+    "is_active": "1",
+    "department_id": "",
+    "is_admin": false,
+    "password_hash": "",
+    "created_at": "2025-11-26T16:55:35.2108747Z"
   }
 ]

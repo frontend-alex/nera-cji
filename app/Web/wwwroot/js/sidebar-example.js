@@ -1,10 +1,3 @@
-/**
- * Sidebar Usage Examples
- * 
- * This file shows different ways to use the sidebar component.
- */
-
-// Example 1: Basic usage with inline data
 const basicSidebarData = [
     {
         name: 'Home',
@@ -18,7 +11,6 @@ const basicSidebarData = [
     }
 ];
 
-// Example 2: With nested items
 const nestedSidebarData = [
     {
         name: 'Dashboard',
@@ -39,7 +31,6 @@ const nestedSidebarData = [
     }
 ];
 
-// Example 3: With groups and separators
 const groupedSidebarData = [
     {
         type: 'group',
@@ -68,7 +59,6 @@ const groupedSidebarData = [
     }
 ];
 
-// Example 4: With badges
 const badgeSidebarData = [
     {
         name: 'Messages',
@@ -84,7 +74,6 @@ const badgeSidebarData = [
     }
 ];
 
-// Example 5: With custom SVG icons
 const customIconSidebarData = [
     {
         name: 'Custom Item',
