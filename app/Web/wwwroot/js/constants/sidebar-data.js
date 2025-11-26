@@ -1,21 +1,3 @@
-/**
- * Sidebar Data Structure
- * 
- * This file demonstrates how to structure your sidebar data.
- * You can customize this array with your own menu items.
- * 
- * Structure:
- * - name: Display name of the menu item
- * - label: Alternative to name (both work)
- * - path: URL path (e.g., '/dashboard', '/users')
- * - url: Alternative to path (both work)
- * - href: Alternative to path/url (all work)
- * - icon: Icon name (string) or HTML/SVG string
- * - badge: Optional badge text/number
- * - items: Array of child items (supports nesting)
- * - type: 'group' for group labels, 'separator' for dividers
- */
-
 export const sidebarMenuData = [
     {
         name: 'Dashboard',
@@ -73,9 +55,6 @@ export const sidebarMenuData = [
     }
 ];
 
-/**
- * Example with custom SVG icons
- */
 export const sidebarMenuDataWithCustomIcons = [
     {
         name: 'Dashboard',
@@ -89,9 +68,6 @@ export const sidebarMenuDataWithCustomIcons = [
     }
 ];
 
-/**
- * Example with deeply nested items
- */
 export const sidebarMenuDataNested = [
     {
         name: 'Level 1',

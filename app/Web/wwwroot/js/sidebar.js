@@ -1,8 +1,3 @@
-/**
- * Sophisticated Sidebar Component
- * Similar to shadcn sidebar with nested menu support, icons, and toggle functionality
- */
-
 class Sidebar {
     constructor(containerId, options = {}) {
         this.container = document.getElementById(containerId);
@@ -35,7 +30,6 @@ class Sidebar {
         this.attachEventListeners();
         this.updateActiveState();
         this.handleResize();
-        // Ensure initial state is set
         this.updateClasses();
     }
 
@@ -60,7 +54,6 @@ class Sidebar {
             ${this.options.footer ? `<div class="sidebar-footer">${this.options.footer}</div>` : ''}
         `;
 
-        // Add overlay for mobile
         if (!document.querySelector('.sidebar-overlay')) {
             const overlay = document.createElement('div');
             overlay.className = 'sidebar-overlay';
@@ -68,7 +61,6 @@ class Sidebar {
             document.body.appendChild(overlay);
         }
 
-        // Update classes
         this.updateClasses();
     }
 
@@ -121,10 +113,22 @@ class Sidebar {
                 } else {
                     const linkHTML = item.path || item.url || item.href || '#';
                     const isLink = item.path || item.url || item.href;
+                    const isLogout = item.type === 'logout';
                     
                     html += `
                         <li class="sidebar-menu-item">
-                            ${isLink ? `
+                            ${isLogout ? `
+                                <button 
+                                    type="button"
+                                    class="sidebar-menu-button ${isActive ? 'active' : ''} logout-button"
+                                    data-item-id="${itemId}"
+                                >
+                                    ${iconHTML ? `<span class="sidebar-menu-icon">${iconHTML}</span>` : ''}
+                                    <span class="sidebar-menu-text">${item.name || item.label || ''}</span>
+                                    ${badgeHTML}
+                                    ${this.state.collapsed ? `<span class="sidebar-tooltip">${item.name || item.label || ''}</span>` : ''}
+                                </button>
+                            ` : isLink ? `
                                 <a 
                                     href="${linkHTML}" 
                                     class="sidebar-menu-button ${isActive ? 'active' : ''}"
@@ -169,7 +173,6 @@ class Sidebar {
             const iconHTML = item.icon ? this.getIconHTML(item.icon) : '';
             
             if (hasChildren) {
-                // Nested submenu support
                 const isExpanded = this.state.expandedItems.has(itemId);
                 html += `
                     <li class="sidebar-submenu-item">
@@ -190,16 +193,29 @@ class Sidebar {
                 `;
             } else {
                 const linkHTML = item.path || item.url || item.href || '#';
+                const isLogout = item.type === 'logout';
+                
                 html += `
                     <li class="sidebar-submenu-item">
-                        <a 
-                            href="${linkHTML}" 
-                            class="sidebar-submenu-button ${isActive ? 'active' : ''}"
-                            data-item-id="${itemId}"
-                        >
-                            ${iconHTML ? `<span class="sidebar-submenu-icon">${iconHTML}</span>` : ''}
-                            <span class="sidebar-submenu-text">${item.name || item.label || ''}</span>
-                        </a>
+                        ${isLogout ? `
+                            <button 
+                                type="button"
+                                class="sidebar-submenu-button ${isActive ? 'active' : ''} logout-button"
+                                data-item-id="${itemId}"
+                            >
+                                ${iconHTML ? `<span class="sidebar-submenu-icon">${iconHTML}</span>` : ''}
+                                <span class="sidebar-submenu-text">${item.name || item.label || ''}</span>
+                            </button>
+                        ` : `
+                            <a 
+                                href="${linkHTML}" 
+                                class="sidebar-submenu-button ${isActive ? 'active' : ''}"
+                                data-item-id="${itemId}"
+                            >
+                                ${iconHTML ? `<span class="sidebar-submenu-icon">${iconHTML}</span>` : ''}
+                                <span class="sidebar-submenu-text">${item.name || item.label || ''}</span>
+                            </a>
+                        `}
                     </li>
                 `;
             }
@@ -208,8 +224,29 @@ class Sidebar {
         return html;
     }
 
+    getAntiForgeryToken() {
+        const metaTag = document.querySelector('meta[name="__RequestVerificationToken"]');
+        if (metaTag) {
+            return metaTag.getAttribute('content');
+        }
+        
+        const tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+        if (tokenInput) {
+            return tokenInput.value;
+        }
+        
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+            if (name === '__RequestVerificationToken') {
+                return decodeURIComponent(value);
+            }
+        }
+        
+        return '';
+    }
+
     getIconHTML(iconName) {
-        // Default icon set - you can customize this
         const icons = {
             'logo': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>',
             'chevron-left': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>',
@@ -221,48 +258,65 @@ class Sidebar {
             'folder': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>',
             'mail': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
             'bell': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>',
+            'logout': '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>',
         };
 
-        // If icon is a string and exists in our icon set, use it
         if (typeof iconName === 'string' && icons[iconName]) {
             return icons[iconName];
         }
         
-        // If icon is HTML/SVG string, return it directly
         if (typeof iconName === 'string' && iconName.trim().startsWith('<')) {
             return iconName;
         }
         
-        // If icon is an object with svg property
         if (typeof iconName === 'object' && iconName.svg) {
             return iconName.svg;
         }
 
-        // Default fallback
         return icons['file'] || '';
     }
 
+    handleLogout() {
+        const token = this.getAntiForgeryToken();
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/Auth/Logout';
+        
+        if (token) {
+            const tokenInput = document.createElement('input');
+            tokenInput.type = 'hidden';
+            tokenInput.name = '__RequestVerificationToken';
+            tokenInput.value = token;
+            form.appendChild(tokenInput);
+        }
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+
     attachEventListeners() {
-        // Toggle button
         const toggleBtn = this.container.querySelector('.sidebar-toggle');
         if (toggleBtn) {
             toggleBtn.addEventListener('click', () => this.toggle());
         }
 
-        // Menu item clicks
         this.container.addEventListener('click', (e) => {
             const button = e.target.closest('.sidebar-menu-button, .sidebar-submenu-button');
             if (!button) return;
 
+            if (button.classList.contains('logout-button')) {
+                e.preventDefault();
+                this.handleLogout();
+                return;
+            }
+
             const itemId = button.getAttribute('data-item-id');
             if (!itemId) return;
 
-            // Check if it's a collapsible item
             if (button.hasAttribute('aria-expanded')) {
                 e.preventDefault();
                 this.toggleItem(itemId);
             } else {
-                // Handle item click callback
                 if (this.options.onItemClick) {
                     const item = this.findItemById(itemId);
                     if (item) {
@@ -272,10 +326,8 @@ class Sidebar {
             }
         });
 
-        // Window resize
         window.addEventListener('resize', () => this.handleResize());
 
-        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
                 e.preventDefault();
@@ -300,7 +352,6 @@ class Sidebar {
             this.options.onToggle(this.state.collapsed);
         }
 
-        // Save to localStorage
         localStorage.setItem('sidebar-collapsed', this.state.collapsed);
     }
 
@@ -329,21 +380,35 @@ class Sidebar {
     }
 
     toggleItem(itemId) {
-        if (this.state.expandedItems.has(itemId)) {
+        const wasExpanded = this.state.expandedItems.has(itemId);
+        
+        if (wasExpanded) {
             this.state.expandedItems.delete(itemId);
         } else {
             this.state.expandedItems.add(itemId);
         }
 
         const button = this.container.querySelector(`[data-item-id="${itemId}"]`);
-        const submenu = button?.nextElementSibling || button?.parentElement?.querySelector('.sidebar-submenu');
+        if (!button) return;
+        
+        let submenu = button.nextElementSibling;
+        if (!submenu || !submenu.classList.contains('sidebar-submenu')) {
+            const parentLi = button.closest('li');
+            submenu = parentLi?.querySelector('.sidebar-submenu');
+        }
+        
+        const isExpanded = this.state.expandedItems.has(itemId);
         
         if (button) {
-            button.setAttribute('aria-expanded', this.state.expandedItems.has(itemId));
+            button.setAttribute('aria-expanded', isExpanded);
         }
         
         if (submenu) {
-            submenu.classList.toggle('expanded', this.state.expandedItems.has(itemId));
+            if (isExpanded) {
+                submenu.classList.add('expanded');
+            } else {
+                submenu.classList.remove('expanded');
+            }
         }
     }
 
@@ -364,13 +429,9 @@ class Sidebar {
         
         if (!itemPath || itemPath === '#') return false;
         
-        // Exact match
         if (activePath === itemPath) return true;
         
-        // Check if active path starts with item path (for nested routes)
-        // Only if item path is not just '/'
         if (itemPath !== '/' && activePath.startsWith(itemPath)) {
-            // Make sure it's a proper path segment (not just a prefix)
             const nextChar = activePath[itemPath.length];
             return !nextChar || nextChar === '/' || nextChar === '?';
         }
@@ -387,7 +448,6 @@ class Sidebar {
             if (href && href !== '#' && activePath === href) {
                 button.classList.add('active');
                 
-                // Expand parent menus
                 let parent = button.closest('.sidebar-submenu');
                 while (parent) {
                     const parentButton = parent.previousElementSibling;
@@ -404,7 +464,6 @@ class Sidebar {
     }
 
     findItemById(itemId) {
-        // This is a simplified version - you might want to traverse the data structure
         const findInItems = (items) => {
             for (const item of items) {
                 if (item.id === itemId) return item;
@@ -425,7 +484,6 @@ class Sidebar {
         this.updateClasses();
     }
 
-    // Public API methods
     collapse() {
         if (!this.state.collapsed) {
             this.toggleCollapse();
@@ -469,16 +527,13 @@ class Sidebar {
     }
 }
 
-// Initialize sidebar from localStorage
 const initSidebarFromStorage = () => {
     const savedState = localStorage.getItem('sidebar-collapsed');
     return savedState === 'true';
 };
 
-// Global functions for easy access
 window.Sidebar = Sidebar;
 
-// Convenience function to create a sidebar
 window.createSidebar = (containerId, options = {}) => {
     const defaultOptions = {
         collapsed: initSidebarFromStorage(),
@@ -487,13 +542,11 @@ window.createSidebar = (containerId, options = {}) => {
     return new Sidebar(containerId, defaultOptions);
 };
 
-// Legacy toggle function for backward compatibility
 window.toggleSidebar = () => {
     const sidebar = window.sidebarInstance;
     if (sidebar) {
         sidebar.toggle();
     } else {
-        // Fallback to old behavior
         const sidebarEl = document.getElementById('sidebar');
         if (sidebarEl) {
             sidebarEl.classList.toggle('active');

@@ -15,5 +15,17 @@
             <p class="text-gray-600">Your dashboard content goes here</p>
         </div>
     </div>
+
+    <div class="mt-6">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold mb-4">Account Actions</h2>
+            <form asp-controller="Auth" asp-action="Logout" method="post" class="inline">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="px-6 py-3 rounded-full bg-red-600 text-white text-sm font-semibold hover:bg-red-700 transition-colors">
+                    Logout
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
 
