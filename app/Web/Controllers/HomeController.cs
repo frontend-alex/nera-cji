@@ -43,7 +43,6 @@ namespace nera_cji.Controllers
 
             try
             {
-                // In a real implementation, send the inquiry to CRM or email.
                 _logger.LogInformation("Contact form submitted by {Name} ({Email}) for {Topic}", model.Name, model.Email, model.Topic);
 
                 TempData["ContactSuccess"] = "Thanks, you will hear back soon";
