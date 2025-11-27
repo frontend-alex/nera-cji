@@ -1,20 +1,12 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+namespace nera_cji.Models;
 
-namespace nera_cji.Models{
-[Table("departments")]
-    public class Department
-    {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
+using System;
 
-        [Required]
-        [Column("name")]
-        [MaxLength(100)]
-        public string Name { get; set; }
+public class Department
+{
+    public int Id { get; set; }
 
-        [Column("description")]
-        public string? Description { get; set; }
-    }
+    public string Name { get; set; } = string.Empty;
+
+    public string? Description { get; set; }
 }

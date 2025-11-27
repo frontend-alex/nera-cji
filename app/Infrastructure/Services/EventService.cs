@@ -23,15 +23,15 @@ public class EventService : IEventService {
 
     public async Task<IReadOnlyCollection<Event>> GetAllAsync(CancellationToken cancellationToken = default) {
         var events = await _context.events
-            .OrderByDescending(e => e.StartTime)
+            .OrderByDescending(e => e.Start_Time)
             .ToListAsync(cancellationToken);
         return events.AsReadOnly();
     }
 
     public async Task<Event> CreateAsync(Event eventEntity, CancellationToken cancellationToken = default) {
         eventEntity.Id = 0;
-        eventEntity.CreatedAt = DateTime.UtcNow;
-        eventEntity.UpdatedAt = DateTime.UtcNow;
+        eventEntity.Created_At = DateTime.UtcNow;
+        eventEntity.Updated_At = DateTime.UtcNow;
         
         _context.events.Add(eventEntity);
         await _context.SaveChangesAsync(cancellationToken);
@@ -52,7 +52,7 @@ public class EventService : IEventService {
     }
 
     public async Task<Event> UpdateAsync(Event eventEntity, CancellationToken cancellationToken = default) {
-        eventEntity.UpdatedAt = DateTime.UtcNow;
+        eventEntity.Updated_At = DateTime.UtcNow;
         
         _context.events.Update(eventEntity);
         await _context.SaveChangesAsync(cancellationToken);

@@ -7,7 +7,7 @@
     var events = await _eventService.GetAllAsync();
     var publishedCount = events.Count(e => e.Status == "Published" || e.Status == "posted");
     var draftCount = events.Count(e => e.Status == "Draft" || e.Status == "draft");
-    var capacityTotal = events.Sum(e => e.MaxParticipants ?? 0);
+    var capacityTotal = events.Sum(e => e.Max_Participants ?? 0);
 }
 
 <div class="p-8 bg-gray-50 min-h-screen">
@@ -162,12 +162,12 @@
                                     </div>
                                     <h3 class="text-base font-medium text-gray-900">@evt.Title</h3>
                                     <p class="text-xs text-gray-500 mt-1">
-                                        @evt.StartTime.ToString("MMM dd, yyyy") · @evt.StartTime.ToString("HH:mm") · @evt.Location
+                                        @evt.Start_Time.ToString("MMM dd, yyyy") · @evt.Start_Time.ToString("HH:mm") · @evt.Location
                                     </p>
                                 </div>
                             </div>
                             <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
-                                <span class="text-xs text-gray-500">Capacity: @(evt.MaxParticipants ?? 0)</span>
+                                <span class="text-xs text-gray-500">Capacity: @(evt.Max_Participants ?? 0)</span>
                                 <form asp-action="Delete" asp-route-id="@evt.Id" method="post" class="inline" onsubmit="return confirm('Delete this event?');">
                                     @Html.AntiForgeryToken()
                                     <button type="submit" class="px-3 py-1 text-xs font-medium border border-red-200 text-red-700 hover:bg-red-50 transition-colors">

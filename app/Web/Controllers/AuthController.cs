@@ -158,7 +158,7 @@ public class AuthController : Controller {
                 email = email,
                 FullName = fullName,
                 password_hash = string.Empty,
-                is_active = "1",
+                is_active = true,
                 created_at = DateTime.UtcNow,
                 is_admin = false
             };

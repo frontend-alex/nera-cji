@@ -89,10 +89,10 @@ namespace nera_cji.Controllers
                 Title = model.Title.Trim(),
                 Description = model.Description?.Trim(),
                 Location = model.Location.Trim(),
-                StartTime = startTime,
-                EndTime = null,
-                CreatedBy = userIntId,
-                MaxParticipants = model.MaxParticipants,
+                Start_Time = startTime,
+                End_Time = null,
+                Created_By = userIntId,
+                Max_Participants = model.MaxParticipants,
                 Status = model.Status ?? "Draft"
             };
 

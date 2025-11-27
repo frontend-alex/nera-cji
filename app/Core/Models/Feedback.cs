@@ -1,31 +1,18 @@
+namespace nera_cji.Models;
+
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace  nera_cji.Models
+public class Feedback
 {
-    [Table("feedback")]
-    public class Feedback
-    {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        [Required]
-        [Column("event_id")]
-        public int EventId { get; set; }
+    public int Event_Id { get; set; }
 
-        [Required]
-        [Column("user_id")]
-        public int UserId { get; set; }
+    public int User_Id { get; set; }
 
-        [Column("rating")]
-        public int? Rating { get; set; }
+    public int? Rating { get; set; }
 
-        [Column("comment")]
-        public string? Comment { get; set; }
+    public string? Comment { get; set; }
 
-        [Column("submitted_at")]
-        public DateTime SubmittedAt { get; set; } = DateTime.Now;
-    }
+    public DateTime Submitted_At { get; set; } = DateTime.UtcNow;
 }

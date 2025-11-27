@@ -1,29 +1,16 @@
+namespace nera_cji.Models;
+
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace nera_cji.Models
+public class EventParticipant
 {
-    [Table("event_participants")]
-    public class EventParticipant
-    {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        [Required]
-        [Column("event_id")]
-        public int EventId { get; set; }
+    public int Event_Id { get; set; }
 
-        [Required]
-        [Column("user_id")]
-        public int UserId { get; set; }
+    public int User_Id { get; set; }
 
-        [Column("registered_at")]
-        public DateTime RegisteredAt { get; set; } = DateTime.Now;
+    public DateTime Registered_At { get; set; } = DateTime.UtcNow;
 
-        [Column("status")]
-        [MaxLength(50)]
-        public string? Status { get; set; }
-    }
+    public string? Status { get; set; }
 }

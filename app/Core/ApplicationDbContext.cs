@@ -24,7 +24,7 @@ namespace App.Core {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
                 entity.Property(e => e.FullName)
                     .HasColumnName("full_name");
                 entity.Property(e => e.email)
@@ -48,7 +48,7 @@ namespace App.Core {
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .ValueGeneratedOnAdd();
-                entity.Property(e => e.CreatedBy)
+                entity.Property(e => e.Created_By)
                     .HasColumnName("created_by")
                     .IsRequired();
             });

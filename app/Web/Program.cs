@@ -21,7 +21,7 @@ namespace nera_cji
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddScoped(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
             builder.Services.AddScoped<nera_cji.Interfaces.Services.IAuth0Service, nera_cji.Services.Auth0Service>();
-            builder.Services.AddSingleton<nera_cji.Interfaces.Services.IEventService, nera_cji.Services.InMemoryEventService>();
+             builder.Services.AddScoped<nera_cji.Interfaces.Services.IEventService, nera_cji.Services.EventService>();
 
             builder.Services
                 .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
