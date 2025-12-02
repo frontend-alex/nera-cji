@@ -1,21 +1,3 @@
-/**
- * Sidebar Data Structure
- * 
- * This file demonstrates how to structure your sidebar data.
- * You can customize this array with your own menu items.
- * 
- * Structure:
- * - name: Display name of the menu item
- * - label: Alternative to name (both work)
- * - path: URL path (e.g., '/dashboard', '/users')
- * - url: Alternative to path (both work)
- * - href: Alternative to path/url (all work)
- * - icon: Icon name (string) or HTML/SVG string
- * - badge: Optional badge text/number
- * - items: Array of child items (supports nesting)
- * - type: 'group' for group labels, 'separator' for dividers
- */
-
 export const sidebarMenuData = [
     {
         name: 'Dashboard',
@@ -26,28 +8,6 @@ export const sidebarMenuData = [
         type: 'group',
         label: 'Main Menu',
         items: [
-            {
-                name: 'Account',
-                icon: 'user',
-                items: [
-                    {
-                        name: 'Profile',
-                        path: '/app/v1/account',
-                        icon: 'user'
-                    },
-                    {
-                        name: 'Settings',
-                        path: '/app/v1/account/settings',
-                        icon: 'settings'
-                    },
-                    {
-                        name: 'Notifications',
-                        path: '/app/v1/account/notifications',
-                        icon: 'bell',
-                        badge: '3'
-                    }
-                ]
-            },
             {
                 name: 'Events',
                 icon: 'file',
@@ -61,11 +21,6 @@ export const sidebarMenuData = [
                         name: 'Create Event',
                         path: '/app/v1/events/create',
                         icon: 'file'
-                    },
-                    {
-                        name: 'Calendar',
-                        path: '/app/v1/events/calendar',
-                        icon: 'file'
                     }
                 ]
             }
@@ -73,9 +28,6 @@ export const sidebarMenuData = [
     }
 ];
 
-/**
- * Example with custom SVG icons
- */
 export const sidebarMenuDataWithCustomIcons = [
     {
         name: 'Dashboard',
@@ -89,9 +41,6 @@ export const sidebarMenuDataWithCustomIcons = [
     }
 ];
 
-/**
- * Example with deeply nested items
- */
 export const sidebarMenuDataNested = [
     {
         name: 'Level 1',

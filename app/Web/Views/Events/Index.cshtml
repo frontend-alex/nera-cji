@@ -1,248 +1,80 @@
+@model IReadOnlyCollection<nera_cji.Models.Event>
 @{
     ViewData["Title"] = "Events";
     Layout = "~/Views/Shared/Layouts/_LayoutRoot.cshtml";
 }
 
-<div class="p-6 space-y-6" id="employee-events">
-    <div class="rounded-2xl bg-gradient-to-r from-[#e02b40] to-[#5236ab] p-6 text-white shadow-sm">
-        <div class="flex flex-col gap-3">
-            <div class="flex items-center gap-3">
-                <div class="h-10 w-10 rounded-full bg-white/15 backdrop-blur flex items-center justify-center text-sm font-semibold">CGI</div>
-                <div>
-                    <h1 class="text-2xl font-bold leading-tight">Employee Events</h1>
-                </div>
-            </div>
-        </div>
+<div class="p-8 bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-light text-gray-900 mb-2">Employee Events</h1>
+        <p class="text-gray-600">Browse and register for upcoming company events</p>
     </div>
-    <div class="grid lg:grid-cols-3 gap-6">
-        <div class="lg:col-span-2 space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                    <p class="text-sm text-gray-500">events</p>
-                    <h2 class="text-xl font-semibold text-gray-900">events you can join</h2>
-                </div>
-                <div class="flex items-center gap-2 text-xs text-gray-500">
-                    <span class="h-2 w-2 rounded-full bg-green-500"></span>open spots available
-                </div>
-            </div>
 
-            <div class="flex flex-wrap items-center gap-2">
-                <button data-filter="all" class="event-filter active px-3 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">All</button>
-                <button data-filter="open" class="event-filter px-3 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">Open</button>
-                <button data-filter="joined" class="event-filter px-3 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">Signed up</button>
-                <button data-filter="full" class="event-filter px-3 py-1.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">Waitlist</button>
-            </div>
-
-            <div id="event-list" class="grid sm:grid-cols-2 gap-4"></div>
-        </div>
-
-        <div class="lg:col-span-1">
-            <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 space-y-4 sticky top-6">
-                <h3 class="text-lg font-semibold text-gray-900">Your Signed-Up Events</h3>
-                <div id="joined-events-list" class="space-y-3">
-                    <p class="text-sm text-gray-500">You haven't signed up for any events yet.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-    <script>
-        (() => {
-            const events = [
-                {
-                    id: 1,
-                    title: "example event 1",
-                    date: "2025-12-1",
-                    time: "10:00",
-                    location: "Room A",
-                    seats: 20,
-                    attending: 6,
-                    summary: "Example event description.",
-                    description: "example event",
-                    tags: ["tag1", "tag2"],
-                    status: "open"
-                },
-                {
-                    id: 2,
-                    title: "example event 2",
-                    date: "2025-12-1",
-                    time: "14:30",
-                    location: "Room B",
-                    seats: 12,
-                    attending: 12,
-                    summary: "example event",
-                    description: "Basic info about Example 2.",
-                    tags: ["tag1", "tag2"],
-                    status: "full"
-                },
-                {
-                    id: 3,
-                    title: "example event3",
-                    date: "2025-12-1",
-                    time: "17:00",
-                    location: "Room C",
-                    seats: 30,
-                    attending: 10,
-                    summary: "example event",
-                    description: "Basic info about Example 3.",
-                    tags: ["tag1", "tag2"],
-                    status: "open"
-                }
-            ];
-
-            // Use Set for efficient lookup of joined events
-            const attending = new Set([1]); // Event ID 1 is signed up by default
-            let activeFilter = "all";
-
-            const listEl = document.getElementById("event-list");
-            const joinedListEl = document.getElementById("joined-events-list");
-            const filters = document.querySelectorAll(".event-filter");
-
-            const formatDate = (dateStr) => {
-                // Ensure date is treated as UTC/local based on your environment needs.
-                // Using new Date(dateStr) might default to midnight in local time.
-                // For this example, we'll keep the existing toLocaleDateString.
-                return new Date(dateStr).toLocaleDateString(undefined, { month: "short", day: "numeric" });
-            };
-
-            const seatCopy = (event) => {
-                if (event.status === "full") return "Waitlist only";
-                return `${event.seats - event.attending} spots open`;
-            };
-
-            // Renders the main list of all events based on the active filter
-            const renderList = () => {
-                const visible = events.filter(evt => {
-                    if (activeFilter === "open") return evt.status === "open";
-                    if (activeFilter === "joined") return attending.has(evt.id);
-                    if (activeFilter === "full") return evt.status === "full";
-                    return true;
-                });
-
-                if (!visible.length) {
-                     listEl.innerHTML = `<p class="text-gray-500">No events match the selected filter.</p>`;
-                     return;
-                }
-
-                listEl.innerHTML = visible.map(evt => {
-                    const joined = attending.has(evt.id);
-                    // The "Details" button is removed here to focus the user on the sign-up action.
-                    // A proper "Details" view would require a modal or navigation.
-                    return `
-                        <article class="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
-                            <div class="flex items-center justify-between text-xs text-gray-500">
-                                <span class="px-2 py-1 rounded-full ${evt.status === "open" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"} uppercase tracking-wide">${evt.status === "open" ? "Open" : "Waitlist"}</span>
-                                <span>${evt.attending}/${evt.seats} joined</span>
+    <!-- Events Grid -->
+    <div class="grid gap-4">
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var evt in Model)
+            {
+                var isOpen = (evt.Max_Participants == null || evt.Max_Participants == 0) || true;
+                var status = isOpen ? "open" : "full";
+                
+                <div class="bg-white border border-gray-200 p-6">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-3">
+                                <span class="px-3 py-1 text-xs font-medium uppercase tracking-wide @(status == "open" ? "bg-green-50 text-green-700 border border-green-200" : "bg-yellow-50 text-yellow-700 border border-yellow-200")">
+                                    @(status == "open" ? "Open" : "Waitlist")
+                                </span>
+                                <span class="text-sm text-gray-500">@(evt.Max_Participants ?? 0) capacity</span>
                             </div>
-                            <h3 class="mt-3 text-lg font-semibold text-gray-900">${evt.title}</h3>
-                            <p class="text-sm text-gray-600 mt-1">${evt.summary}</p>
-                            <div class="mt-3 flex flex-wrap gap-2 text-sm text-gray-600">
-                                <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gray-50 border border-gray-200"><svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>${formatDate(evt.date)}</span>
-                                <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gray-50 border border-gray-200"><svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>${evt.time}</span>
-                                <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-gray-50 border border-gray-200"><svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>${evt.location}</span>
+                            
+                            <h3 class="text-xl font-light text-gray-900 mb-2">@evt.Title</h3>
+                            <p class="text-sm text-gray-600 mb-4">@(evt.Description ?? "No description available")</p>
+                            
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span>@evt.Start_Time.ToString("MMMM dd, yyyy")</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    <span>@evt.Start_Time.ToString("HH:mm")</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    <span>@evt.Location</span>
+                                </div>
                             </div>
-                            <div class="mt-4 flex items-center justify-between">
-                                <div class="text-xs text-gray-500">${seatCopy(evt)}</div>
-                                <button class="text-sm font-semibold px-3 py-1.5 rounded-full ${joined ? "bg-emerald-100 text-emerald-700 border border-emerald-200" : "bg-[#5236ab] text-white"}" data-action="signup" data-id="${evt.id}">
-                                    ${joined ? "Signed up" : "Sign up"}
-                                </button>
-                            </div>
-                        </article>
-                    `;
-                }).join("");
-            };
-
-            // Renders the list of signed-up events in the right-hand column
-            const renderJoinedList = () => {
-                const joinedEvents = events.filter(e => attending.has(e.id));
-
-                if (!joinedEvents.length) {
-                    joinedListEl.innerHTML = `
-                        <p class="text-sm text-gray-500">You haven't signed up for any events yet.</p>
-                    `;
-                    return;
-                }
-
-                joinedListEl.innerHTML = joinedEvents.map(evt => `
-                    <div class="p-3 border border-gray-100 rounded-xl bg-gray-50 space-y-2">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-sm font-semibold text-gray-900 leading-tight">${evt.title}</h4>
-                            <span class="text-xs text-gray-500">${formatDate(evt.date)}</span>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-1 text-xs text-gray-600">
-                                <svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                                ${evt.location}
-                            </div>
-                            <button class="text-xs font-medium text-[#e02b40] hover:text-[#5236ab]" data-action="unsignup" data-id="${evt.id}">
-                                Unsign up
+                        
+                        <div class="flex flex-col items-end gap-3">
+                            <button class="px-6 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
+                                Register
                             </button>
+                            <span class="text-xs text-gray-500">@(evt.Max_Participants ?? 0) spots available</span>
                         </div>
                     </div>
-                `).join("");
-            };
-
-            // Event listener for the main event list (signup/details)
-            listEl?.addEventListener("click", (event) => {
-                const button = event.target.closest("button[data-action]");
-                if (!button) return;
-                const id = Number(button.dataset.id);
-                const action = button.dataset.action;
-
-                if (action === "signup") {
-                    if (attending.has(id)) {
-                        attending.delete(id);
-                        events.find(e => e.id === id).attending--; // Mock decrease attending count
-                    } else {
-                        attending.add(id);
-                        events.find(e => e.id === id).attending++; // Mock increase attending count
-                    }
-                    renderList();
-                    renderJoinedList(); // Update the list of joined events
-                }
-            });
-
-            // Event listener for the joined events list (unsignup)
-            joinedListEl?.addEventListener("click", (event) => {
-                const button = event.target.closest("button[data-action='unsignup']");
-                if (!button) return;
-                const id = Number(button.dataset.id);
-
-                if (attending.has(id)) {
-                    attending.delete(id);
-                    events.find(e => e.id === id).attending--; // Mock decrease attending count
-                    renderList(); // Update main list (to reflect change in 'joined' filter)
-                    renderJoinedList(); // Update the list of joined events
-                }
-            });
-
-            // Filter button logic
-            filters.forEach(filterButton => {
-                filterButton.addEventListener("click", () => {
-                    activeFilter = filterButton.dataset.filter;
-                    filters.forEach(btn => btn.classList.remove("bg-gray-900", "text-white", "active"));
-                    filters.forEach(btn => btn.classList.add("bg-gray-100", "text-gray-700"));
-
-                    // Remove existing class for all but the clicked button
-                    const allOtherFilters = Array.from(filters).filter(btn => btn !== filterButton);
-                    allOtherFilters.forEach(btn => {
-                        btn.classList.remove("bg-gray-900", "text-white");
-                        btn.classList.add("bg-gray-100", "text-gray-700");
-                    });
-
-                    // Add active class to the clicked button
-                    filterButton.classList.remove("bg-gray-100", "text-gray-700");
-                    filterButton.classList.add("bg-gray-900", "text-white", "active");
-
-                    renderList();
-                });
-            });
-
-            // Initial render
-            renderList();
-            renderJoinedList();
-        })();
-    </script>
-}
+                </div>
+            }
+        }
+        else
+        {
+            <div class="bg-white border border-gray-200 p-12 text-center">
+                <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p class="text-gray-500 text-lg font-light">No events available at this time</p>
+                <p class="text-gray-400 text-sm mt-2">Check back later for upcoming events</p>
+            </div>
+        }
+    </div>
+</div>

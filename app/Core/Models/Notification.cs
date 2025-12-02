@@ -1,31 +1,22 @@
+namespace nera_cji.Models;
+
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
-namespace nera_cji.Models
+public class Notification
 {
-    [Table("notifications")]
-    public class Notification
-    {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        [Required]
-        [Column("user_id")]
-        public int UserId { get; set; }
+    public int User_Id { get; set; }
 
-        [Column("event_id")]
-        public int? EventId { get; set; }
+    public int? Event_Id { get; set; }
 
-        [Required]
-        [Column("message")]
-        public string Message { get; set; }
+    public string Message { get; set; } = string.Empty;
 
-        [Column("is_read")]
-        public bool IsRead { get; set; } = false;
+    public bool Is_Read { get; set; } = false;
 
-        [Column("created_at")]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-    }
+    public DateTime Created_At { get; set; } = DateTime.UtcNow;
+
+    [JsonIgnore]
+    public bool IsNew => !Is_Read && (DateTime.UtcNow - Created_At).TotalHours < 24;
 }

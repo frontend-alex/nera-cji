@@ -1,48 +1,32 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+namespace nera_cji.Models;
 
-namespace nera_cji.Models{
-[Table("events")]
-    public class Event
-    {
-        [Key]
-        [Column("id")]
-        public int Id { get; set; }
+using System;
+using System.Text.Json.Serialization;
 
-        [Required]
-        [Column("title")]
-        [MaxLength(150)]
-        public string Title { get; set; }
+public class Event
+{
+    public int Id { get; set; }
 
-        [Column("description")]
-        public string? Description { get; set; }
+    public string Title { get; set; } = string.Empty;
 
-        [Column("location")]
-        [MaxLength(255)]
-        public string? Location { get; set; }
+    public string? Description { get; set; }
 
-        [Required]
-        [Column("start_time")]
-        public DateTime StartTime { get; set; }
+    public string? Location { get; set; }
 
-        [Column("end_time")]
-        public DateTime? EndTime { get; set; }
+    public DateTime Start_Time { get; set; }
 
-        [Required]
-        [Column("created_by")]
-        public int CreatedBy { get; set; }
+    public DateTime? End_Time { get; set; }
 
-        [Column("max_participants")]
-        public int? MaxParticipants { get; set; }
+    public int Created_By { get; set; }
 
-        [Column("status")]
-        [MaxLength(50)]
-        public string? Status { get; set; }
+    public int? Max_Participants { get; set; }
 
-        [Column("created_at")]
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public string? Status { get; set; }
 
-        [Column("updated_at")]
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
-    }
+    public DateTime Created_At { get; set; } = DateTime.UtcNow;
+
+    public DateTime? Updated_At { get; set; }
+
+    [JsonIgnore]
+    public bool IsUpcoming => Start_Time > DateTime.UtcNow;
 }

@@ -25,12 +25,12 @@ public class UserServiceTests {
         var env = new FakeEnv();
         IUserService store = new FileUserStore(env);
 
-        var user = new User { FullName = "Test User", Email = Guid.NewGuid() + "@example.com" };
+        var user = new User { FullName = "Test User", email = Guid.NewGuid() + "@example.com" };
         await store.AddAsync(user);
 
-        var found = await store.FindByEmailAsync(user.Email);
+        var found = await store.FindByEmailAsync(user.email);
         Assert.NotNull(found);
-        Assert.Equal(user.Email.ToUpperInvariant(), found!.NormalizedEmail);
+        Assert.Equal(user.email.ToUpperInvariant(), found!.NormalizedEmail);
     }
 }
 
