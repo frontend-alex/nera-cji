@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using nera_cji.Models;
 
 namespace App.Core {
@@ -52,6 +52,41 @@ namespace App.Core {
                     .HasColumnName("created_by")
                     .IsRequired();
             });
+
+            modelBuilder.Entity<EventParticipant>(entity =>
+            {
+                entity.ToTable("event_participants");
+
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.Event_Id)
+                    .HasColumnName("event_id")
+                    .IsRequired();
+
+                entity.Property(e => e.User_Id)
+                    .HasColumnName("user_id")
+                    .IsRequired();
+
+                entity.Property(e => e.Registered_At)
+                    .HasColumnName("registered_at");
+
+                entity.Property(e => e.Status)
+                    .HasColumnName("status")
+                    .HasMaxLength(50);
+
+                entity.HasOne(e => e.Event)
+                    .WithMany(ev => ev.Participants)
+                    .HasForeignKey(e => e.Event_Id);
+
+                entity.HasOne(e => e.User)
+                    .WithMany(u => u.EventRegistrations)
+                    .HasForeignKey(e => e.User_Id);
+            });
+
         }
     }
 }

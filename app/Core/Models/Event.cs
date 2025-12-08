@@ -1,4 +1,4 @@
-namespace nera_cji.Models;
+﻿namespace nera_cji.Models;
 
 using System;
 using System.Text.Json.Serialization;
@@ -29,4 +29,5 @@ public class Event
 
     [JsonIgnore]
     public bool IsUpcoming => Start_Time > DateTime.UtcNow;
+    public ICollection<EventParticipant> Participants { get; set; } = new List<EventParticipant>();
 }
