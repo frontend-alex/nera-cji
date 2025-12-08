@@ -21,7 +21,7 @@
     </div>
 
     <!-- Events Grid -->
-    <div class="grid gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3  gap-6 mb-8" >
         @if (Model != null && Model.Count > 0)
         {@foreach (var evt in Model)
             {
@@ -40,36 +40,8 @@
                 var status = isFull ? "full" : "open"; 
 
                 
-                <div class="bg-white border border-gray-200 p-6">
-                    <div class="flex flex-col items-end gap-3">
-                        @if (isRegistered)
-                        {
-                            <span class="text-sm font-medium text-green-600">
-                                Registered
-                            </span>
-                        }
-                        else if (isFull)
-                        {
-                            <button class="px-6 py-2 bg-gray-400 text-white text-sm font-medium cursor-not-allowed" disabled>
-                                Full
-                            </button>
-                        }
-                        else
-                        {
-                            <form asp-controller="Events"
-                                  asp-action="Register"
-                                  asp-route-id="@evt.Id"
-                                  method="post">
-                                @Html.AntiForgeryToken()
-                                <button type="submit"
-                                        class="px-6 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
-                                    Register
-                                </button>
-                            </form>
-                        }
-
-                        <span class="text-xs text-gray-500">@spotsLeft spots available</span>
-                    </div>
+                <div class="bg-white border border-gray-200 p-6 rounded-xl">
+                    
 
                             
                             <h3 class="text-xl font-light text-gray-900 mb-2">@evt.Title</h3>
@@ -96,7 +68,36 @@
                                     <span>@evt.Location</span>
                                 </div>
                             </div>
-                        </div>
+                            <div class="flex flex-col items-end gap-3">
+                        @if (isRegistered)
+                        {
+                            <span class="text-sm font-medium text-green-600">
+                                Registered
+                            </span>
+                        }
+                        else if (isFull)
+                        {
+                            <button class="rounded-md px-6 py-2 bg-gray-400 text-white text-sm font-medium cursor-not-allowed" disabled>
+                                Full
+                            </button>
+                        }
+                        else
+                        {
+                            <form asp-controller="Events"
+                                  asp-action="Register"
+                                  asp-route-id="@evt.Id"
+                                  method="post">
+                                @Html.AntiForgeryToken()
+                                <button type="submit"
+                                        class="rounded-md px-6 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    Register
+                                </button>
+                            </form>
+                        }
+
+                        <span class="text-xs text-gray-500">@spotsLeft spots available</span>
+                    </div>
+                 </div>
                         
                         <div class="flex flex-col items-end gap-3">
                             
