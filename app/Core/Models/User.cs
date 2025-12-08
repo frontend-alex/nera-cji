@@ -1,4 +1,4 @@
-namespace nera_cji.Models;
+﻿namespace nera_cji.Models;
 
 using System;
 using System.Text.Json.Serialization;
@@ -18,8 +18,9 @@ public class User {
     public string NormalizedEmail => email.ToUpperInvariant();
 
     public string password_hash { get; set; } = string.Empty;
+    public ICollection<EventParticipant> EventRegistrations { get; set; } = new List<EventParticipant>();
 
-    
+
 }
 
 

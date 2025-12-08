@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Security.Claims;
@@ -19,26 +19,104 @@ namespace nera_cji.Controllers
     [Route("app/v1/events")]
     public class EventsController : Controller
     {
+        private readonly IEventRegistrationService _registrationService;
         private readonly ILogger<EventsController> _logger;
         private readonly IEventService _eventService;
         private readonly ApplicationDbContext _dbContext;
 
         public EventsController(
-            ILogger<EventsController> logger,
-            IEventService eventService,
-            ApplicationDbContext dbContext)
-        {
+    ILogger<EventsController> logger,
+    IEventService eventService,
+    ApplicationDbContext dbContext,
+    IEventRegistrationService registrationService)
+{
             _logger = logger;
             _eventService = eventService;
             _dbContext = dbContext;
+            _registrationService = registrationService;
         }
+
 
         [HttpGet]
         [HttpGet("index")]
         public async Task<IActionResult> Index()
         {
             var events = await _eventService.GetAllAsync();
+
+            int? currentUserId = null;
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            if (!string.IsNullOrEmpty(userEmail)) {
+                var id = await GetUserIdForDatabaseAsync(userEmail);
+                if (id > 0) {
+                    currentUserId = id;
+                }
+            }
+            var eventIds = events.Select(e => e.Id).ToList();
+
+            var registrationsQuery = _dbContext.event_participants
+                .Where(p => eventIds.Contains(p.Event_Id));
+
+            var counts = await registrationsQuery
+                .GroupBy(p => p.Event_Id)
+                .Select(g => new {
+                    EventId = g.Key,
+                    Count = g.Count(p => p.Status == null || p.Status == "registered")
+                })
+                .ToListAsync();
+
+            var countDict = counts.ToDictionary(x => x.EventId, x => x.Count);
+
+            // Which events is the current user registered for?
+            var registeredEventIds = new HashSet<int>();
+            if (currentUserId.HasValue) {
+                var regsForUser = await registrationsQuery
+                    .Where(p => p.User_Id == currentUserId.Value
+                             && (p.Status == null || p.Status == "registered"))
+                    .Select(p => p.Event_Id)
+                    .Distinct()
+                    .ToListAsync();
+
+                registeredEventIds = regsForUser.ToHashSet();
+            }
+
+            ViewBag.RegistrationCounts = countDict;
+            ViewBag.RegisteredEventIds = registeredEventIds;
+
             return View(events);
+        
+        }
+        [HttpPost("{id:int}/register")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(int id) {
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            if (string.IsNullOrEmpty(userEmail)) {
+                TempData["Error"] = "User account not found. Please log in again.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var userId = await GetUserIdForDatabaseAsync(userEmail);
+            if (userId <= 0) {
+                TempData["Error"] = "User not found in database.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try {
+                var success = await _registrationService.RegisterAsync(id, userId);
+
+                if (!success) {
+                    TempData["Error"] = "Could not register for this event (it may be full or unavailable).";
+                }
+                else {
+                    TempData["Success"] = "You are registered for this event.";
+                }
+            }
+            catch (Exception ex) {
+                _logger.LogError(ex,
+                    "Error registering user {Email} for event {EventId}", userEmail, id);
+                TempData["Error"] = "Unexpected error while registering for the event.";
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet("create")]

@@ -1,4 +1,4 @@
-namespace nera_cji.Models;
+﻿namespace nera_cji.Models;
 
 using System;
 
@@ -13,4 +13,6 @@ public class EventParticipant
     public DateTime Registered_At { get; set; } = DateTime.UtcNow;
 
     public string? Status { get; set; }
+    public Event Event { get; set; } = null!;
+    public User User { get; set; } = null!;
 }
