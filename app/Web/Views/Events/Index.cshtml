@@ -3,6 +3,15 @@
     ViewData["Title"] = "Events";
     Layout = "~/Views/Shared/Layouts/_LayoutRoot.cshtml";
 }
+@{
+    var registrations = ViewBag.RegistrationCounts as IDictionary<int, int>
+                        ?? new Dictionary<int, int>();
+
+    // HashSet<int> – eventIds the current user is registered for
+    var registeredEvents = ViewBag.RegisteredEventIds as ISet<int>
+                           ?? new HashSet<int>();
+}
+
 
 <div class="p-8 bg-gray-50 min-h-screen">
     <!-- Header -->
@@ -12,23 +21,28 @@
     </div>
 
     <!-- Events Grid -->
-    <div class="grid gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3  gap-6 mb-8" >
         @if (Model != null && Model.Count > 0)
-        {
-            @foreach (var evt in Model)
+        {@foreach (var evt in Model)
             {
-                var isOpen = (evt.Max_Participants == null || evt.Max_Participants == 0) || true;
-                var status = isOpen ? "open" : "full";
                 
-                <div class="bg-white border border-gray-200 p-6">
-                    <div class="flex items-start justify-between gap-4">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-3 mb-3">
-                                <span class="px-3 py-1 text-xs font-medium uppercase tracking-wide @(status == "open" ? "bg-green-50 text-green-700 border border-green-200" : "bg-yellow-50 text-yellow-700 border border-yellow-200")">
-                                    @(status == "open" ? "Open" : "Waitlist")
-                                </span>
-                                <span class="text-sm text-gray-500">@(evt.Max_Participants ?? 0) capacity</span>
-                            </div>
+                var capacity = evt.Max_Participants ?? 0;
+                var registeredCount = registrations.ContainsKey(evt.Id) ? registrations[evt.Id] : 0;
+
+                var spotsLeft = capacity > 0 ? capacity - registeredCount : capacity;
+                if (spotsLeft < 0)
+                {
+                    spotsLeft = 0;
+                }
+
+                var isFull = capacity > 0 && spotsLeft == 0;
+                var isRegistered = registeredEvents.Contains(evt.Id);
+                var status = isFull ? "full" : "open"; 
+
+                
+                <div class="bg-white border border-gray-200 p-6 rounded-xl">
+                    
+
                             
                             <h3 class="text-xl font-light text-gray-900 mb-2">@evt.Title</h3>
                             <p class="text-sm text-gray-600 mb-4">@(evt.Description ?? "No description available")</p>
@@ -60,16 +74,56 @@
                     <p class="text-sm font-medium text-gray-800">
                         @(evt.Event_Cost == 0 
                             ? "Free" 
-                        : $"€{evt.Event_Cost:F2}")
+                        : $"â‚¬{evt.Event_Cost:F2}")
                     </p>
                     <button class="px-6 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
                         Register
                     </button>
 
                     <span class="text-xs text-gray-500">@(evt.Max_Participants ?? 0) spots available</span>
+                            <div class="flex flex-col items-end gap-3">
+                        <div class="flex flex-col items-end gap-3">
+                            @if (isRegistered)
+                            {
+                                <form asp-controller="Events"
+                                      asp-action="Unregister"
+                                      asp-route-id="@evt.Id"
+                                      method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-6 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md hover:bg-gray-300 transition-colors">
+                                        Unregister
+                                    </button>
+                                </form>
+                            }
+                            else if (isFull)
+                            {
+                                <button class="px-6 py-2 bg-gray-400 text-white text-sm font-medium rounded-md cursor-not-allowed" disabled>
+                                    Full
+                                </button>
+                            }
+                            else
+                            {
+                                <form asp-controller="Events"
+                                      asp-action="Register"
+                                      asp-route-id="@evt.Id"
+                                      method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
+                                        Register
+                                    </button>
+                                </form>
+                            }
+
+                            <span class="text-xs text-gray-500">@spotsLeft spots available</span>
                         </div>
+
                     </div>
-                </div>
+                 </div>
+                        
+                 
+
             }
         }
         else

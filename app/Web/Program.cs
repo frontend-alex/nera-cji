@@ -1,9 +1,11 @@
-namespace nera_cji
+﻿namespace nera_cji
 {
     using App.Core;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+    using nera_cji.Infrastructure.Services;
+    using nera_cji.Interfaces.Services;
     using nera_cji.Models;
 
     public class Program
@@ -18,6 +20,7 @@ namespace nera_cji
 
             var mvcBuilder = builder.Services.AddControllersWithViews();
 
+            builder.Services.AddScoped<IEventRegistrationService, EventRegistrationService>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddScoped(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
             builder.Services.AddScoped<nera_cji.Interfaces.Services.IAuth0Service, nera_cji.Services.Auth0Service>();

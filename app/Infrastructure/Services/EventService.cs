@@ -1,4 +1,4 @@
-namespace nera_cji.Services;
+﻿namespace nera_cji.Services;
 
 using App.Core;
 using Microsoft.EntityFrameworkCore;
@@ -40,14 +40,25 @@ public class EventService : IEventService {
     }
 
     public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default) {
+        // 1) Check if this event has any participants
+        var hasParticipants = await _context.event_participants
+            .AnyAsync(p => p.Event_Id == id, cancellationToken);
+
+        if (hasParticipants) {
+            // Do NOT delete – caller will show an error message
+            return false;
+        }
+
+        // 2) Load the event entity as before
         var eventEntity = await GetByIdAsync(id, cancellationToken);
         if (eventEntity == null) {
             return false;
         }
 
+        // 3) Safe to delete
         _context.events.Remove(eventEntity);
         await _context.SaveChangesAsync(cancellationToken);
-        
+
         return true;
     }
 
