@@ -24,5 +24,7 @@ public class CreateEventViewModel {
     public int? MaxParticipants { get; set; }
 
     public string? Status { get; set; }
+
+    public decimal Event_Cost { get; set; }
 }
 

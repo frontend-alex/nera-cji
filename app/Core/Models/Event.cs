@@ -26,6 +26,8 @@ public class Event
     public DateTime Created_At { get; set; } = DateTime.UtcNow;
 
     public DateTime? Updated_At { get; set; }
+    
+     public decimal Event_Cost { get; set; }
 
     [JsonIgnore]
     public bool IsUpcoming => Start_Time > DateTime.UtcNow;
