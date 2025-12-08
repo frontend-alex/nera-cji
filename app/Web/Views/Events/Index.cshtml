@@ -7,7 +7,7 @@
     var registrations = ViewBag.RegistrationCounts as IDictionary<int, int>
                         ?? new Dictionary<int, int>();
 
-    // HashSet<int> � eventIds the current user is registered for
+    // HashSet<int> – eventIds the current user is registered for
     var registeredEvents = ViewBag.RegisteredEventIds as ISet<int>
                            ?? new HashSet<int>();
 }
@@ -68,6 +68,19 @@
                                     <span>@evt.Location</span>
                                 </div>
                             </div>
+                        </div>
+                        
+                       <div class="flex flex-col items-end gap-3">
+                    <p class="text-sm font-medium text-gray-800">
+                        @(evt.Event_Cost == 0 
+                            ? "Free" 
+                        : $"â‚¬{evt.Event_Cost:F2}")
+                    </p>
+                    <button class="px-6 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
+                        Register
+                    </button>
+
+                    <span class="text-xs text-gray-500">@(evt.Max_Participants ?? 0) spots available</span>
                             <div class="flex flex-col items-end gap-3">
                         <div class="flex flex-col items-end gap-3">
                             @if (isRegistered)
