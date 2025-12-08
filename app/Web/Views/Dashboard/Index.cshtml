@@ -27,7 +27,7 @@
                 <div class="flex items-start justify-between">
                     <div>
                         <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Total Events</p>
-                        <p class="text-4xl font-light text-gray-100">@Model.TotalEvents</p>
+                        <p class="text-4xl font-light text-gray-900">@Model.TotalEvents</p>
                     </div>
                     <div class="h-10 w-10 rounded-lg bg-blue-600 flex items-center justify-center">
                         <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -44,7 +44,7 @@
                 <div class="flex items-start justify-between">
                     <div>
                         <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Upcoming Events</p>
-                        <p class="text-4xl font-light text-gray-100">@Model.UpcomingEvents</p>
+                        <p class="text-4xl font-light text-gray-900">@Model.UpcomingEvents</p>
                     </div>
                     <div class="h-10 w-10 rounded-lg bg-green-600 flex items-center justify-center">
                         <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -61,7 +61,7 @@
                 <div class="flex items-start justify-between">
                     <div>
                         <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">My Registrations</p>
-                        <p class="text-4xl font-light text-gray-100">@Model.MyRegistrations</p>
+                        <p class="text-4xl font-light text-gray-900">@Model.MyRegistrations</p>
                     </div>
                     <div class="h-10 w-10 rounded-lg bg-purple-600 flex items-center justify-center">
                         <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -130,20 +130,22 @@
             </div>
         </section>
 
-        <!-- My Registered Events (new, but styled like original cards) -->
         <!-- My Registered Events -->
-        <div class="bg-gray-900 border border-gray-800 p-6 mt-8">
-            <h2 class="text-xl font-light text-gray-100 mb-4">My Registered Events</h2>
+        <div class="bg-white border border-gray-200 rounded-xl p-6 mt-8">
+            <h2 class="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">
+                My Registered Events
+            </h2>
 
             @if (Model.RegisteredEvents != null && Model.RegisteredEvents.Count > 0)
             {
-                <ul class="divide-y divide-gray-800">
+                <ul class="divide-y divide-gray-200">
                     @foreach (var evt in Model.RegisteredEvents)
                     {
-                        <li class="py-3 flex items-center justify-between">
+                        <li class="py-4 flex items-center justify-between">
                             <div>
-                                <div class="font-medium text-gray-100">@evt.Title</div>
-                                <div class="text-xs text-gray-400">
+                                <div class="font-medium text-gray-900">@evt.Title</div>
+
+                                <div class="text-xs text-gray-500">
                                     @evt.Start_Time.ToString("dd MMM yyyy, HH:mm")
                                     @if (!string.IsNullOrWhiteSpace(evt.Location))
                                     {
@@ -155,7 +157,7 @@
                             <a asp-controller="Events"
                                asp-action="Details"
                                asp-route-id="@evt.Id"
-                               class="text-sm text-blue-400 hover:text-blue-300">
+                               class="text-sm text-blue-600 hover:text-blue-700 font-medium">
                                 View details
                             </a>
                         </li>
@@ -164,7 +166,7 @@
             }
             else
             {
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-500">
                     You haven't registered for any events yet.
                 </p>
             }
