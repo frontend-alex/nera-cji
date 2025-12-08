@@ -118,6 +118,39 @@ namespace nera_cji.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost("{id:int}/unregister")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Unregister(int id) {
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            if (string.IsNullOrEmpty(userEmail)) {
+                TempData["Error"] = "User account not found. Please log in again.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var userId = await GetUserIdForDatabaseAsync(userEmail);
+            if (userId <= 0) {
+                TempData["Error"] = "User not found in database.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            try {
+                var success = await _registrationService.UnregisterAsync(id, userId);
+
+                if (!success) {
+                    TempData["Error"] = "You are not registered for this event.";
+                }
+                else {
+                    TempData["Success"] = "You have been unregistered from this event.";
+                }
+            }
+            catch (Exception ex) {
+                _logger.LogError(ex,
+                    "Error unregistering user {Email} from event {EventId}", userEmail, id);
+                TempData["Error"] = "Unexpected error while unregistering from the event.";
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
 
         [HttpGet("create")]
         public IActionResult Create()
@@ -226,16 +259,18 @@ namespace nera_cji.Controllers
 
         [HttpPost("delete/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
-        {
+        public async Task<IActionResult> Delete(int id) {
             var deleted = await _eventService.DeleteAsync(id);
-            if (deleted)
-            {
-                _logger.LogInformation("Event {Id} deleted", id);
-                return RedirectToAction("Index");
+
+            if (!deleted) {
+                // Either event not found or it has participants
+                TempData["Error"] = "This event cannot be deleted because it has registered participants.";
+            }
+            else {
+                TempData["Success"] = "Event deleted successfully.";
             }
 
-            return NotFound();
+            return RedirectToAction("Create");
         }
 
         [HttpGet("details/{id}")]

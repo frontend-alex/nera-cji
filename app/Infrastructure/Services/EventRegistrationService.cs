@@ -59,6 +59,24 @@ namespace nera_cji.Infrastructure.Services {
                             && p.User_Id == userId
                             && (p.Status == null || p.Status == "registered"));
         }
+        public async Task<bool> UnregisterAsync(int eventId, int userId) {
+            // Find all active registrations for this user + event
+            var registrations = await _dbContext.event_participants
+                .Where(p => p.Event_Id == eventId
+                         && p.User_Id == userId
+                         && (p.Status == null || p.Status == "registered"))
+                .ToListAsync();
+
+            if (registrations.Count == 0) {
+                // Nothing to remove
+                return false;
+            }
+
+            _dbContext.event_participants.RemoveRange(registrations);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+        }
 
         public async Task<int> GetRegisteredCountAsync(int eventId) {
             return await _dbContext.event_participants

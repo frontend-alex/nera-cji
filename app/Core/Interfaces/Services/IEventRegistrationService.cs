@@ -9,5 +9,7 @@ namespace nera_cji.Interfaces.Services {
         Task<bool> RegisterAsync(int eventId, int userId);
         Task<bool> IsRegisteredAsync(int eventId, int userId);
         Task<int> GetRegisteredCountAsync(int eventId);
+        Task<bool> UnregisterAsync(int eventId, int userId);
+
     }
 }

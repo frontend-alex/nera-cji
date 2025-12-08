@@ -69,33 +69,43 @@
                                 </div>
                             </div>
                             <div class="flex flex-col items-end gap-3">
-                        @if (isRegistered)
-                        {
-                            <span class="text-sm font-medium text-green-600">
-                                Registered
-                            </span>
-                        }
-                        else if (isFull)
-                        {
-                            <button class="rounded-md px-6 py-2 bg-gray-400 text-white text-sm font-medium cursor-not-allowed" disabled>
-                                Full
-                            </button>
-                        }
-                        else
-                        {
-                            <form asp-controller="Events"
-                                  asp-action="Register"
-                                  asp-route-id="@evt.Id"
-                                  method="post">
-                                @Html.AntiForgeryToken()
-                                <button type="submit"
-                                        class="rounded-md px-6 py-2 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors">
-                                    Register
+                        <div class="flex flex-col items-end gap-3">
+                            @if (isRegistered)
+                            {
+                                <form asp-controller="Events"
+                                      asp-action="Unregister"
+                                      asp-route-id="@evt.Id"
+                                      method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-6 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-md hover:bg-gray-300 transition-colors">
+                                        Unregister
+                                    </button>
+                                </form>
+                            }
+                            else if (isFull)
+                            {
+                                <button class="px-6 py-2 bg-gray-400 text-white text-sm font-medium rounded-md cursor-not-allowed" disabled>
+                                    Full
                                 </button>
-                            </form>
-                        }
+                            }
+                            else
+                            {
+                                <form asp-controller="Events"
+                                      asp-action="Register"
+                                      asp-route-id="@evt.Id"
+                                      method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-6 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-colors">
+                                        Register
+                                    </button>
+                                </form>
+                            }
 
-                        <span class="text-xs text-gray-500">@spotsLeft spots available</span>
+                            <span class="text-xs text-gray-500">@spotsLeft spots available</span>
+                        </div>
+
                     </div>
                  </div>
                         
