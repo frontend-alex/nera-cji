@@ -7,6 +7,9 @@ using nera_cji.Models;
 using nera_cji.ViewModels;
 using App.Core;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace nera_cji.Controllers
 {
@@ -25,17 +28,16 @@ namespace nera_cji.Controllers
         private readonly ApplicationDbContext _dbContext;
 
         public EventsController(
-    ILogger<EventsController> logger,
-    IEventService eventService,
-    ApplicationDbContext dbContext,
-    IEventRegistrationService registrationService)
-{
+            ILogger<EventsController> logger,
+            IEventService eventService,
+            ApplicationDbContext dbContext,
+            IEventRegistrationService registrationService)
+        {
             _logger = logger;
             _eventService = eventService;
             _dbContext = dbContext;
             _registrationService = registrationService;
         }
-
 
         [HttpGet]
         [HttpGet("index")]
@@ -45,12 +47,14 @@ namespace nera_cji.Controllers
 
             int? currentUserId = null;
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
-            if (!string.IsNullOrEmpty(userEmail)) {
+
+            if (!string.IsNullOrEmpty(userEmail))
+            {
                 var id = await GetUserIdForDatabaseAsync(userEmail);
-                if (id > 0) {
+                if (id > 0)
                     currentUserId = id;
-                }
             }
+
             var eventIds = events.Select(e => e.Id).ToList();
 
             var registrationsQuery = _dbContext.event_participants
@@ -58,7 +62,8 @@ namespace nera_cji.Controllers
 
             var counts = await registrationsQuery
                 .GroupBy(p => p.Event_Id)
-                .Select(g => new {
+                .Select(g => new
+                {
                     EventId = g.Key,
                     Count = g.Count(p => p.Status == null || p.Status == "registered")
                 })
@@ -66,12 +71,12 @@ namespace nera_cji.Controllers
 
             var countDict = counts.ToDictionary(x => x.EventId, x => x.Count);
 
-            // Which events is the current user registered for?
             var registeredEventIds = new HashSet<int>();
-            if (currentUserId.HasValue) {
+            if (currentUserId.HasValue)
+            {
                 var regsForUser = await registrationsQuery
-                    .Where(p => p.User_Id == currentUserId.Value
-                             && (p.Status == null || p.Status == "registered"))
+                    .Where(p => p.User_Id == currentUserId.Value &&
+                               (p.Status == null || p.Status == "registered"))
                     .Select(p => p.Event_Id)
                     .Distinct()
                     .ToListAsync();
@@ -83,70 +88,77 @@ namespace nera_cji.Controllers
             ViewBag.RegisteredEventIds = registeredEventIds;
 
             return View(events);
-        
         }
+
         [HttpPost("{id:int}/register")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(int id) {
+        public async Task<IActionResult> Register(int id)
+        {
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
-            if (string.IsNullOrEmpty(userEmail)) {
-                TempData["Error"] = "User account not found. Please log in again.";
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                TempData["Error"] = "User account not found.";
                 return RedirectToAction(nameof(Index));
             }
 
             var userId = await GetUserIdForDatabaseAsync(userEmail);
-            if (userId <= 0) {
+            if (userId <= 0)
+            {
                 TempData["Error"] = "User not found in database.";
                 return RedirectToAction(nameof(Index));
             }
 
-            try {
+            try
+            {
                 var success = await _registrationService.RegisterAsync(id, userId);
 
-                if (!success) {
-                    TempData["Error"] = "Could not register for this event (it may be full or unavailable).";
-                }
-                else {
-                    TempData["Success"] = "You are registered for this event.";
-                }
+                TempData[success ? "Success" : "Error"] =
+                    success ? "You are registered for this event." :
+                    "Could not register for this event.";
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 _logger.LogError(ex,
-                    "Error registering user {Email} for event {EventId}", userEmail, id);
-                TempData["Error"] = "Unexpected error while registering for the event.";
+                    "Error registering user {Email} for event {Id}", userEmail, id);
+
+                TempData["Error"] = "Unexpected error while registering.";
             }
 
             return RedirectToAction(nameof(Index));
         }
+
         [HttpPost("{id:int}/unregister")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Unregister(int id) {
+        public async Task<IActionResult> Unregister(int id)
+        {
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
-            if (string.IsNullOrEmpty(userEmail)) {
-                TempData["Error"] = "User account not found. Please log in again.";
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                TempData["Error"] = "User account not found.";
                 return RedirectToAction(nameof(Index));
             }
 
             var userId = await GetUserIdForDatabaseAsync(userEmail);
-            if (userId <= 0) {
-                TempData["Error"] = "User not found in database.";
+            if (userId <= 0)
+            {
+                TempData["Error"] = "User not found.";
                 return RedirectToAction(nameof(Index));
             }
 
-            try {
+            try
+            {
                 var success = await _registrationService.UnregisterAsync(id, userId);
 
-                if (!success) {
-                    TempData["Error"] = "You are not registered for this event.";
-                }
-                else {
-                    TempData["Success"] = "You have been unregistered from this event.";
-                }
+                TempData[success ? "Success" : "Error"] =
+                    success ? "You have been unregistered." :
+                    "You are not registered for this event.";
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 _logger.LogError(ex,
-                    "Error unregistering user {Email} from event {EventId}", userEmail, id);
-                TempData["Error"] = "Unexpected error while unregistering from the event.";
+                    "Error unregistering user {Email} from event {Id}", userEmail, id);
+
+                TempData["Error"] = "Unexpected error.";
             }
 
             return RedirectToAction(nameof(Index));
@@ -163,37 +175,30 @@ namespace nera_cji.Controllers
         public async Task<IActionResult> Create(CreateEventViewModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
 
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
             if (string.IsNullOrEmpty(userEmail))
             {
-                ModelState.AddModelError(string.Empty, "User not found.");
+                ModelState.AddModelError("", "User not found.");
                 return View(model);
             }
 
-            // Check if user exists in DB
             var user = await _dbContext.users.FirstOrDefaultAsync(u => u.email == userEmail);
             if (user == null)
             {
-                ModelState.AddModelError(string.Empty, "User not found in database.");
+                ModelState.AddModelError("", "User not found in database.");
                 return View(model);
             }
 
             var startTime = model.Date.Date.Add(model.Time);
-
             var userIntId = await GetUserIdForDatabaseAsync(userEmail);
-            
+
             if (userIntId <= 0)
             {
-                _logger.LogError("Could not get valid user ID for {Email}", userEmail);
-                ModelState.AddModelError(string.Empty, "User account error. Please try logging out and back in.");
+                ModelState.AddModelError("", "User ID invalid.");
                 return View(model);
             }
-            
-            _logger.LogInformation("Creating event for user {Email} with user ID {UserId}", userEmail, userIntId);
 
             var eventEntity = new Event
             {
@@ -210,67 +215,35 @@ namespace nera_cji.Controllers
             try
             {
                 await _eventService.CreateAsync(eventEntity);
-                _logger.LogInformation("Event '{Title}' created by user {Email}", eventEntity.Title, userEmail);
                 return RedirectToAction("Index");
-            }
-            catch (Microsoft.EntityFrameworkCore.DbUpdateException dbEx)
-            {
-                _logger.LogError(dbEx, "Database error creating event: {Message}", dbEx.Message);
-                var errorMessage = "Database error: ";
-                if (dbEx.InnerException != null)
-                {
-                    var innerMsg = dbEx.InnerException.Message;
-                    errorMessage += innerMsg;
-                    
-                    if (innerMsg.Contains("Invalid object name") || innerMsg.Contains("does not exist"))
-                    {
-                        errorMessage = "The events table does not exist in the database. Please create it first.";
-                    }
-                    else if (innerMsg.Contains("FOREIGN KEY") || innerMsg.Contains("foreign key constraint"))
-                    {
-                        errorMessage = "Foreign key constraint error. The created_by user ID may not exist in the users table.";
-                    }
-                    else if (innerMsg.Contains("Cannot insert the value NULL"))
-                    {
-                        errorMessage = "A required field is missing. Please check all required fields are filled.";
-                    }
-                }
-                else
-                {
-                    errorMessage += dbEx.Message;
-                }
-                ModelState.AddModelError(string.Empty, errorMessage);
-                return View(model);
-            }
-            catch (Microsoft.Data.SqlClient.SqlException sqlEx)
-            {
-                _logger.LogError(sqlEx, "SQL error creating event: {Message}", sqlEx.Message);
-                var errorMessage = $"SQL Error: {sqlEx.Message}";
-                ModelState.AddModelError(string.Empty, errorMessage);
-                return View(model);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating event: {Message}", ex.Message);
-                ModelState.AddModelError(string.Empty, $"Error: {ex.Message}");
+                _logger.LogError(ex, "Error creating event");
+                ModelState.AddModelError("", "Error creating event.");
                 return View(model);
             }
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet("admindeleteevents")]
+        public async Task<IActionResult> AdminDeleteEvents()
+        {
+            var events = await _eventService.GetAllAsync();
+            return View(events);
+        }
+
         [HttpPost("delete/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id) {
+        public async Task<IActionResult> Delete(int id)
+        {
             var deleted = await _eventService.DeleteAsync(id);
 
-            if (!deleted) {
-                // Either event not found or it has participants
-                TempData["Error"] = "This event cannot be deleted because it has registered participants.";
-            }
-            else {
-                TempData["Success"] = "Event deleted successfully.";
-            }
+            TempData[deleted ? "Success" : "Error"] =
+                deleted ? "Event deleted successfully." :
+                "This event cannot be deleted because it has registered participants.";
 
-            return RedirectToAction("Create");
+            return RedirectToAction("AdminDeleteEvents");
         }
 
         [HttpGet("details/{id}")]
@@ -278,9 +251,7 @@ namespace nera_cji.Controllers
         {
             var eventEntity = await _eventService.GetByIdAsync(id);
             if (eventEntity == null)
-            {
                 return NotFound();
-            }
 
             return View(eventEntity);
         }
@@ -290,24 +261,18 @@ namespace nera_cji.Controllers
             try
             {
                 var userIdResult = await _dbContext.Database
-                    .SqlQueryRaw<UserIdResult>("SELECT id AS Value FROM users WHERE email = {0}", userEmail)
+                    .SqlQueryRaw<UserIdResult>(
+                        "SELECT id AS Value FROM users WHERE email = {0}", userEmail
+                    )
                     .FirstOrDefaultAsync();
-                
-                if (userIdResult != null && userIdResult.Value > 0)
-                {
-                    return userIdResult.Value;
-                }
 
-                _logger.LogWarning("User {Email} not found in database via direct query", userEmail);
-                return 0;
+                return userIdResult?.Value ?? 0;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error getting user ID for {Email}: {Message}", userEmail, ex.Message);
+                _logger.LogError(ex, "Error retrieving user ID for {Email}", userEmail);
                 return 0;
             }
         }
-
     }
 }
-
