@@ -49,6 +49,14 @@
                             <span class="sidebar-submenu-text">Create Event</span>
                         </a>
                     </li>
+                    @if (User.IsInRole("Admin"))
+                        {
+                    <li class="sidebar-submenu-item">
+                        <a href="/app/v1/events/admindeleteevents" class="sidebar-submenu-button">
+                            <span class="sidebar-submenu-text">Manage Events</span>
+                        </a>
+                    </li>
+                        }
                 </ul>
             </li>
         </ul>
