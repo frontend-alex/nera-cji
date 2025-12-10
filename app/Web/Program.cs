@@ -21,6 +21,8 @@
             var mvcBuilder = builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IEventRegistrationService, EventRegistrationService>();
+            builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddHttpClient<IQrCodeService, QrCodeService>();
             builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             builder.Services.AddScoped(typeof(IPasswordHasher<>), typeof(PasswordHasher<>));
             builder.Services.AddScoped<nera_cji.Interfaces.Services.IAuth0Service, nera_cji.Services.Auth0Service>();
