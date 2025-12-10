@@ -5,13 +5,19 @@ using App.Core;
 using Microsoft.EntityFrameworkCore;
 using nera_cji.Interfaces.Services;
 using nera_cji.Models;
+using System.IO;
+using System.Net.Mail;
 
 namespace nera_cji.Infrastructure.Services {
     public class EventRegistrationService : IEventRegistrationService {
         private readonly ApplicationDbContext _dbContext;
+        private readonly IEmailService _emailService;
+        private readonly IQrCodeService _qrCodeService;
 
-        public EventRegistrationService(ApplicationDbContext dbContext) {
+        public EventRegistrationService(ApplicationDbContext dbContext, IEmailService emailService, IQrCodeService qrCodeService) {
             _dbContext = dbContext;
+            _emailService = emailService;
+            _qrCodeService = qrCodeService;
         }
 
         public async Task<bool> RegisterAsync(int eventId, int userId) {
@@ -29,7 +35,9 @@ namespace nera_cji.Infrastructure.Services {
                 (p.Status == null || p.Status == "registered"));
 
             if (alreadyRegistered) {
-                return true; // treat as success
+                // Resend ticket if already registered
+                await SendQrEmailAsync(userId, ev);
+                return true; 
             }
 
             // Capacity check
@@ -50,7 +58,37 @@ namespace nera_cji.Infrastructure.Services {
 
             _dbContext.event_participants.Add(participant);
             await _dbContext.SaveChangesAsync();
+
+            // Send QR Code & Email
+            await SendQrEmailAsync(userId, ev);
+
             return true;
+        }
+
+        private async Task SendQrEmailAsync(int userId, Event ev)
+        {
+             try
+            {
+                var user = await _dbContext.users.FindAsync(userId);
+                if (user != null && !string.IsNullOrEmpty(user.email))
+                {
+                    var qrData = $"nera-event:{ev.Id}-user:{userId}-timestamp:{DateTimeOffset.UtcNow.ToUnixTimeSeconds()}";
+                    var qrBytes = await _qrCodeService.GenerateQrCodeAsync(qrData);
+
+                    using (var ms = new MemoryStream(qrBytes))
+                    {
+                        var attachment = new Attachment(ms, "qrcode.png", "image/png");
+                        var subject = $"Registration Confirmed: {ev.Title}";
+                        var body = $"<h1>You are registered!</h1><p>Event: {ev.Title}</p><p>Please find your ticket QR code attached.</p>";
+
+                        await _emailService.SendEmailAsync(user.email, subject, body, attachment);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending email/QR: {ex.Message}");
+            }
         }
 
         public async Task<bool> IsRegisteredAsync(int eventId, int userId) {
