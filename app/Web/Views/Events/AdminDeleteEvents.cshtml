@@ -1,16 +1,42 @@
 @model IReadOnlyCollection<nera_cji.Models.Event>
+@using nera_cji.ViewModels
+@using System.Collections.Generic
+@using System.Linq
 
 @{
-    ViewData["Title"] = "Manage Events";
+    ViewData["Title"] = "Admin Dashboard";
     Layout = "~/Views/Shared/Layouts/_LayoutRoot.cshtml";
+    var createUserModel = ViewBag.CreateUserModel as CreateUserViewModel ?? new CreateUserViewModel();
+    var errorMessage = ViewBag.Error as string;
 }
 
 <div class="p-8 bg-gray-50 min-h-screen">
 
     <div class="mb-8">
-        <h1 class="text-3xl font-light text-gray-900 mb-2">Admin: Manage Events</h1>
-        <p class="text-gray-600">Delete existing company events</p>
+        <h1 class="text-3xl font-light text-gray-900 mb-2">Admin Dashboard</h1>
+        <p class="text-gray-600">Manage events and create user accounts</p>
     </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="mb-4 rounded-lg border border-green-300 bg-green-50 px-4 py-2 text-sm text-green-700">
+            @TempData["Success"]
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-2 text-sm text-red-700">
+            @TempData["Error"]
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-2 text-sm text-red-700">
+            @errorMessage
+        </div>
+    }
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @if (Model != null && Model.Count > 0)
@@ -40,16 +66,17 @@
 
                     <div class="mt-6 flex flex-col items-end gap-2">
 
-                        <form asp-controller="EventsAdmin"
+                        <form asp-controller="Events"
                               asp-action="Delete"
                               asp-route-id="@evt.Id"
                               method="post">
                             @Html.AntiForgeryToken()
 
                             <button type="submit"
-                                    class="px-6 py-2 text-white text-sm font-medium rounded-md shadow-md
-                                           bg-gradient-to-r from-red-500 via-pink-500 to-purple-600
-                                           hover:opacity-90 transition-all">
+                                    class="px-6 py-2 text-white text-sm font-semibold rounded-md shadow-lg
+                                           bg-gradient-to-r from-red-600 via-pink-600 to-purple-700
+                                           hover:from-red-700 hover:via-pink-700 hover:to-purple-800
+                                           transition-all">
                                 Delete Event
                             </button>
                         </form>
@@ -65,6 +92,191 @@
                 <p class="text-gray-500 text-lg font-light">No events available</p>
             </div>
         }
+    </div>
+
+    <!-- User Management Section -->
+    <div class="mt-12">
+        <div class="mb-6">
+            <h2 class="text-2xl font-light text-gray-900 mb-2">User Management</h2>
+            <p class="text-gray-600">Create new user accounts and manage existing users</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Create User Form -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl">
+            <form asp-controller="Events" asp-action="CreateUser" method="post" class="space-y-6">
+                @Html.AntiForgeryToken()
+                
+                <div asp-validation-summary="All" class="text-red-600 text-sm p-3 bg-red-50 border border-red-200 rounded"></div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Full Name -->
+                    <div>
+                        <label for="FullName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                        <input name="FullName" 
+                               id="FullName"
+                               value="@createUserModel.FullName"
+                               class="w-full border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="John Doe" />
+                        @if (!string.IsNullOrEmpty(ViewData.ModelState["FullName"]?.Errors?.FirstOrDefault()?.ErrorMessage))
+                        {
+                            <span class="text-red-600 text-xs mt-1 block">@ViewData.ModelState["FullName"]?.Errors?.FirstOrDefault()?.ErrorMessage</span>
+                        }
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="Email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                        <input name="Email" 
+                               id="Email"
+                               type="email"
+                               value="@createUserModel.Email"
+                               class="w-full border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="user@example.com" />
+                        @if (!string.IsNullOrEmpty(ViewData.ModelState["Email"]?.Errors?.FirstOrDefault()?.ErrorMessage))
+                        {
+                            <span class="text-red-600 text-xs mt-1 block">@ViewData.ModelState["Email"]?.Errors?.FirstOrDefault()?.ErrorMessage</span>
+                        }
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="Password" class="block text-sm font-medium text-gray-700 mb-2">Password *</label>
+                        <input name="Password" 
+                               id="Password"
+                               type="password"
+                               class="w-full border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="Minimum 6 characters" />
+                        @if (!string.IsNullOrEmpty(ViewData.ModelState["Password"]?.Errors?.FirstOrDefault()?.ErrorMessage))
+                        {
+                            <span class="text-red-600 text-xs mt-1 block">@ViewData.ModelState["Password"]?.Errors?.FirstOrDefault()?.ErrorMessage</span>
+                        }
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div>
+                        <label for="ConfirmPassword" class="block text-sm font-medium text-gray-700 mb-2">Confirm Password *</label>
+                        <input name="ConfirmPassword" 
+                               id="ConfirmPassword"
+                               type="password"
+                               class="w-full border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
+                               placeholder="Re-enter password" />
+                        @if (!string.IsNullOrEmpty(ViewData.ModelState["ConfirmPassword"]?.Errors?.FirstOrDefault()?.ErrorMessage))
+                        {
+                            <span class="text-red-600 text-xs mt-1 block">@ViewData.ModelState["ConfirmPassword"]?.Errors?.FirstOrDefault()?.ErrorMessage</span>
+                        }
+                    </div>
+                </div>
+
+                <!-- Role and Status -->
+                <div class="flex items-center gap-6 pt-4 border-t border-gray-200">
+                    <div class="flex items-center">
+                        <input name="IsAdmin" 
+                               id="IsAdmin"
+                               type="checkbox" 
+                               value="true"
+                               checked="@createUserModel.IsAdmin"
+                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                        <label for="IsAdmin" class="ml-2 block text-sm text-gray-700">
+                            Administrator
+                        </label>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input name="IsActive" 
+                               id="IsActive"
+                               type="checkbox" 
+                               value="true"
+                               checked="@createUserModel.IsActive"
+                               class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
+                        <label for="IsActive" class="ml-2 block text-sm text-gray-700">
+                            Active
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" 
+                            class="px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-700 to-pink-700 text-white text-sm font-semibold rounded-md shadow-lg hover:from-blue-700 hover:via-purple-800 hover:to-pink-800 transition-all">
+                        Create User Account
+                    </button>
+                </div>
+            </form>
+            </div>
+
+            <!-- User List -->
+            <div class="bg-white border border-gray-200 p-6 rounded-xl">
+                <h3 class="text-lg font-light text-gray-900 mb-4">All Users (@((ViewBag.Users as List<nera_cji.Models.User>)?.Count ?? 0))</h3>
+                
+                @{
+                    var users = ViewBag.Users as List<nera_cji.Models.User>;
+                    if (users == null)
+                    {
+                        users = new List<nera_cji.Models.User>();
+                    }
+                }
+
+                @if (users.Any())
+                {
+                    <div class="space-y-3 max-h-[600px] overflow-y-auto">
+                        @foreach (var user in users)
+                        {
+                            <div class="border border-gray-200 p-4 rounded-lg flex items-center justify-between">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span class="font-medium text-gray-900">@user.FullName</span>
+                                        @if (user.is_admin)
+                                        {
+                                            <span class="px-2 py-0.5 text-xs font-medium bg-purple-100 text-purple-700 rounded">Admin</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="px-2 py-0.5 text-xs font-medium bg-gray-100 text-gray-700 rounded">User</span>
+                                        }
+                                        @if (user.is_active == false)
+                                        {
+                                            <span class="px-2 py-0.5 text-xs font-medium bg-red-100 text-red-700 rounded">Inactive</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="px-2 py-0.5 text-xs font-medium bg-green-100 text-green-700 rounded">Active</span>
+                                        }
+                                    </div>
+                                    <p class="text-xs text-gray-500">@user.email</p>
+                                    <p class="text-xs text-gray-400 mt-1">Created: @user.created_at.ToString("MMM dd, yyyy")</p>
+                                </div>
+                                <form asp-controller="Events" 
+                                      asp-action="ToggleUserStatus" 
+                                      asp-route-id="@user.Id" 
+                                      method="post" 
+                                      class="ml-4">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-4 py-2.5 text-xs font-medium rounded-md shadow-md
+                                                   @(user.is_active == false 
+                                                       ? "bg-gradient-to-r from-green-600 to-emerald-700 text-white hover:from-green-700 hover:to-emerald-800" 
+                                                       : "bg-gradient-to-r from-red-600 via-pink-600 to-purple-700 text-white hover:from-red-700 hover:via-pink-700 hover:to-purple-800") 
+                                                   transition-all"
+                                            onclick="return confirm('Are you sure you want to @(user.is_active == false ? "activate" : "deactivate") this user?');">
+                                        @(user.is_active == false ? "Activate" : "Deactivate")
+                                    </button>
+                                </form>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="text-center py-12">
+                        <svg class="w-12 h-12 text-gray-300 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                        <p class="text-gray-500 text-sm">No users found</p>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 
 </div>

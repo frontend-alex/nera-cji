@@ -1,0 +1,193 @@
+/* Page Transition Animations */
+
+/* Fade in animation for page content */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Page container with transition */
+.page-transition-container {
+    animation: fadeIn 0.4s ease-out;
+    will-change: opacity, transform;
+}
+
+/* Staggered animation for child elements */
+.page-transition-container > * {
+    animation: fadeInUp 0.5s ease-out backwards;
+}
+
+.page-transition-container > *:nth-child(1) { animation-delay: 0.05s; }
+.page-transition-container > *:nth-child(2) { animation-delay: 0.1s; }
+.page-transition-container > *:nth-child(3) { animation-delay: 0.15s; }
+.page-transition-container > *:nth-child(4) { animation-delay: 0.2s; }
+.page-transition-container > *:nth-child(5) { animation-delay: 0.25s; }
+.page-transition-container > *:nth-child(6) { animation-delay: 0.3s; }
+
+/* Smooth transitions for links and buttons */
+a, button, .btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card animations - hover effects removed */
+.card, .bg-white {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading state for page transitions */
+.page-loading {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.page-loaded {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Main content area animation */
+.main-content {
+    animation: fadeIn 0.4s ease-out;
+    min-height: 100vh;
+}
+
+/* Section animations */
+section, .section {
+    animation: fadeInUp 0.5s ease-out backwards;
+}
+
+section:nth-child(1), .section:nth-child(1) { animation-delay: 0.1s; }
+section:nth-child(2), .section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3), .section:nth-child(3) { animation-delay: 0.3s; }
+section:nth-child(4), .section:nth-child(4) { animation-delay: 0.4s; }
+
+/* Grid item animations */
+.grid > * {
+    animation: scaleIn 0.4s ease-out backwards;
+}
+
+.grid > *:nth-child(1) { animation-delay: 0.1s; }
+.grid > *:nth-child(2) { animation-delay: 0.15s; }
+.grid > *:nth-child(3) { animation-delay: 0.2s; }
+.grid > *:nth-child(4) { animation-delay: 0.25s; }
+.grid > *:nth-child(5) { animation-delay: 0.3s; }
+.grid > *:nth-child(6) { animation-delay: 0.35s; }
+
+/* Form element animations */
+form, .form {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+input, textarea, select {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, textarea:focus, select:focus {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar menu item animations */
+.sidebar-menu-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth transitions for navigation */
+nav a {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-horizontal);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a:hover::before {
+    width: 100%;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+

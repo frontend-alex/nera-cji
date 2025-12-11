@@ -9,7 +9,7 @@
     <div class="flex items-center justify-center">
         <div class="flex flex-col gap-10 p-5">
             <h1 class="text-4xl font-medium max-w-[420px] text-center">
-                Welcome <span class="underline">back</span> to Nera Event Management System.
+                Welcome back to NERA
             </h1>
             <form asp-action="Login" method="post" class="flex flex-col gap-8">
                 @Html.AntiForgeryToken()
@@ -31,12 +31,12 @@
                     <input asp-for="RememberMe" type="checkbox" />
                     <label asp-for="RememberMe">Remember me</label>
                 </div>
-                <button type="submit" class="btn-fill-primary">Log in</button>
+                <button type="submit" class="btn-fill-primary">Log In</button>
                 <div class="flex flex-col gap-5">
                     <span class="text-center text-stone-400">
                         Don't have an account?
                         <a asp-action="Register" class="ml-2 underline font-medium text-black"
-                            asp-route-returnUrl="@(Model.ReturnUrl ?? string.Empty)">Sign up
+                            asp-route-returnUrl="@(Model.ReturnUrl ?? string.Empty)">Sign Up
                         </a>
                     </span>
                     <div class="flex items-center justify-between">

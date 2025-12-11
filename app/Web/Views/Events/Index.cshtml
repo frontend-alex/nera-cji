@@ -14,7 +14,7 @@
 <div class="p-8 bg-gray-50 min-h-screen">
     <div class="mb-8">
         <h1 class="text-3xl font-light text-gray-900 mb-2">Employee Events</h1>
-        <p class="text-gray-600">Browse and register for upcoming company events</p>
+        <p class="text-gray-600">Browse and register for upcoming events</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -65,53 +65,62 @@
                         </div>
                     </div>
 
-                    <div class="mt-6 flex flex-col items-end gap-2">
+                    <div class="mt-6 flex items-end justify-between">
+                        <a href="#" 
+                           data-event-id="@evt.Id"
+                           class="text-sm text-blue-600 hover:text-blue-700 font-medium cursor-pointer">
+                            View details
+                        </a>
 
-                        <p class="text-sm font-medium text-gray-800">
-                            @(evt.Event_Cost == 0 ? "Free" : $"€{evt.Event_Cost:F2}")
-                        </p>
+                        <div class="flex flex-col items-end gap-2">
+                            <p class="text-sm font-medium text-gray-800">
+                                @(evt.Event_Cost == 0 ? "Free" : $"€{evt.Event_Cost:F2}")
+                            </p>
 
-                        @if (isRegistered)
-                        {
-                            <form asp-controller="Events"
-                                  asp-action="Unregister"
-                                  asp-route-id="@evt.Id"
-                                  method="post">
-                                @Html.AntiForgeryToken()
-                                <button type="submit"
-                                        class="px-6 py-2 text-white text-sm font-medium rounded-md shadow-md 
-                                               bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 
-                                               hover:opacity-90 transition-all">
-                                    Unregister
+                            @if (isRegistered)
+                            {
+                                <form asp-controller="Events"
+                                      asp-action="Unregister"
+                                      asp-route-id="@evt.Id"
+                                      method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-6 py-2 text-white text-sm font-semibold rounded-md shadow-lg 
+                                                   bg-gradient-to-r from-red-600 via-pink-600 to-purple-700 
+                                                   hover:from-red-700 hover:via-pink-700 hover:to-purple-800 
+                                                   transition-all">
+                                        Cancel Registration
+                                    </button>
+                                </form>
+                            }
+                            else if (isFull)
+                            {
+                                <button disabled
+                                        class="px-6 py-2 text-white text-sm font-semibold rounded-md shadow-lg 
+                                               bg-gradient-to-r from-red-600 via-pink-600 to-purple-700 
+                                               opacity-60 cursor-not-allowed">
+                                    Full
                                 </button>
-                            </form>
-                        }
-                        else if (isFull)
-                        {
-                            <button disabled
-                                    class="px-6 py-2 text-white text-sm font-medium rounded-md shadow-md 
-                                           bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 
-                                           opacity-60 cursor-not-allowed">
-                                Full
-                            </button>
-                        }
-                        else
-                        {
-                            <form asp-controller="Events"
-                                  asp-action="Register"
-                                  asp-route-id="@evt.Id"
-                                  method="post">
-                                @Html.AntiForgeryToken()
-                                <button type="submit"
-                                        class="px-6 py-2 text-white text-sm font-medium rounded-md shadow-md 
-                                               bg-gradient-to-r from-red-500 via-pink-500 to-purple-600 
-                                               hover:opacity-90 transition-all">
-                                    Register
-                                </button>
-                            </form>
-                        }
+                            }
+                            else
+                            {
+                                <form asp-controller="Events"
+                                      asp-action="Register"
+                                      asp-route-id="@evt.Id"
+                                      method="post">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit"
+                                            class="px-6 py-2 text-white text-sm font-semibold rounded-md shadow-lg 
+                                                   bg-gradient-to-r from-red-600 via-pink-600 to-purple-700 
+                                                   hover:from-red-700 hover:via-pink-700 hover:to-purple-800 
+                                                   transition-all">
+                                        Register
+                                    </button>
+                                </form>
+                            }
 
-                        <span class="text-xs text-gray-500">@spotsLeft spots available</span>
+                            <span class="text-xs text-gray-500">@spotsLeft spots available</span>
+                        </div>
                     </div>
 
                 </div>
@@ -123,8 +132,7 @@
                 <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <p class="text-gray-500 text-lg font-light">No events available at this time</p>
-                <p class="text-gray-400 text-sm mt-2">Check back later for upcoming events</p>
+                <p class="text-gray-500 text-lg font-light">No events available at this time. Check back later for upcoming events.</p>
             </div>
         }
     </div>

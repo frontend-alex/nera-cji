@@ -25,17 +25,41 @@ namespace nera_cji.Controllers {
         [HttpGet]
         [HttpGet("index")]
         public async Task<IActionResult> Index() {
-            var userName = User.FindFirstValue(ClaimTypes.Name) ?? "User";
             var userEmail = User.FindFirstValue(ClaimTypes.Email) ?? string.Empty;
+
+            // Look up user in DB to get full name
+            var user = await _dbContext.users
+                .FirstOrDefaultAsync(u => u.email == userEmail);
+
+            // Get name from claim (set during sign-in from user.FullName)
+            var claimName = User.FindFirstValue(ClaimTypes.Name);
+            
+            // Priority: Database FullName > Claim Name > Email prefix
+            string userName;
+            if (user != null && !string.IsNullOrWhiteSpace(user.FullName) && 
+                user.FullName.Trim() != user.email && user.FullName.Trim() != userEmail)
+            {
+                // Use database FullName if it's valid and not the email
+                userName = user.FullName.Trim();
+            }
+            else if (!string.IsNullOrWhiteSpace(claimName) && 
+                     claimName.Trim() != userEmail && 
+                     !claimName.Trim().Contains("@"))
+            {
+                // Use claim name if it's not the email and doesn't look like an email
+                userName = claimName.Trim();
+            }
+            else
+            {
+                // Last resort: use email prefix (part before @) capitalized
+                var emailPrefix = userEmail.Split('@')[0];
+                userName = char.ToUpper(emailPrefix[0]) + emailPrefix.Substring(1);
+            }
 
             var model = new DashboardViewModel {
                 UserName = userName,
                 UserEmail = userEmail
             };
-
-            // Look up user in DB
-            var user = await _dbContext.users
-                .FirstOrDefaultAsync(u => u.email == userEmail);
 
             if (user == null) {
                 // No DB row for this user yet – just show zeroes
@@ -67,6 +91,31 @@ namespace nera_cji.Controllers {
                 .Where(e => registeredEventIds.Contains(e.Id))
                 .OrderBy(e => e.Start_Time)
                 .ToList();
+
+            // Recent Activity: Last event registered
+            var lastRegistration = await _dbContext.event_participants
+                .Where(p => p.User_Id == user.Id && (p.Status == null || p.Status == "registered"))
+                .OrderByDescending(p => p.Registered_At)
+                .FirstOrDefaultAsync();
+
+            if (lastRegistration != null)
+            {
+                model.LastEventRegistered = await _dbContext.events
+                    .FirstOrDefaultAsync(e => e.Id == lastRegistration.Event_Id);
+            }
+
+            // Recent Activity: Last event created
+            model.LastEventCreated = await _dbContext.events
+                .Where(e => e.Created_By == user.Id)
+                .OrderByDescending(e => e.Created_At)
+                .FirstOrDefaultAsync();
+
+            // Recent Activity: Recent notifications (last 5)
+            model.RecentNotifications = await _dbContext.notifications
+                .Where(n => n.User_Id == user.Id)
+                .OrderByDescending(n => n.Created_At)
+                .Take(5)
+                .ToListAsync();
 
             return View(model);
         }
