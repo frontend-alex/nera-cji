@@ -62,6 +62,32 @@ public class EventService : IEventService {
         return true;
     }
 
+    public async Task<bool> DeleteForceAsync(int id, CancellationToken cancellationToken = default) {
+        // Force delete: Delete all participants first, then delete the event
+        // This is for admin use only
+        
+        // 1) Delete all participants for this event
+        var participants = await _context.event_participants
+            .Where(p => p.Event_Id == id)
+            .ToListAsync(cancellationToken);
+        
+        if (participants.Any()) {
+            _context.event_participants.RemoveRange(participants);
+        }
+
+        // 2) Load the event entity
+        var eventEntity = await GetByIdAsync(id, cancellationToken);
+        if (eventEntity == null) {
+            return false;
+        }
+
+        // 3) Delete the event
+        _context.events.Remove(eventEntity);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return true;
+    }
+
     public async Task<Event> UpdateAsync(Event eventEntity, CancellationToken cancellationToken = default) {
         eventEntity.Updated_At = DateTime.UtcNow;
         

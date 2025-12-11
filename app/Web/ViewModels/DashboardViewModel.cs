@@ -13,5 +13,10 @@
 
         // Events the current user is registered for
         public List<Event> RegisteredEvents { get; set; } = new();
+
+        // Recent Activity
+        public Event? LastEventRegistered { get; set; }
+        public Event? LastEventCreated { get; set; }
+        public List<Notification> RecentNotifications { get; set; } = new();
     }
 }

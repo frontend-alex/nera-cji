@@ -19,11 +19,13 @@
 <body>
     <partial name="~/Views/Shared/Components/_Sidebar.cshtml" />
     
-    <main role="main" class="main-content">
+    <main role="main" class="main-content page-loaded">
         @RenderBody()   
     </main>
 
     <script src="~/js/utils/common.js" asp-append-version="true"></script>
+    <script src="~/js/utils/page-transitions.js" asp-append-version="true"></script>
+    <script src="~/js/utils/event-modal.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
