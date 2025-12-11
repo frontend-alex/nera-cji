@@ -4,6 +4,9 @@ public interface IAuth0Service {
     Task<Auth0LoginResult> LoginAsync(string email, string password);
     Task<Auth0SignupResult> SignupAsync(string email, string password, string fullName);
     Task<Auth0UserInfo?> GetUserInfoAsync(string accessToken);
+    Task<bool> BlockUserAsync(string email, bool block);
+    Task<string?> GetUserIdByEmailAsync(string email);
+    Task<bool> UpdatePasswordAsync(string email, string newPassword);
 }
 
 public class Auth0LoginResult {

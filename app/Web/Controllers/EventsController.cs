@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Security.Claims;
 using nera_cji.Interfaces.Services;
@@ -165,8 +167,27 @@ namespace nera_cji.Controllers
         }
 
         [HttpGet("create")]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                return View(new CreateEventViewModel());
+            }
+
+            var userId = await GetUserIdForDatabaseAsync(userEmail);
+            if (userId <= 0)
+            {
+                return View(new CreateEventViewModel());
+            }
+
+            // Get only events created by the current user
+            var userEvents = await _dbContext.events
+                .Where(e => e.Created_By == userId)
+                .OrderByDescending(e => e.Start_Time)
+                .ToListAsync();
+
+            ViewBag.UserEvents = userEvents;
             return View(new CreateEventViewModel());
         }
 
@@ -215,7 +236,8 @@ namespace nera_cji.Controllers
             try
             {
                 await _eventService.CreateAsync(eventEntity);
-                return RedirectToAction("Index");
+                TempData["Success"] = "Event created successfully!";
+                return RedirectToAction("Create");
             }
             catch (Exception ex)
             {
@@ -230,20 +252,201 @@ namespace nera_cji.Controllers
         public async Task<IActionResult> AdminDeleteEvents()
         {
             var events = await _eventService.GetAllAsync();
+            var users = await _dbContext.users
+                .OrderByDescending(u => u.created_at)
+                .ToListAsync();
+            
+            ViewBag.CreateUserModel = new CreateUserViewModel();
+            ViewBag.Users = users;
             return View(events);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpPost("create-user")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateUser(CreateUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var events = await _eventService.GetAllAsync();
+                ViewBag.CreateUserModel = model;
+                ViewBag.Error = "Please correct the errors below.";
+                return View("AdminDeleteEvents", events);
+            }
+
+            // Check if user already exists in database
+            var existingUser = await _dbContext.users.FirstOrDefaultAsync(u => u.email == model.Email);
+            if (existingUser != null)
+            {
+                var events = await _eventService.GetAllAsync();
+                ViewBag.CreateUserModel = model;
+                ViewBag.Error = "A user with this email already exists.";
+                return View("AdminDeleteEvents", events);
+            }
+
+            // Create user in Auth0 first
+            var auth0Service = HttpContext.RequestServices.GetRequiredService<IAuth0Service>();
+            var auth0Result = await auth0Service.SignupAsync(model.Email, model.Password, model.FullName);
+
+            if (!auth0Result.Success)
+            {
+                var events = await _eventService.GetAllAsync();
+                ViewBag.CreateUserModel = model;
+                ViewBag.Error = auth0Result.ErrorMessage ?? "Failed to create user in Auth0. Please try again.";
+                return View("AdminDeleteEvents", events);
+            }
+
+            // Hash the password for database storage
+            var passwordHasher = HttpContext.RequestServices.GetRequiredService<IPasswordHasher<User>>();
+            var tempUser = new User { email = model.Email };
+            var hashedPassword = passwordHasher.HashPassword(tempUser, model.Password);
+
+            // Create the user in database
+            var newUser = new User
+            {
+                email = model.Email,
+                FullName = model.FullName,
+                password_hash = hashedPassword,
+                is_active = model.IsActive,
+                is_admin = model.IsAdmin,
+                created_at = DateTime.UtcNow
+            };
+
+            try
+            {
+                await _dbContext.users.AddAsync(newUser);
+                await _dbContext.SaveChangesAsync();
+
+                TempData["Success"] = $"User '{model.FullName}' created successfully in Auth0 and database as {(model.IsAdmin ? "Admin" : "Regular User")}.";
+                _logger.LogInformation("Admin created user {Email} with role {Role} in both Auth0 and database", model.Email, model.IsAdmin ? "Admin" : "User");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error creating user {Email} in database after Auth0 creation", model.Email);
+                var events = await _eventService.GetAllAsync();
+                ViewBag.CreateUserModel = model;
+                ViewBag.Error = "User was created in Auth0 but failed to save to database. Please contact support.";
+                return View("AdminDeleteEvents", events);
+            }
+
+            return RedirectToAction("AdminDeleteEvents");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost("toggle-user-status/{id}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ToggleUserStatus(int id)
+        {
+            var user = await _dbContext.users.FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+            {
+                TempData["Error"] = "User not found.";
+                return RedirectToAction("AdminDeleteEvents");
+            }
+
+            // Toggle active status - handle nullable bool
+            var currentStatus = user.is_active ?? true;
+            var newStatus = !currentStatus;
+            user.is_active = newStatus;
+            user.updated_at = DateTime.UtcNow;
+            
+            // Also update Auth0 if user exists there
+            var auth0Service = HttpContext.RequestServices.GetRequiredService<IAuth0Service>();
+            try
+            {
+                // Block in Auth0 if deactivating, unblock if activating
+                var auth0Success = await auth0Service.BlockUserAsync(user.email, !newStatus);
+                if (!auth0Success)
+                {
+                    _logger.LogWarning("Failed to update Auth0 status for user {Email}, but database was updated", user.email);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating Auth0 status for user {Email}, but database was updated", user.email);
+                // Continue even if Auth0 update fails - database is the source of truth
+            }
+            
+            await _dbContext.SaveChangesAsync();
+
+            var status = newStatus ? "activated" : "deactivated";
+            var auth0Message = newStatus ? "" : " (blocked in Auth0)";
+            TempData["Success"] = $"User '{user.FullName}' has been {status}{auth0Message}.";
+            _logger.LogInformation("Admin {AdminEmail} {Action} user {UserId} ({UserEmail})", 
+                User.FindFirstValue(ClaimTypes.Email), 
+                newStatus ? "activated" : "deactivated", 
+                user.Id, 
+                user.email);
+
+            return RedirectToAction("AdminDeleteEvents");
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost("delete/{id}")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
+            // Force delete - admins can delete events even with registered participants
+            var deleted = await _eventService.DeleteForceAsync(id);
+
+            TempData[deleted ? "Success" : "Error"] =
+                deleted ? "Event deleted successfully." :
+                "Event not found or could not be deleted.";
+
+            return RedirectToAction("AdminDeleteEvents");
+        }
+
+        [HttpPost("delete-my-event/{id}")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteMyEvent(int id)
+        {
+            // Regular users can only delete their own events
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            if (string.IsNullOrEmpty(userEmail))
+            {
+                TempData["Error"] = "User not found.";
+                return RedirectToAction("Create");
+            }
+
+            var userId = await GetUserIdForDatabaseAsync(userEmail);
+            if (userId <= 0)
+            {
+                TempData["Error"] = "User not found in database.";
+                return RedirectToAction("Create");
+            }
+
+            // Check if the event exists and belongs to the current user
+            var eventEntity = await _eventService.GetByIdAsync(id);
+            if (eventEntity == null)
+            {
+                TempData["Error"] = "Event not found.";
+                return RedirectToAction("Create");
+            }
+
+            if (eventEntity.Created_By != userId)
+            {
+                TempData["Error"] = "You can only delete events you created.";
+                return RedirectToAction("Create");
+            }
+
+            // Check if event has participants - regular users cannot delete events with participants
+            var hasParticipants = await _dbContext.event_participants
+                .AnyAsync(p => p.Event_Id == id);
+
+            if (hasParticipants)
+            {
+                TempData["Error"] = "Cannot delete event with registered participants. Please contact an admin.";
+                return RedirectToAction("Create");
+            }
+
+            // Safe to delete
             var deleted = await _eventService.DeleteAsync(id);
 
             TempData[deleted ? "Success" : "Error"] =
                 deleted ? "Event deleted successfully." :
-                "This event cannot be deleted because it has registered participants.";
+                "Event could not be deleted.";
 
-            return RedirectToAction("AdminDeleteEvents");
+            return RedirectToAction("Create");
         }
 
         [HttpGet("details/{id}")]
@@ -254,6 +457,52 @@ namespace nera_cji.Controllers
                 return NotFound();
 
             return View(eventEntity);
+        }
+
+        [HttpGet("api/details/{id}")]
+        public async Task<IActionResult> GetEventDetails(int id)
+        {
+            var eventEntity = await _eventService.GetByIdAsync(id);
+            if (eventEntity == null)
+                return Json(new { success = false, message = "Event not found" });
+
+            // Get registration count
+            var registrationCount = await _registrationService.GetRegisteredCountAsync(id);
+            var capacity = eventEntity.Max_Participants ?? 0;
+            var spotsLeft = capacity > 0 ? capacity - registrationCount : capacity;
+            if (spotsLeft < 0) spotsLeft = 0;
+
+            // Check if current user is registered
+            var userEmail = User.FindFirstValue(ClaimTypes.Email);
+            var isRegistered = false;
+            if (!string.IsNullOrEmpty(userEmail))
+            {
+                var user = await _dbContext.users.FirstOrDefaultAsync(u => u.email == userEmail);
+                if (user != null)
+                {
+                    isRegistered = await _registrationService.IsRegisteredAsync(id, user.Id);
+                }
+            }
+
+            return Json(new
+            {
+                success = true,
+                eventData = new
+                {
+                    id = eventEntity.Id,
+                    title = eventEntity.Title,
+                    description = eventEntity.Description ?? "No description available",
+                    location = eventEntity.Location,
+                    startTime = eventEntity.Start_Time.ToString("MMMM dd, yyyy HH:mm"),
+                    endTime = eventEntity.End_Time?.ToString("MMMM dd, yyyy HH:mm"),
+                    cost = eventEntity.Event_Cost,
+                    maxParticipants = eventEntity.Max_Participants,
+                    spotsLeft = spotsLeft,
+                    isFull = capacity > 0 && spotsLeft == 0,
+                    isRegistered = isRegistered,
+                    status = eventEntity.Status
+                }
+            });
         }
 
         private async Task<int> GetUserIdForDatabaseAsync(string userEmail)
