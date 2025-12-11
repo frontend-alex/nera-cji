@@ -17,6 +17,14 @@ namespace nera_cji.Controllers
             return View();
         }
 
+        [HttpGet("Home/Privacy")]
+        [HttpGet("Home/About")]
+        [HttpGet("about")]
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
         [HttpGet("Home/Contact")]
         [HttpGet("contact")]
         public IActionResult Contact()

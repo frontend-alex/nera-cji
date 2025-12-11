@@ -72,6 +72,11 @@
                 defaults: new { controller = "Home", action = "Contact" });
 
             app.MapControllerRoute(
+                name: "about",
+                pattern: "about",
+                defaults: new { controller = "Home", action = "Privacy" });
+
+            app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
